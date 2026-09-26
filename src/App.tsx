@@ -120,8 +120,8 @@ export default function App() {
     <div className="bg-[#131317] text-[#e4e1e7] min-h-screen flex flex-col font-sans selection:bg-[#d4af37] selection:text-[#3c2f00]">
       {/* HEADER / NAVIGATION */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#16161F]/90 backdrop-blur-xl shadow-[0_1px_12px_rgba(0,0,0,0.4)]">
-        {/* Top Info Bar */}
-        <div className="w-full bg-[#0e0e12] py-1 px-4 lg:px-12 border-b border-[rgba(212,175,55,0.2)]">
+        {/* Top Info Bar - hidden on mobile for clean minimalist presence */}
+        <div className="hidden sm:block w-full bg-[#0e0e12] py-1 px-4 lg:px-12 border-b border-[rgba(212,175,55,0.2)]">
           <div className="max-w-[1240px] mx-auto flex items-center justify-between text-[#d0c5af] text-[11px] font-medium uppercase tracking-widest">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#1B4D3E] animate-pulse"></span>
@@ -137,28 +137,28 @@ export default function App() {
         </div>
 
         {/* Main Nav Bar */}
-        <div className="h-20 max-w-[1240px] mx-auto px-4 lg:px-12 flex items-center justify-between gap-4">
+        <div className="h-14 sm:h-16 lg:h-20 max-w-[1240px] mx-auto px-3 sm:px-4 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Wordmark & Seal */}
           <button
             onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
+            className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer focus:outline-none min-w-0"
           >
-            <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[rgba(212,175,55,0.3)] group-hover:border-[#f2ca50] transition-all duration-300">
+            <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[rgba(212,175,55,0.3)] group-hover:border-[#f2ca50] transition-all duration-300 flex-shrink-0">
               <img
                 alt="Tarot Italia Seal"
                 referrerPolicy="no-referrer"
-                className="w-8 h-8 rounded-full object-cover"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover"
                 src={IMAGES.avatar}
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
                 }}
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-[20px] font-semibold tracking-wider text-[#f2ca50] group-hover:text-[#E5C158] transition-colors uppercase leading-none">
+            <div className="flex flex-col min-w-0">
+              <span className="font-serif text-[17px] sm:text-[20px] font-semibold tracking-wider text-[#f2ca50] group-hover:text-[#E5C158] transition-colors uppercase leading-none truncate">
                 TAROT ITALIA
               </span>
-              <span className="text-[10px] font-medium tracking-[0.2em] text-[#E2DACD] uppercase pt-1">
+              <span className="hidden sm:block text-[10px] font-medium tracking-[0.2em] text-[#E2DACD] uppercase pt-0.5 truncate">
                 Arcani &amp; Introspezione
               </span>
             </div>
@@ -213,19 +213,20 @@ export default function App() {
           </nav>
 
           {/* Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
             <button
               onClick={() => openBookingFor('Lettura On Line 1h')}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#f2ca50] text-[#3c2f00] text-[12px] font-semibold uppercase tracking-wider rounded-lg shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:bg-[#E5C158] hover:shadow-[0_6px_25px_rgba(212,175,55,0.4)] transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#f2ca50] text-[#3c2f00] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider rounded-lg shadow-sm hover:bg-[#E5C158] transition-all duration-300 cursor-pointer"
             >
-              <span className="material-symbols-outlined text-base leading-none">calendar_month</span>
-              <span className="whitespace-nowrap">Prenota Lettura</span>
+              <span className="material-symbols-outlined text-sm sm:text-base leading-none">calendar_month</span>
+              <span className="hidden sm:inline whitespace-nowrap">Prenota Lettura</span>
+              <span className="sm:hidden whitespace-nowrap">Prenota</span>
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#d0c5af] hover:text-white rounded-lg focus:outline-none"
+              className="lg:hidden p-1.5 text-[#d0c5af] hover:text-white rounded-lg focus:outline-none"
               aria-label="Apri menu"
             >
               <span className="material-symbols-outlined text-2xl">
@@ -281,7 +282,7 @@ export default function App() {
       </header>
 
       {/* MAIN CONTAINER */}
-      <main className="w-full pt-28 bg-[#131317] flex-1">
+      <main className="w-full pt-14 sm:pt-16 lg:pt-28 bg-[#131317] flex-1">
         {/* CONDITIONAL VIEW: CHI SIAMO TERESA / ABOUT ME & COLLABORATORI */}
         {activeTab === 'chi-siamo' && (
           <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
@@ -782,43 +783,43 @@ export default function App() {
               <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-[#f2ca50]/10 rounded-full blur-[140px] pointer-events-none"></div>
               <div className="absolute top-1/3 -right-20 w-[420px] h-[420px] bg-[#e9c176]/5 rounded-full blur-[110px] pointer-events-none"></div>
 
-              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12 lg:py-20 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 py-8 sm:py-12 lg:py-20 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   {/* Text Content Column */}
-                  <div className="lg:col-span-7 flex flex-col gap-4">
+                  <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-4">
                     {/* Vintage Gold Badge */}
-                    <div className="inline-flex items-center gap-2 self-start px-2.5 py-1 bg-[#16161F] rounded-full shadow-sm border border-[rgba(212,175,55,0.2)]">
+                    <div className="inline-flex items-center gap-2 self-start px-2.5 py-0.5 sm:py-1 bg-[#16161F] rounded-full shadow-sm border border-[rgba(212,175,55,0.2)]">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#f2ca50] animate-pulse"></span>
-                      <span className="text-[11px] font-medium uppercase tracking-widest text-[#f2ca50]">
+                      <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-widest text-[#f2ca50]">
                         Dal 2012 • Studio Olistico e Divinatorio
                       </span>
                     </div>
 
                     {/* Main Title */}
-                    <h1 className="font-serif text-[32px] sm:text-[40px] text-[#F5F0EB] leading-tight max-w-2xl">
+                    <h1 className="font-serif text-[26px] sm:text-[34px] lg:text-[40px] text-[#F5F0EB] leading-tight max-w-2xl">
                       Il Linguaggio Segreto degli <span className="italic text-[#f2ca50]">Arcani</span> per la Tua Evoluzione Interiore
                     </h1>
 
                     {/* Poetic Subtitle */}
-                    <p className="text-[16px] lg:text-[18px] text-[#d0c5af] max-w-xl leading-relaxed">
+                    <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-[#d0c5af] max-w-xl leading-relaxed">
                       Uno spazio dedicato a chi desidera scoprire, approfondire e vivere il mondo dei tarocchi. Sessioni individuali di introspezione e ascolto, online ovunque tu sia o dal vivo nello studio di Macerata.
                     </p>
 
                     {/* Dual CTAs */}
-                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1 sm:pt-2">
                       <button
                         onClick={() => openBookingFor('Lettura On Line 1h')}
-                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#f2ca50] text-[#3c2f00] text-[12px] font-semibold uppercase tracking-wider rounded-lg shadow-[0_8px_30px_rgba(212,175,55,0.28)] hover:bg-[#E5C158] hover:shadow-[0_10px_35px_rgba(212,175,55,0.42)] transition-all duration-300 cursor-pointer"
+                        className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-[#f2ca50] text-[#3c2f00] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider rounded-lg shadow-md hover:bg-[#E5C158] transition-all duration-300 cursor-pointer"
                       >
-                        <span className="material-symbols-outlined text-base leading-none">flare</span>
-                        <span>Prenota la Tua Lettura (1h)</span>
+                        <span className="material-symbols-outlined text-sm sm:text-base leading-none">flare</span>
+                        <span>Prenota Lettura (1h)</span>
                       </button>
                       <a
                         href="#metodi"
-                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#1f1f23] text-[#F5F0EB] text-[12px] font-semibold uppercase tracking-wider rounded-lg hover:bg-[#2a292e] transition-all duration-300 border border-[rgba(212,175,55,0.15)]"
+                        className="inline-flex items-center gap-2 px-3.5 sm:px-6 py-2 sm:py-2.5 bg-[#1f1f23] text-[#F5F0EB] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider rounded-lg hover:bg-[#2a292e] transition-all duration-300 border border-[rgba(212,175,55,0.15)]"
                       >
-                        <span className="material-symbols-outlined text-base leading-none">menu_book</span>
-                        <span>Scopri i Nostri Metodi</span>
+                        <span className="material-symbols-outlined text-sm sm:text-base leading-none">menu_book</span>
+                        <span>I Nostri Metodi</span>
                       </a>
                     </div>
 
