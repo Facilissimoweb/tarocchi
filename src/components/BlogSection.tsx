@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BLOG_ARTICLES, BlogArticle } from '../data/blogData';
+import { BrandSeal, BrandSectionDivider } from './BrandSeal';
 
 interface BlogSectionProps {
   onBackToHome: () => void;
@@ -40,6 +41,19 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
         {/* Article Header */}
         <article className="bg-[#16161F] p-6 sm:p-10 lg:p-12 rounded-xl border border-[rgba(212,175,55,0.25)] shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          {/* Official Brand Header inside Article */}
+          <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[rgba(212,175,55,0.15)]">
+            <BrandSeal size="sm" glow={true} />
+            <div className="flex flex-col">
+              <span className="font-serif font-bold text-sm text-[#f2ca50] uppercase tracking-wider">
+                Tarot Italia Journal
+              </span>
+              <span className="text-[10px] text-[#E2DACD]/70 uppercase tracking-widest">
+                Pubblicazione Ufficiale • Studio Macerata
+              </span>
+            </div>
+          </div>
 
           {/* Meta header */}
           <div className="flex flex-wrap items-center gap-3 text-xs text-[#e9c176] mb-4">
@@ -203,6 +217,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
 
       {/* Hero Narrative of Blog */}
       <div className="text-center max-w-2xl mx-auto mb-10">
+        <BrandSectionDivider title="Grimorio Ufficiale Tarot Italia" size="md" className="mb-2" />
         <span className="text-[12px] font-semibold text-[#f2ca50] uppercase tracking-widest">
           ◆ Conoscenza &amp; Approfondimento
         </span>

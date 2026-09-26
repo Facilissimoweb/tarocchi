@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BlogSection } from './components/BlogSection';
 import { ShopSection } from './components/ShopSection';
+import { BrandSeal, BrandSectionDivider } from './components/BrandSeal';
 import { BLOG_ARTICLES } from './data/blogData';
 import { SHOP_PRODUCTS } from './data/shopData';
 
