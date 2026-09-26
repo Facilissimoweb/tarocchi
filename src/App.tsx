@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { BlogSection } from './components/BlogSection';
+import { ShopSection } from './components/ShopSection';
+import { BLOG_ARTICLES } from './data/blogData';
+import { SHOP_PRODUCTS } from './data/shopData';
 
 // Image assets directly linked from reference HTML
 const IMAGES = {
@@ -36,13 +40,20 @@ const MAJOR_ARCANA = [
 ];
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'>('home');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('Lettura On Line 1h');
   const [isLegalModalOpen, setIsLegalModalOpen] = useState<'privacy' | 'disclaimer' | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedArcano, setSelectedArcano] = useState<number | null>(0);
+  const [shopCategory, setShopCategory] = useState<string>('Tutti');
+
+  const openShopWithCategory = (cat: string = 'Tutti') => {
+    setShopCategory(cat);
+    setActiveTab('shop');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Cookie Consent Widget State
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | 'custom' | null>(() => {
@@ -201,19 +212,49 @@ export default function App() {
               Chi Siamo / About Me
             </button>
             <button
-              onClick={() => setActiveTab('arcani')}
+              onClick={() => { setActiveTab('arcani'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors rounded-lg ${
                 activeTab === 'arcani'
                   ? 'bg-[#2a292e] text-[#f2ca50]'
                   : 'text-[#d0c5af] hover:text-[#e4e1e7]'
               }`}
             >
-              Blog &amp; Guide Arcani
+              22 Arcani
+            </button>
+            <button
+              onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors rounded-lg ${
+                activeTab === 'blog'
+                  ? 'bg-[#2a292e] text-[#f2ca50]'
+                  : 'text-[#d0c5af] hover:text-[#e4e1e7]'
+              }`}
+            >
+              Blog
+            </button>
+            <button
+              onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-colors rounded-lg flex items-center gap-1.5 ${
+                activeTab === 'shop'
+                  ? 'bg-[#2a292e] text-[#f2ca50]'
+                  : 'text-[#d0c5af] hover:text-[#e4e1e7]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-sm leading-none text-[#f2ca50]">storefront</span>
+              <span>Shop</span>
             </button>
           </nav>
 
           {/* Action Button & Mobile Toggle */}
           <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+            <button
+              onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="hidden md:inline-flex items-center gap-1 px-2.5 py-1.5 text-xs text-[#e9c176] hover:text-[#f2ca50] transition-colors border border-[rgba(212,175,55,0.2)] hover:border-[#f2ca50] rounded-lg"
+              title="Apri Shop"
+            >
+              <span className="material-symbols-outlined text-sm">shopping_bag</span>
+              <span className="uppercase tracking-wider font-semibold text-[10px]">Bottega</span>
+            </button>
+
             <button
               onClick={() => openBookingFor('Lettura On Line 1h')}
               className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#f2ca50] text-[#3c2f00] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider rounded-lg shadow-sm hover:bg-[#E5C158] transition-all duration-300 cursor-pointer"
@@ -257,16 +298,33 @@ export default function App() {
               Servizi &amp; Prenotazioni
             </button>
             <button
-              onClick={() => { setActiveTab('chi-siamo'); setMobileMenuOpen(false); }}
+              onClick={() => { setActiveTab('chi-siamo'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#d0c5af] hover:text-white"
             >
               Chi Siamo / About Me
             </button>
             <button
-              onClick={() => { setActiveTab('arcani'); setMobileMenuOpen(false); }}
+              onClick={() => { setActiveTab('arcani'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#d0c5af] hover:text-white"
             >
               Guida 22 Arcani Maggiori
+            </button>
+            <button
+              onClick={() => { setActiveTab('blog'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#d0c5af] hover:text-white flex items-center justify-between"
+            >
+              <span>Blog &amp; Articoli</span>
+              <span className="text-[10px] text-[#f2ca50] bg-[#2a292e] px-2 py-0.5 rounded">3 Nuovi</span>
+            </button>
+            <button
+              onClick={() => { setActiveTab('shop'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#d0c5af] hover:text-white flex items-center justify-between"
+            >
+              <span className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#f2ca50]">storefront</span>
+                Bottega &amp; Shop Olistico
+              </span>
+              <span className="text-[10px] text-[#e9c176] bg-[#2a292e] px-2 py-0.5 rounded">6 Articoli</span>
             </button>
             <a
               href="https://wa.me/393791038253"
@@ -772,6 +830,22 @@ export default function App() {
               )}
             </div>
           </section>
+        )}
+
+        {/* CONDITIONAL VIEW: BLOG SECTION */}
+        {activeTab === 'blog' && (
+          <BlogSection
+            onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onOpenBooking={openBookingFor}
+          />
+        )}
+
+        {/* CONDITIONAL VIEW: SHOP SECTION */}
+        {activeTab === 'shop' && (
+          <ShopSection
+            onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            initialCategory={shopCategory}
+          />
         )}
 
         {/* DEFAULT HOME VIEW */}
@@ -1354,6 +1428,192 @@ export default function App() {
               </div>
             </section>
 
+            {/* SEZIONE ANTEPRIMA BLOG (3 ARTICOLI) */}
+            <section className="w-full bg-[#131317] py-20 border-t border-[rgba(212,175,55,0.15)]">
+              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                  <div className="flex flex-col gap-1 max-w-xl">
+                    <div className="inline-flex items-center gap-1.5 text-xs text-[#f2ca50] uppercase tracking-widest font-semibold">
+                      <span className="material-symbols-outlined text-sm">auto_stories</span>
+                      <span>Grimorio &amp; Guide Simboliche</span>
+                    </div>
+                    <h2 className="font-serif text-2xl lg:text-3xl text-[#F5F0EB]">
+                      Dal Nostro Blog: Sapere Archetipico &amp; Pratiche
+                    </h2>
+                  </div>
+                  <button
+                    onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#f2ca50] hover:text-[#E5C158] transition-colors self-start md:self-auto cursor-pointer"
+                  >
+                    <span>Leggi Tutti gli Articoli del Blog</span>
+                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </button>
+                </div>
+
+                {/* 3 Articles Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {BLOG_ARTICLES.map((article) => (
+                    <div
+                      key={article.id}
+                      className="bg-[#16161F] rounded-xl overflow-hidden border border-[rgba(212,175,55,0.18)] hover:border-[#f2ca50] shadow-xl flex flex-col group transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="relative w-full h-44 overflow-hidden bg-[#1f1f23]">
+                        <img
+                          src={article.coverImage}
+                          alt={article.title}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-transparent to-transparent"></div>
+                        <div className="absolute top-3 left-3 bg-[#353439]/90 backdrop-blur-md px-2.5 py-1 rounded text-[#f2ca50] text-[10px] font-medium uppercase tracking-widest border border-[rgba(212,175,55,0.2)]">
+                          {article.category}
+                        </div>
+                        <div className="absolute top-3 right-3 bg-[#1B4D3E]/90 text-[#F5F0EB] px-2 py-0.5 rounded text-[10px] font-medium">
+                          {article.readTime}
+                        </div>
+                      </div>
+
+                      <div className="p-5 flex flex-col flex-1">
+                        <div className="flex items-center gap-2 text-[10px] text-[#e9c176] mb-1.5">
+                          <span>{article.date}</span>
+                          <span>•</span>
+                          <span className="text-[#F5F0EB] font-medium">{article.author}</span>
+                        </div>
+
+                        <h3 className="font-serif text-lg text-[#F5F0EB] group-hover:text-[#f2ca50] transition-colors mb-2 line-clamp-2">
+                          {article.title}
+                        </h3>
+
+                        <p className="text-xs text-[#d0c5af] leading-relaxed mb-4 line-clamp-2">
+                          {article.excerpt}
+                        </p>
+
+                        <div className="mt-auto pt-2">
+                          <button
+                            onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                            className="w-full py-2 bg-[#1f1f23] text-[#f2ca50] group-hover:bg-[#f2ca50] group-hover:text-[#3c2f00] text-[11px] font-semibold uppercase tracking-wider rounded-lg border border-[rgba(212,175,55,0.15)] transition-all flex items-center justify-center gap-1 cursor-pointer"
+                          >
+                            <span>Leggi Articolo</span>
+                            <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* SEZIONE ANTEPRIMA SHOP / BOTTEGA OLISTICA */}
+            <section className="w-full bg-[#0e0e12] py-20 border-t border-[rgba(212,175,55,0.15)]">
+              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                  <div className="flex flex-col gap-1 max-w-xl">
+                    <div className="inline-flex items-center gap-1.5 text-xs text-[#f2ca50] uppercase tracking-widest font-semibold">
+                      <span className="material-symbols-outlined text-sm">storefront</span>
+                      <span>Bottega Olistica &amp; Strumenti</span>
+                    </div>
+                    <h2 className="font-serif text-2xl lg:text-3xl text-[#F5F0EB]">
+                      Oggetti Consacrati per la Tua Pratica
+                    </h2>
+                    <p className="text-xs sm:text-sm text-[#d0c5af]">
+                      Dalla radiestesia del Pendolo PTAH alle erbe raccolte sui Monti Sibillini: strumenti creati con cura artigianale da Teresa e Maura.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => openShopWithCategory('Tutti')}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#f2ca50] text-[#3c2f00] text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-[#E5C158] transition-colors shadow-sm self-start md:self-auto cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-sm">shopping_bag</span>
+                    <span>Visita lo Shop Completo (6 Articoli)</span>
+                  </button>
+                </div>
+
+                {/* Quick Category Buttons on Home */}
+                <div className="flex flex-wrap items-center gap-2 -mt-4 pb-2 border-b border-[rgba(212,175,55,0.1)]">
+                  <span className="text-[11px] uppercase tracking-wider text-[#d0c5af] mr-1">Esplora per Categoria:</span>
+                  {[
+                    { label: 'Tutti', icon: 'auto_awesome' },
+                    { label: 'Strumenti', icon: 'explore' },
+                    { label: 'Erbe', icon: 'eco' },
+                    { label: 'Consacrati', icon: 'verified' },
+                    { label: 'Rituali', icon: 'local_fire_department' },
+                    { label: 'Tarocchi', icon: 'style' }
+                  ].map((cat) => (
+                    <button
+                      key={cat.label}
+                      onClick={() => openShopWithCategory(cat.label)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#16161F] text-[#d0c5af] hover:text-[#f2ca50] hover:bg-[#1f1f23] text-xs uppercase font-medium tracking-wider border border-[rgba(212,175,55,0.2)] hover:border-[#f2ca50] transition-colors cursor-pointer"
+                    >
+                      <span className="material-symbols-outlined text-xs text-[#f2ca50]">{cat.icon}</span>
+                      <span>{cat.label}</span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* 3 Featured Products */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {SHOP_PRODUCTS.slice(0, 3).map((product) => (
+                    <div
+                      key={product.id}
+                      className="bg-[#16161F] rounded-xl overflow-hidden border border-[rgba(212,175,55,0.18)] hover:border-[#f2ca50] shadow-xl flex flex-col group transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="relative w-full h-44 overflow-hidden bg-[#1f1f23]">
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-transparent to-transparent"></div>
+                        {product.badge && (
+                          <div className="absolute top-3 left-3 bg-[#353439]/90 backdrop-blur-md px-2.5 py-1 rounded text-[#f2ca50] text-[10px] font-medium uppercase tracking-widest border border-[rgba(212,175,55,0.2)]">
+                            {product.badge}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="p-5 flex flex-col flex-1">
+                        <div className="flex flex-wrap items-center gap-1 mb-2">
+                          {product.filterTags?.map((tag) => (
+                            <button
+                              key={tag}
+                              onClick={() => openShopWithCategory(tag)}
+                              className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#111116] text-[#e9c176] hover:text-[#f2ca50] border border-[rgba(212,175,55,0.2)] hover:border-[#f2ca50] transition-colors cursor-pointer"
+                              title={`Filtra bottega per ${tag}`}
+                            >
+                              #{tag}
+                            </button>
+                          ))}
+                        </div>
+
+                        <h3 className="font-serif text-base text-[#F5F0EB] group-hover:text-[#f2ca50] transition-colors mb-2">
+                          {product.title}
+                        </h3>
+
+                        <p className="text-xs text-[#d0c5af] leading-relaxed mb-4 line-clamp-2">
+                          {product.subtitle}
+                        </p>
+
+                        <div className="mt-auto pt-3 border-t border-[rgba(212,175,55,0.15)] flex items-center justify-between">
+                          <span className="font-serif text-lg font-bold text-[#f2ca50]">
+                            € {product.price.toFixed(2)}
+                          </span>
+
+                          <button
+                            onClick={() => openShopWithCategory(product.filterTags?.[0] || 'Tutti')}
+                            className="px-3 py-1.5 bg-[#1f1f23] text-[#F5F0EB] hover:text-[#f2ca50] text-[11px] font-semibold uppercase tracking-wider rounded-lg border border-[rgba(212,175,55,0.2)] hover:border-[#f2ca50] transition-colors cursor-pointer"
+                          >
+                            Scopri nello Shop
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* BANNER CALL TO ACTION FINALE */}
             <section className="w-full bg-[#131317] py-20 relative overflow-hidden">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12">
@@ -1519,10 +1779,22 @@ export default function App() {
                   Sedute dal Vivo in Studio
                 </button>
                 <button
-                  onClick={() => setActiveTab('arcani')}
+                  onClick={() => { setActiveTab('arcani'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="text-left text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer"
                 >
                   Significato 22 Arcani Maggiori
+                </button>
+                <button
+                  onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="text-left text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer"
+                >
+                  Blog &amp; Articoli Simbolici
+                </button>
+                <button
+                  onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="text-left text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer"
+                >
+                  Bottega Olistica &amp; Strumenti
                 </button>
                 <button
                   onClick={() => setIsLegalModalOpen('privacy')}
