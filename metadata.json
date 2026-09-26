@@ -1,0 +1,7 @@
+{
+  "name": "Tarot Italia Arcana",
+  "description": "Sanctuario olistico di divinazione introspettiva e archetipica. Consulti professionali con Tarocchi di Marsiglia e Rider Waite Smith a Macerata e Online dal 2012.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
