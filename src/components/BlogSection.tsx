@@ -5,10 +5,17 @@ import { BrandSeal, BrandSectionDivider } from './BrandSeal';
 interface BlogSectionProps {
   onBackToHome: () => void;
   onOpenBooking: (serviceName: string) => void;
+  initialArticleId?: string | null;
 }
 
-export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBooking }) => {
-  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
+export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBooking, initialArticleId = null }) => {
+  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(initialArticleId);
+
+  React.useEffect(() => {
+    if (initialArticleId !== undefined) {
+      setSelectedArticleId(initialArticleId);
+    }
+  }, [initialArticleId]);
   const [activeCategory, setActiveCategory] = useState<string>('Tutti');
   const [copiedLink, setCopiedLink] = useState(false);
 

@@ -16,8 +16,61 @@ const IMAGES = {
   serviceRitual: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQLOvwNy2W1qr7QRcKwUiWmnyVUFEoxNlt7DLfpGOCLYir-kvrtFwJNOgbzipwez5LeGNDF4wvoGX4oi0egnh8X2WaYOumhq_ODEQ1MYeJZUStryhrvnhHoLMfPRQnqXdN4jJjx8nuM1AyGl64qU-D6TyW8NEI6-8W7c3mCEl_vdfGf9L2RpMQIkc_ZUDnxv29z29bAKEWfGQFsvkKiNh9yKhSAQVy1bhBjrAFO-WfPKlDD_OiRS7N',
 };
 
+type TabType = 'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop';
+const TABS_ORDER: TabType[] = ['home', 'servizi', 'chi-siamo', 'arcani', 'blog', 'shop'];
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'>('home');
+  const [activeTab, setActiveTab] = useState<TabType>('home');
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [touchStartPos, setTouchStartPos] = useState<{ x: number; y: number } | null>(null);
+
+  const navigateTab = (newTab: TabType, direction?: 'left' | 'right') => {
+    if (direction) {
+      setSwipeDirection(direction);
+    }
+    setActiveTab(newTab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      setTouchStartPos({
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      });
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartPos || e.changedTouches.length === 0) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const deltaX = touchEndX - touchStartPos.x;
+    const deltaY = touchEndY - touchStartPos.y;
+
+    setTouchStartPos(null);
+
+    // Only process horizontal swipe if horizontal distance is at least 60px and significantly greater than vertical distance
+    if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      const currentIndex = TABS_ORDER.indexOf(activeTab);
+
+      if (deltaX < 0) {
+        // Swiped left -> Next page
+        if (currentIndex < TABS_ORDER.length - 1) {
+          const nextTab = TABS_ORDER[currentIndex + 1];
+          navigateTab(nextTab, 'left');
+        }
+      } else {
+        // Swiped right -> Previous page
+        if (currentIndex > 0) {
+          const prevTab = TABS_ORDER[currentIndex - 1];
+          navigateTab(prevTab, 'right');
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     if (activeTab === 'servizi') {
@@ -38,10 +91,17 @@ export default function App() {
   const [dailyDrawnArcano, setDailyDrawnArcano] = useState<ArcanoInfo | null>(null);
   const [isDailyDrawing, setIsDailyDrawing] = useState<boolean>(false);
   const [shopCategory, setShopCategory] = useState<string>('Tutti');
+  const [selectedBlogArticleId, setSelectedBlogArticleId] = useState<string | null>(null);
 
   const openShopWithCategory = (cat: string = 'Tutti') => {
     setShopCategory(cat);
     setActiveTab('shop');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openBlogArticle = (articleId?: string | null) => {
+    setSelectedBlogArticleId(articleId || null);
+    setActiveTab('blog');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -117,8 +177,14 @@ export default function App() {
     }, 600);
   };
 
+  const currentTabIndex = TABS_ORDER.indexOf(activeTab);
+
   return (
-    <div className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white">
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white relative overflow-x-hidden"
+    >
       {/* HEADER / NAVIGATION */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#0C0714]/90 backdrop-blur-xl border-b border-[#8A2BE2]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)]">
         {/* Top Info Bar */}
@@ -170,7 +236,7 @@ export default function App() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1.5">
             <button
-              onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => navigateTab('home', currentTabIndex > 0 ? 'right' : 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'home'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -180,11 +246,7 @@ export default function App() {
               Home
             </button>
             <button
-              onClick={() => {
-                setActiveTab('servizi');
-                const el = document.getElementById('servizi-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => navigateTab('servizi', currentTabIndex > 1 ? 'right' : 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'servizi'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -194,7 +256,7 @@ export default function App() {
               Servizi &amp; Consulti
             </button>
             <button
-              onClick={() => { setActiveTab('chi-siamo'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => navigateTab('chi-siamo', currentTabIndex > 2 ? 'right' : 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'chi-siamo'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -204,7 +266,7 @@ export default function App() {
               Chi Siamo / About
             </button>
             <button
-              onClick={() => { setActiveTab('arcani'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => navigateTab('arcani', currentTabIndex > 3 ? 'right' : 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'arcani'
                   ? 'bg-[#FF007F]/20 text-[#FF007F] border border-[#FF007F]/60 shadow-[0_0_15px_rgba(255,0,127,0.4)]'
@@ -215,7 +277,7 @@ export default function App() {
               <span>22 Arcani</span>
             </button>
             <button
-              onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => navigateTab('blog', currentTabIndex > 4 ? 'right' : 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'blog'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -225,7 +287,7 @@ export default function App() {
               Blog
             </button>
             <button
-              onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => navigateTab('shop', 'left')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'shop'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -333,8 +395,50 @@ export default function App() {
         )}
       </header>
 
-      {/* MAIN CONTAINER */}
+      {/* MAIN CONTAINER WITH SLIDE TRANSITION */}
       <main className="w-full pt-16 sm:pt-20 lg:pt-24 bg-[#0C0714] flex-1">
+        {/* Mobile Swipe Navigation Floating Indicator / Hint */}
+        <div className="lg:hidden sticky top-16 sm:top-20 z-30 bg-[#130924]/80 backdrop-blur-md border-b border-[#8A2BE2]/30 py-2 px-4 flex items-center justify-between text-[11px] font-mono text-[#A69BB5]">
+          <button
+            onClick={() => currentTabIndex > 0 && navigateTab(TABS_ORDER[currentTabIndex - 1], 'right')}
+            disabled={currentTabIndex === 0}
+            className={`flex items-center gap-1 transition-colors cursor-pointer ${
+              currentTabIndex > 0 ? 'text-[#00F0FF] hover:text-white' : 'opacity-30 cursor-not-allowed'
+            }`}
+          >
+            <span className="material-symbols-outlined text-sm">chevron_left</span>
+            <span className="uppercase text-[10px]">{currentTabIndex > 0 ? TABS_ORDER[currentTabIndex - 1] : ''}</span>
+          </button>
+
+          <div className="flex items-center gap-1.5 text-[10px] uppercase font-mono tracking-wider text-[#00F0FF]/90">
+            <span className="material-symbols-outlined text-xs text-[#FF007F] animate-pulse">swipe</span>
+            <span>Scorri {currentTabIndex + 1}/6</span>
+            <span className="text-[#A69BB5]/60">• Swipe mobile</span>
+          </div>
+
+          <button
+            onClick={() => currentTabIndex < TABS_ORDER.length - 1 && navigateTab(TABS_ORDER[currentTabIndex + 1], 'left')}
+            disabled={currentTabIndex === TABS_ORDER.length - 1}
+            className={`flex items-center gap-1 transition-colors cursor-pointer ${
+              currentTabIndex < TABS_ORDER.length - 1 ? 'text-[#00F0FF] hover:text-white' : 'opacity-30 cursor-not-allowed'
+            }`}
+          >
+            <span className="uppercase text-[10px]">{currentTabIndex < TABS_ORDER.length - 1 ? TABS_ORDER[currentTabIndex + 1] : ''}</span>
+            <span className="material-symbols-outlined text-sm">chevron_right</span>
+          </button>
+        </div>
+
+        {/* Animated Page Slide Container */}
+        <div
+          key={activeTab}
+          className={`w-full transition-all duration-300 ease-out transform ${
+            swipeDirection === 'left'
+              ? 'animate-in slide-in-from-right-8 fade-in duration-300'
+              : swipeDirection === 'right'
+              ? 'animate-in slide-in-from-left-8 fade-in duration-300'
+              : 'animate-in fade-in duration-200'
+          }`}
+        >
         {/* CONDITIONAL VIEW: CHI SIAMO TERESA / ABOUT ME & COLLABORATORI */}
         {activeTab === 'chi-siamo' && (
           <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
@@ -994,6 +1098,7 @@ export default function App() {
           <BlogSection
             onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             onOpenBooking={openBookingFor}
+            initialArticleId={selectedBlogArticleId}
           />
         )}
 
@@ -1605,10 +1710,10 @@ export default function App() {
               </div>
             </section>
 
-            {/* SEZIONE ANTEPRIMA BLOG (3 ARTICOLI) */}
+            {/* SEZIONE ARTICOLI NELLA HOME (Query Loop compatto Cyber-Mistico) */}
             <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
-                <BrandSectionDivider title="Tarot Italia • Grimorio & Guide Simboliche" />
+                <BrandSectionDivider title="Tarot Italia • Articoli & Grimorio" />
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="flex flex-col gap-1 max-w-xl">
                     <div className="inline-flex items-center gap-1.5 text-xs text-[#00F0FF] font-mono uppercase tracking-widest font-semibold">
@@ -1616,26 +1721,28 @@ export default function App() {
                       <span>Grimorio &amp; Guide Simboliche</span>
                     </div>
                     <h2 className="font-serif text-2xl lg:text-3xl text-white font-bold">
-                      Dal Nostro Blog: Sapere Archetipico &amp; Pratiche
+                      Articoli in Evidenza
                     </h2>
                   </div>
                   <button
-                    onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    onClick={() => openBlogArticle(null)}
                     className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00F0FF] hover:text-[#FF007F] transition-colors self-start md:self-auto cursor-pointer"
                   >
-                    <span>Leggi Tutti gli Articoli del Blog</span>
+                    <span>Vedi Tutti gli Articoli</span>
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
                 </div>
 
-                {/* 3 Articles Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Compact Query Loop Grid (Glassmorphic, Neon Borders, Hover Glow) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {BLOG_ARTICLES.map((article) => (
-                    <div
+                    <article
                       key={article.id}
-                      className="bg-[#130924]/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-xl flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,240,255,0.25)]"
+                      onClick={() => openBlogArticle(article.id)}
+                      className="bg-[#130924]/80 backdrop-blur-xl rounded-2xl border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-lg hover:shadow-[0_0_25px_rgba(0,240,255,0.35)] transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer hover:-translate-y-1"
                     >
-                      <div className="relative w-full h-44 overflow-hidden bg-[#0C0714]">
+                      {/* 1. Immagine di Copertina */}
+                      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#0C0714]">
                         <img
                           src={article.coverImage}
                           alt={article.title}
@@ -1643,40 +1750,38 @@ export default function App() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#130924] via-transparent to-transparent"></div>
-                        <div className="absolute top-3 left-3 bg-[#1C0F33]/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-[#00F0FF] text-[10px] font-mono font-medium uppercase tracking-widest border border-[#00F0FF]/30">
-                          {article.category}
-                        </div>
-                        <div className="absolute top-3 right-3 bg-[#130924]/90 text-[#FF007F] border border-[#FF007F]/30 px-2 py-0.5 rounded-lg text-[10px] font-mono font-medium">
-                          {article.readTime}
-                        </div>
                       </div>
 
-                      <div className="p-5 flex flex-col flex-1">
-                        <div className="flex items-center gap-2 text-[10px] text-[#00F0FF] font-mono mb-1.5">
-                          <span>{article.date}</span>
-                          <span>•</span>
-                          <span className="text-white font-medium">{article.author}</span>
+                      {/* Content Box */}
+                      <div className="p-5 flex flex-col flex-1 justify-between gap-3">
+                        <div className="space-y-2">
+                          {/* 2. Titolo */}
+                          <h3 className="font-serif text-base text-white group-hover:text-[#00F0FF] transition-colors font-bold leading-snug line-clamp-2">
+                            {article.title}
+                          </h3>
+
+                          {/* 3. Estratto breve (snippet) di 2 righe */}
+                          <p className="text-xs text-[#A69BB5] leading-relaxed line-clamp-2">
+                            {article.excerpt}
+                          </p>
                         </div>
 
-                        <h3 className="font-serif text-lg text-white group-hover:text-[#00F0FF] transition-colors mb-2 line-clamp-2 font-bold">
-                          {article.title}
-                        </h3>
-
-                        <p className="text-xs text-[#A69BB5] leading-relaxed mb-4 line-clamp-2">
-                          {article.excerpt}
-                        </p>
-
-                        <div className="mt-auto pt-2">
+                        {/* 4. Pulsante "Leggi di più" */}
+                        <div className="pt-2 mt-auto">
                           <button
-                            onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                            className="w-full py-2 bg-[#1C0F33] text-[#00F0FF] group-hover:bg-[#FF007F] group-hover:text-white text-[11px] font-semibold uppercase tracking-wider rounded-xl border border-[#00F0FF]/40 group-hover:border-[#FF007F] group-hover:shadow-[0_0_15px_rgba(255,0,127,0.5)] transition-all flex items-center justify-center gap-1 cursor-pointer"
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openBlogArticle(article.id);
+                            }}
+                            className="w-full py-2 px-3 bg-[#1C0F33] text-[#00F0FF] group-hover:bg-[#FF007F] group-hover:text-white text-[11px] font-bold uppercase tracking-wider rounded-xl border border-[#00F0FF]/40 group-hover:border-[#FF007F] group-hover:shadow-[0_0_15px_rgba(255,0,127,0.5)] transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer"
                           >
-                            <span>Leggi Articolo</span>
+                            <span>Leggi di più</span>
                             <span className="material-symbols-outlined text-xs">arrow_forward</span>
                           </button>
                         </div>
                       </div>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>
@@ -1851,6 +1956,7 @@ export default function App() {
             </section>
           </div>
         )}
+        </div>
       </main>
 
       {/* FOOTER */}
