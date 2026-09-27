@@ -2001,9 +2001,15 @@ export default function App() {
             <p className="text-[13px] text-[#A69BB5]/70">
               © 2012–2025 Tarot Italia di Studio Olistico Macerata. P.IVA 02136780430. Professione disciplinata ai sensi della Legge 14 gennaio 2013, n. 4.
             </p>
-            <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
-              I consulti non sostituiscono pareri medici o psicologici.
-            </p>
+            <div className="flex flex-col md:items-end gap-1">
+              <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center md:justify-end gap-1">
+                <span className="material-symbols-outlined text-xs">explicit</span>
+                <span>Servizi riservati esclusivamente a un pubblico maggiorenne (+18)</span>
+              </span>
+              <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
+                I consulti non sostituiscono pareri medici o psicologici.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
