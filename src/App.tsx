@@ -1002,6 +1002,8 @@ export default function App() {
           <ShopSection
             onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             initialCategory={shopCategory}
+            onOpenPrivacy={() => setIsLegalModalOpen('privacy')}
+            onOpenCookie={() => setIsCookieCustomizerOpen(true)}
           />
         )}
 
@@ -2140,6 +2142,24 @@ export default function App() {
                 </div>
 
                 <div className="pt-2">
+                  <p className="text-[10px] text-[#A69BB5] mb-2 leading-relaxed">
+                    Inviando i tuoi dati accetti il trattamento ai sensi della{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsLegalModalOpen('privacy')}
+                      className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                    >
+                      Privacy Policy
+                    </button>{' '}
+                    e la nostra informativa sui{' '}
+                    <button
+                      type="button"
+                      onClick={() => setIsCookieCustomizerOpen(true)}
+                      className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                    >
+                      Cookie
+                    </button>.
+                  </p>
                   <button
                     type="submit"
                     className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all cursor-pointer"
