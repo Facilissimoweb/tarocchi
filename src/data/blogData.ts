@@ -25,6 +25,57 @@ export interface BlogArticle {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    id: 'il-bagatto-nei-tarocchi-sbloccare-potenziale',
+    slug: 'il-bagatto-nei-tarocchi-sbloccare-potenziale-inespresso-energia-inizio',
+    title: 'Il Bagatto nei Tarocchi: Come Sbloccare il Potenziale Inespresso e Incanalare l’Energia dell’Inizio',
+    subtitle: 'Dalla paralisi da analisi alla manifestazione concreta: come l’Arcano I trasforma la scintilla dell’ispirazione in azione consapevole.',
+    author: 'Teresa',
+    authorRole: 'Tarologa & Laureata in Tecniques della Comunicazione Visiva (Accademia di Belle Arti di Macerata)',
+    date: '27 Settembre 2024',
+    readTime: '6 min',
+    category: 'Tarologia & Archetipi',
+    tags: ['IlBagatto', 'ArcaniMaggiori', 'CartomanziaEvolutiva', 'RitualiDiEnergia', 'Manifestazione', 'SbloccoEnergetico', 'SimbolismoTarocchi'],
+    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAoknsKwjQ5gMWL8eK1ObY_9BQ6Jk8KDgcWG1yZ87X3TLEMJfQjLDTzppcdq--GQPBLXre1C4PRFdqJ4MieRdx62up4qDZ07nPM5JI1Cyv1dSYzNqelbWZH01kAfItV_gDzSDbc8zjhdLU2ORvdUwFUimclSNQ6Ji0R7DRoQKIW2hanc9UUlFTeoatyi4ioQlXZjei6RL3trMkqD0EsLcaA-ztGTynT18R_-xNqJwTwstfvDx4rLbDU',
+    excerpt: 'Ti è mai capitato di avere in testa un’idea meravigliosa eppure sentirti bloccato al punto di partenza? Scopri come l’energia dell’Arcano I, il Bagatto, trasforma l’ispirazione pura in azione concreta.',
+    content: {
+      intro: 'Ti è mai capitato di avere in testa un’idea meravigliosa, un progetto che potrebbe cambiarti la vita o una nuova direzione personale, eppure sentirti bloccato al punto di partenza? La sensazione è sempre quella: «Vorrei farlo, ma non so se ho quello che serve, non so da dove iniziare, non è il momento giusto». Nella cartomanzia e nella simbologia degli Arcani Maggiori, questa paralisi non è una colpa, ma un’interruzione nel flusso di una specifica forza: l’energia del Bagatto (chiamato anche Il Mago). Il Bagatto è la carta del numero I. Rappresenta la scintilla iniziale, la trasmutazione del pensiero creativo in azione concreta, il momento esatto in cui l’Ispirazione scende sulla Terra per diventare Realtà.',
+      sections: [
+        {
+          heading: '1. La Problematica: La Paralisi del Potenziale (L’Energia Bloccata)',
+          paragraphs: [
+            'Analizziamo il blocco che molte persone vivono quando si trovano ad affrontare un inizio. Dal punto di vista energetico, la figura del Bagatto si posiziona all’incrocio tra due mondi: il mondo dello Spirito (il potenziale puro) e il mondo della Materia (l’azione sul campo).',
+            'Quando l’energia del Bagatto è in equilibrio, hai chiarezza di intenti, intraprendenza, carisma, prontezza di riflessi e la consapevolezza che tutto ciò di cui hai bisogno è già sul tuo tavolo.',
+            'A. La Paralisi da Analisi (Energia Carente): Hai un tavolo pieno di strumenti, ma rimani immobile a fissarli. Studi, pianifichi, rimani bloccato nella «sindrome dell’impostore», pensando di non essere mai abbastanza preparato. Il risultato? L’idea muore nella mente senza mai prendere forma.',
+            'B. Il Disperdimento Caotico (Energia Inutilizzata / Invertita): Accendi cento fuochi contemporaneamente e non ne porti a termine nessuno. Salti da una passione all’altra, usi le tue abilità in modo manipolatorio o disorganizzato, esaurendo le tue energie senza costruire nulla di solido.'
+          ]
+        },
+        {
+          heading: '2. Il Simbolismo Energetico della Carta',
+          paragraphs: [
+            'Guarda la figura tradizionale del Bagatto: davanti a sé ha i simboli dei quattro semi dei Tarocchi: Bastoni (Fuoco/Volontà), Coppe (Acqua/Emozione), Spade (Aria/Mente) e Denari (Terra/Materia). Significato: Hai già tutti i mattoni necessari per costruire la tua realtà.',
+            'La Bacchetta e la Terra: Spesso raffigurato con un braccio alzato verso il cielo e l’altro puntato verso la terra, il Bagatto funge da conduttore energetico tra l’idea pura e la manifestazione materiale.',
+            'Il Cappello a forma di Infinito (∞): Rappresenta le possibilità illimitate della mente umana quando è focalizzata e presente nel qui e ora. L’insegnamento energetico è chiaro: Non ti manca nulla per iniziare. Devi solo canalizzare la frequenza della manifestazione.'
+          ]
+        },
+        {
+          heading: '3. Ritualità Pratiche per Manovrare e Sbloccare l’Energia del Bagatto',
+          paragraphs: [
+            'Se senti che un tuo progetto o una fase della tua vita sono bloccati al livello delle intenzioni, puoi utilizzare delle specifiche ritualità di focalizzazione energetica. Non si tratta di «magia teatrale», ma di atti psicomagici e rituali di intenzione pensati per riallineare la tua mente e la tua frequenza aurica.',
+            'Rituale 1: La Pulizia e la Consacrazione del Tavolo da Lavoro — Scopo: Materializzare la chiarezza mentale e attivare l’elemento Terra. Pulisci fisicamente la tua scrivania o lo spazio in cui crei/lavori. Elimina il superfluo. Posiziona 4 oggetti simbolici agli angoli: Nord (Terra: un cristallo o una moneta), Est (Aria: dell’incenso acceso di salvia o incenso puro), Sud (Fuoco: una candela gialla o dorata della volontà), Ovest (Acqua: un bicchiere d’acqua fresca). Metti la carta del Bagatto al centro sopra un foglio su cui avrai scritto un solo obiettivo chiaro e concreto (es: «Avvio il mio progetto X entro il 30 del mese»). Accendi la candela, respira profondamente per 3 minuti e visualizza l’energia dell’Ispirazione che scende attraverso la tua testa, attraversa le tue mani e si scarica sul foglio. Lascia consumare la candela in sicurezza.',
+            'Rituale 2: Il Gesto di Radicamento dell’Infinito — Scopo: Superare la procrastinazione e attivare la memoria corporea dell’Azione. Ogni mattina: Mettiti in piedi con le gambe leggermente divaricate. Solleva la mano destra verso l’alto (indice puntato) e la mano sinistra verso il basso. Chiudi gli occhi, fai tre respiri profondi e immagina una corrente di luce dorata che entra dalla mano destra e scende a terra. Pronuncia a voce alta: «Io sono il canale. Ho gli strumenti, attivo la volontà, creo la mia realtà.» Apri gli occhi ed esegui immediatamente la prima azione (anche piccolissima) legata al tuo progetto.'
+          ]
+        }
+      ],
+      quote: '“Non devi essere perfetto per iniziare, ma devi iniziare per poterti perfezionare. Sul tuo tavolo ci sono già tutte le risorse di cui hai bisogno: spetta a te prendere la bacchetta e fare il primo passo.”',
+      conclusion: 'Il Bagatto ti ricorda che la perfezione è un’illusione che blocca il potenziale. Sblocca il tuo potenziale, ritrova la chiarezza e impara a manovrare le tue energie con la saggezza degli Arcani. Se ti senti in una fase di stasi o hai un progetto da lanciare, la guida degli Arcani ti aiuta a modellare il presente a tuo favore.',
+      keyTakeaways: [
+        'Hai già tutti gli strumenti necessari sul tuo tavolo: non aspettare una perfezione illusoria.',
+        'Riconosci la paralisi da analisi e il disperdimento caotico per riportare l’energia in equilibrio.',
+        'Applica atti psicomagici quotidiani di radicamento per trasformare l’ispirazione in azione concreta.'
+      ]
+    }
+  },
+  {
     id: 'tarocchi-senza-fatalismo',
     slug: 'leggere-tarocchi-senza-fatalismo-introspezione-archetipica',
     title: 'Leggere i Tarocchi senza Fatalismo: la via dell’Introspezione Archetipica',

@@ -5,6 +5,8 @@ import { BrandSeal, BrandSectionDivider } from './BrandSeal';
 interface ShopSectionProps {
   onBackToHome: () => void;
   initialCategory?: string;
+  onOpenPrivacy?: () => void;
+  onOpenCookie?: () => void;
 }
 
 interface CategoryFilter {
@@ -53,7 +55,7 @@ const CATEGORY_FILTERS: CategoryFilter[] = [
   }
 ];
 
-export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialCategory = 'Tutti' }) => {
+export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialCategory = 'Tutti', onOpenPrivacy, onOpenCookie }) => {
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
@@ -503,24 +505,44 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
             </div>
 
             {/* Modal Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#8A2BE2]/30">
-              <button
-                onClick={() => {
-                  addToCart(selectedProduct);
-                  setSelectedProduct(null);
-                }}
-                className="px-4 py-2 bg-[#1C0F33] text-white text-xs font-semibold uppercase tracking-wider rounded-lg border border-[#8A2BE2]/40 hover:bg-[#130924] transition-colors cursor-pointer"
-              >
-                Aggiungi al Carrello
-              </button>
+            <div className="pt-4 border-t border-[#8A2BE2]/30 space-y-3">
+              <p className="text-[10px] text-[#A69BB5] leading-relaxed">
+                Inviando la richiesta d'ordine acconsenti al trattamento dei dati personali in conformità alla{' '}
+                <button
+                  type="button"
+                  onClick={onOpenPrivacy}
+                  className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                >
+                  Privacy Policy
+                </button>{' '}
+                e all'informativa sui{' '}
+                <button
+                  type="button"
+                  onClick={onOpenCookie}
+                  className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                >
+                  Cookie
+                </button>.
+              </p>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <button
+                  onClick={() => {
+                    addToCart(selectedProduct);
+                    setSelectedProduct(null);
+                  }}
+                  className="px-4 py-2 bg-[#1C0F33] text-white text-xs font-semibold uppercase tracking-wider rounded-lg border border-[#8A2BE2]/40 hover:bg-[#130924] transition-colors cursor-pointer"
+                >
+                  Aggiungi al Carrello
+                </button>
 
-              <button
-                onClick={() => handleDirectOrderWhatsapp(selectedProduct)}
-                className="px-5 py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-[0_0_20px_rgba(255,0,127,0.5)] flex items-center gap-2 cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-sm">chat</span>
-                <span>Ordina Subito su WhatsApp</span>
-              </button>
+                <button
+                  onClick={() => handleDirectOrderWhatsapp(selectedProduct)}
+                  className="px-5 py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-[0_0_20px_rgba(255,0,127,0.5)] flex items-center gap-2 cursor-pointer"
+                >
+                  <span className="material-symbols-outlined text-sm">chat</span>
+                  <span>Ordina Subito su WhatsApp</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -603,13 +625,31 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
             {/* Drawer Footer */}
             {cartItems.length > 0 && (
-              <div className="pt-4 border-t border-[#8A2BE2]/30 space-y-4">
+              <div className="pt-4 border-t border-[#8A2BE2]/30 space-y-3">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-[#A69BB5]">Totale Provvisorio:</span>
                   <span className="font-serif text-xl font-bold text-[#00F0FF]">
                     € {totalCartPrice.toFixed(2)}
                   </span>
                 </div>
+                <p className="text-[10px] text-[#A69BB5] leading-relaxed">
+                  Inviando l'ordine accetti il trattamento dei dati personali secondo la nostra{' '}
+                  <button
+                    type="button"
+                    onClick={onOpenPrivacy}
+                    className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                  >
+                    Privacy Policy
+                  </button>{' '}
+                  e la politica dei{' '}
+                  <button
+                    type="button"
+                    onClick={onOpenCookie}
+                    className="text-[#00F0FF] underline hover:text-white cursor-pointer"
+                  >
+                    Cookie
+                  </button>.
+                </p>
                 <button
                   onClick={handleCheckoutWhatsapp}
                   className="w-full py-3 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(255,0,127,0.5)] flex items-center justify-center gap-2 cursor-pointer"
