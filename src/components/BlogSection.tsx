@@ -24,172 +24,170 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
     return (
       <section className="max-w-[1000px] mx-auto px-4 lg:px-8 py-8 lg:py-12 animate-in fade-in duration-300">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[rgba(212,175,55,0.15)]">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#8A2BE2]/30">
           <button
             onClick={() => { setSelectedArticleId(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#f2ca50] hover:underline cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00F0FF] hover:text-[#FF007F] transition-colors cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm">arrow_back</span>
             Torna agli Articoli del Blog
           </button>
-          <span className="text-xs uppercase tracking-widest text-[#E2DACD]/60 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f2ca50]"></span>
+          <span className="text-xs uppercase tracking-widest text-[#A69BB5] flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF007F] animate-pulse"></span>
             {selectedArticle.category}
           </span>
         </div>
 
         {/* Article Header */}
-        <article className="bg-[#16161F] p-6 sm:p-10 lg:p-12 rounded-xl border border-[rgba(212,175,55,0.25)] shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <article className="bg-[#130924]/90 backdrop-blur-xl p-6 sm:p-10 lg:p-12 rounded-2xl border border-[#8A2BE2]/40 shadow-[0_0_30px_rgba(138,43,226,0.3)] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF007F]/10 rounded-full blur-3xl pointer-events-none"></div>
 
           {/* Official Brand Header inside Article */}
-          <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[rgba(212,175,55,0.15)]">
+          <div className="flex items-center gap-3.5 pb-4 mb-4 border-b border-[#8A2BE2]/30">
             <BrandSeal size="sm" glow={true} />
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-sm text-[#f2ca50] uppercase tracking-wider">
+              <span className="font-serif font-bold text-sm bg-gradient-to-r from-[#FF007F] to-[#00F0FF] bg-clip-text text-transparent uppercase tracking-wider">
                 Tarot Italia Journal
               </span>
-              <span className="text-[10px] text-[#E2DACD]/70 uppercase tracking-widest">
+              <span className="text-[10px] text-[#A69BB5] uppercase tracking-widest">
                 Pubblicazione Ufficiale • Studio Macerata
               </span>
             </div>
           </div>
 
           {/* Meta header */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-[#e9c176] mb-4">
-            <span className="px-2.5 py-1 bg-[#1f1f23] rounded-md font-mono text-[11px] text-[#f2ca50] border border-[rgba(212,175,55,0.2)]">
-              {selectedArticle.category}
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1 text-[#d0c5af]">
-              <span className="material-symbols-outlined text-sm">calendar_today</span>
+          <div className="flex flex-wrap items-center gap-3 text-xs text-[#A69BB5] mb-4">
+            <span className="px-2.5 py-1 bg-[#1C0F33] rounded-md font-mono text-[11px] text-[#00F0FF] border border-[#00F0FF]/30">
               {selectedArticle.date}
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1 text-[#d0c5af]">
-              <span className="material-symbols-outlined text-sm">schedule</span>
+            <span className="flex items-center gap-1">
+              <span className="material-symbols-outlined text-sm text-[#FF007F]">schedule</span>
               {selectedArticle.readTime} di lettura
             </span>
+            <span>•</span>
+            <span className="text-[#00F0FF] font-medium">{selectedArticle.author}</span>
           </div>
 
-          <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#F5F0EB] leading-tight mb-4">
+          <h1 className="font-serif text-2xl sm:text-4xl text-white leading-tight mb-4">
             {selectedArticle.title}
           </h1>
 
-          <p className="text-sm sm:text-base text-[#d0c5af] leading-relaxed italic mb-8 pb-6 border-b border-[rgba(212,175,55,0.15)]">
-            {selectedArticle.subtitle}
+          <p className="text-base sm:text-lg text-[#00F0FF]/90 font-medium italic mb-6 pb-6 border-b border-[#8A2BE2]/30 leading-relaxed">
+            "{selectedArticle.subtitle}"
           </p>
 
-          {/* Author Badge */}
-          <div className="flex items-center gap-3 mb-8 p-4 bg-[#1f1f23] rounded-lg border border-[rgba(212,175,55,0.15)]">
-            <div className="w-11 h-11 rounded-full bg-[#2a292e] flex items-center justify-center text-[#f2ca50] font-serif font-bold text-lg border border-[rgba(212,175,55,0.3)]">
-              {selectedArticle.author.charAt(0)}
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-serif text-sm font-semibold text-[#F5F0EB]">
-                  Autore: {selectedArticle.author}
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-[#1B4D3E] bg-[#F5F0EB] font-bold px-2 py-0.5 rounded">
-                  Tarot Italia
-                </span>
-              </div>
-              <p className="text-[11px] text-[#d0c5af] mt-0.5">
-                {selectedArticle.authorRole}
-              </p>
-            </div>
-          </div>
-
-          {/* Article Lead Image if present */}
-          <div className="relative w-full aspect-[16/9] max-h-80 rounded-xl overflow-hidden mb-8 border border-[rgba(212,175,55,0.2)] bg-[#1f1f23]">
+          {/* Cover image */}
+          <div className="w-full aspect-[16/9] rounded-xl overflow-hidden mb-8 border border-[#8A2BE2]/40 shadow-lg relative">
             <img
               src={selectedArticle.coverImage}
               alt={selectedArticle.title}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover filter contrast-105 brightness-95"
+              className="w-full h-full object-cover filter contrast-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0C0714] via-transparent to-transparent opacity-60"></div>
           </div>
 
-          {/* Article Text Content */}
-          <div className="space-y-6 text-[#d0c5af] text-[15px] sm:text-[16px] leading-relaxed">
-            <p className="font-serif text-lg text-[#F5F0EB] leading-relaxed bg-[#1f1f23]/60 p-5 rounded-lg border-l-2 border-[#f2ca50]">
+          {/* Body Content */}
+          <div className="space-y-6 text-[#F5F0EB] text-sm sm:text-base leading-relaxed">
+            <p className="font-medium text-lg text-white border-l-4 border-[#FF007F] pl-4 py-1">
               {selectedArticle.content.intro}
             </p>
 
             {selectedArticle.content.sections.map((section, idx) => (
               <div key={idx} className="space-y-3 pt-4">
-                <h2 className="font-serif text-xl sm:text-2xl text-[#f2ca50] tracking-wide">
+                <h3 className="font-serif text-xl sm:text-2xl text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00F0FF]"></span>
                   {section.heading}
-                </h2>
-                {section.paragraphs.map((para, pIdx) => (
-                  <p key={pIdx}>{para}</p>
+                </h3>
+                {section.paragraphs.map((p, pIdx) => (
+                  <p key={pIdx} className="text-[#A69BB5] leading-relaxed">
+                    {p}
+                  </p>
                 ))}
               </div>
             ))}
 
-            {/* Sacred Quote */}
-            <div className="my-8 py-6 px-6 sm:px-8 bg-[#1f1f23] rounded-xl border border-[rgba(212,175,55,0.3)] shadow-md text-center">
-              <span className="material-symbols-outlined text-3xl text-[#f2ca50] mb-2 block">format_quote</span>
-              <p className="font-serif text-lg sm:text-xl text-[#F5F0EB] italic leading-relaxed">
-                {selectedArticle.content.quote}
+            {/* Quote Callout */}
+            <div className="my-8 p-6 bg-[#1C0F33] rounded-xl border border-[#FF007F]/40 shadow-[0_0_20px_rgba(255,0,127,0.2)] text-center relative overflow-hidden">
+              <span className="material-symbols-outlined text-4xl text-[#FF007F]/30 absolute top-2 left-3 select-none">
+                format_quote
+              </span>
+              <p className="font-serif text-lg sm:text-xl text-white italic relative z-10">
+                "{selectedArticle.content.quote}"
               </p>
-              <span className="text-[11px] uppercase tracking-widest text-[#e9c176] block mt-3 font-semibold">
-                — {selectedArticle.author}, Tarot Italia Macerata
+              <span className="block text-xs uppercase tracking-widest text-[#00F0FF] mt-3 font-mono">
+                — {selectedArticle.author}, {selectedArticle.authorRole}
               </span>
             </div>
 
-            {/* Conclusion */}
-            <div className="pt-2">
-              <h3 className="font-serif text-xl text-[#F5F0EB] mb-2">Considerazioni Conclusive</h3>
-              <p>{selectedArticle.content.conclusion}</p>
+            <div className="pt-4">
+              <h3 className="font-serif text-xl text-white mb-2">Conclusione</h3>
+              <p className="text-[#A69BB5] leading-relaxed">
+                {selectedArticle.content.conclusion}
+              </p>
             </div>
 
             {/* Key Takeaways Box */}
-            <div className="mt-8 p-6 bg-[#1f1f23] rounded-xl border border-[rgba(212,175,55,0.2)]">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#f2ca50] mb-3">
-                <span className="material-symbols-outlined text-sm">check_circle</span>
-                <span>Punti Chiave per la Tua Pratica</span>
-              </div>
-              <ul className="space-y-2 text-xs sm:text-sm text-[#E2DACD]">
-                {selectedArticle.content.keyTakeaways.map((item, tIdx) => (
-                  <li key={tIdx} className="flex items-start gap-2">
-                    <span className="text-[#f2ca50] mt-0.5">•</span>
-                    <span>{item}</span>
+            <div className="mt-8 p-6 bg-[#160B29] rounded-xl border border-[#8A2BE2]/50">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-[#00F0FF] mb-3 flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm">stars</span>
+                Punti Chiave per la Pratica:
+              </h4>
+              <ul className="space-y-2 text-sm text-[#F5F0EB]">
+                {selectedArticle.content.keyTakeaways.map((point, kIdx) => (
+                  <li key={kIdx} className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-sm text-[#FF007F] mt-0.5">check_circle</span>
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             </div>
+          </div>
 
-            {/* Tags */}
-            <div className="pt-6 border-t border-[rgba(212,175,55,0.15)] flex flex-wrap items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#E2DACD]/60 mr-2">Temi:</span>
-              {selectedArticle.tags.map((tag, tIdx) => (
-                <span
-                  key={tIdx}
-                  className="px-2.5 py-1 bg-[#1f1f23] text-xs text-[#d0c5af] rounded-full border border-[rgba(212,175,55,0.15)]"
-                >
-                  #{tag}
-                </span>
-              ))}
+          {/* Tags */}
+          <div className="flex flex-wrap items-center gap-2 pt-8 mt-8 border-t border-[#8A2BE2]/30">
+            <span className="text-xs text-[#A69BB5] mr-2">Temi trattati:</span>
+            {selectedArticle.tags.map((tag, tIdx) => (
+              <span
+                key={tIdx}
+                className="px-2.5 py-1 bg-[#1C0F33] rounded-lg text-xs text-[#00F0FF] border border-[#00F0FF]/30 font-mono"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Author Bio Box */}
+          <div className="mt-10 p-6 bg-[#160B29] rounded-xl border border-[#8A2BE2]/40 flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+            <BrandSeal size="md" glow={true} className="flex-shrink-0" />
+            <div className="space-y-1">
+              <h4 className="font-serif text-base text-white font-semibold">
+                Scritto da {selectedArticle.author}
+              </h4>
+              <p className="text-xs text-[#00F0FF] font-medium">
+                {selectedArticle.authorRole}
+              </p>
+              <p className="text-xs text-[#A69BB5] leading-relaxed pt-1">
+                Laureata all’Accademia di Belle Arti di Macerata, unisce la semiotica dell'immagine con oltre un decennio di pratica nei tarocchi introspettivi e canalizzazioni archetipiche.
+              </p>
             </div>
           </div>
 
-          {/* Interactive CTA to connect or book */}
-          <div className="mt-10 p-6 sm:p-8 bg-[#1f1f23] rounded-xl border border-[rgba(212,175,55,0.3)] flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="text-center sm:text-left">
-              <h4 className="font-serif text-lg text-[#F5F0EB] mb-1">
-                Vuoi approfondire questo tema in una sessione individuale?
+          {/* CTA Box at Bottom of Article */}
+          <div className="mt-10 p-6 bg-gradient-to-r from-[#180A2E] to-[#1F0733] rounded-xl border border-[#FF007F]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 className="font-serif text-lg text-white font-semibold">
+                Desideri esplorare questo tema nella tua vita?
               </h4>
-              <p className="text-xs text-[#d0c5af]">
-                Prenota un’ora di ascolto con Teresa o una consulenza rituale con Maura nello studio di Macerata o via WhatsApp.
+              <p className="text-xs text-[#A69BB5]">
+                Prenota un consulto individuale personalizzato via WhatsApp o in Studio a Macerata.
               </p>
             </div>
             <button
-              onClick={() => onOpenBooking(`Consulto con focus su: ${selectedArticle.title}`)}
-              className="px-5 py-2.5 bg-[#f2ca50] text-[#3c2f00] text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-[#E5C158] transition-all shadow-md whitespace-nowrap cursor-pointer"
+              onClick={() => onOpenBooking(`Consulto ispirato a "${selectedArticle.title}"`)}
+              className="px-5 py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all cursor-pointer whitespace-nowrap"
             >
-              Prenota Sessione (1h)
+              Prenota Sessione Dedicata
             </button>
           </div>
         </article>
@@ -197,48 +195,47 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
     );
   }
 
-  // DEFAULT VIEW: LIST OF 3 BLOG ARTICLES
+  // Articles Grid List
   return (
-    <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-8 lg:py-12 animate-in fade-in duration-300">
+    <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-10 lg:py-14 animate-in fade-in duration-300">
       {/* Top Header */}
-      <div className="flex items-center justify-between mb-8 pb-4 border-b border-[rgba(212,175,55,0.15)]">
+      <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#8A2BE2]/30">
         <button
           onClick={onBackToHome}
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#f2ca50] hover:underline cursor-pointer"
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00F0FF] hover:text-[#FF007F] transition-colors cursor-pointer"
         >
           <span className="material-symbols-outlined text-sm">arrow_back</span>
           Torna alla Home
         </button>
-        <span className="text-xs uppercase tracking-widest text-[#E2DACD]/60 flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#f2ca50]"></span>
-          Grimorio &amp; Guide Simboliche
+        <span className="text-xs uppercase tracking-widest text-[#A69BB5] font-mono">
+          Tarot Italia Journal • {filteredArticles.length} Articoli
         </span>
       </div>
 
       {/* Hero Narrative of Blog */}
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <BrandSectionDivider title="Grimorio Ufficiale Tarot Italia" size="md" className="mb-2" />
-        <span className="text-[12px] font-semibold text-[#f2ca50] uppercase tracking-widest">
-          ◆ Conoscenza &amp; Approfondimento
+        <span className="text-[12px] font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center gap-1.5">
+          <span className="material-symbols-outlined text-sm">menu_book</span>
+          <span>Archivio Simbolico &amp; Divinatorio</span>
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl text-[#F5F0EB] mt-1 mb-3">
-          Il Blog degli Arcani &amp; Folklore
+        <h1 className="font-serif text-3xl sm:text-4xl text-white mt-1.5 mb-3">
+          Tarot Italia Journal: Voci e Simboli
         </h1>
-        <p className="text-sm text-[#d0c5af] leading-relaxed">
-          Articoli, saggi e guide pratiche scritti da <strong>Teresa</strong> e <strong>Maura</strong> per comprendere il potere trasformativo dei simboli, la cura degli spazi energetici e le antiche tradizioni dell'Appennino marchigiano.
+        <p className="text-sm text-[#A69BB5] leading-relaxed">
+          Approfondimenti culturali, semiotica dell'immagine, tarologia introspettiva e tradizioni esoteriche marchigiane a cura di <strong>Teresa</strong> e <strong>Maura</strong>.
         </p>
       </div>
 
-      {/* Category Filter Tabs */}
+      {/* CATEGORY FILTER TABS */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === cat
-                ? 'bg-[#f2ca50] text-[#3c2f00] font-semibold shadow-md'
-                : 'bg-[#16161F] text-[#d0c5af] border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)]'
+                ? 'bg-[#FF007F] text-white shadow-[0_0_15px_rgba(255,0,127,0.5)]'
+                : 'bg-[#130924] text-[#A69BB5] hover:text-[#00F0FF] border border-[#8A2BE2]/40 hover:border-[#00F0FF]'
             }`}
           >
             {cat}
@@ -246,68 +243,53 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
         ))}
       </div>
 
-      {/* 3 Articles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {/* ARTICLES GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredArticles.map((article) => (
-          <div
+          <article
             key={article.id}
-            className="bg-[#16161F] rounded-xl overflow-hidden border border-[rgba(212,175,55,0.2)] hover:border-[#f2ca50] shadow-xl flex flex-col group transition-all duration-300 hover:-translate-y-1"
+            onClick={() => { setSelectedArticleId(article.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="group bg-[#130924]/80 backdrop-blur-md rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-xl hover:shadow-[0_0_25px_rgba(0,240,255,0.25)] transition-all duration-300 flex flex-col justify-between cursor-pointer"
           >
-            {/* Cover Image */}
-            <div className="relative w-full h-48 overflow-hidden bg-[#1f1f23]">
-              <img
-                src={article.coverImage}
-                alt={article.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-transparent to-transparent"></div>
-              <div className="absolute top-3 left-3 bg-[#353439]/90 backdrop-blur-md px-2.5 py-1 rounded text-[#f2ca50] text-[10px] font-medium uppercase tracking-widest border border-[rgba(212,175,55,0.2)]">
-                {article.category}
+            <div>
+              {/* Cover Image */}
+              <div className="w-full aspect-[16/10] overflow-hidden relative">
+                <img
+                  src={article.coverImage}
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#130924] via-transparent to-transparent"></div>
+                <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#0C0714]/85 backdrop-blur-sm rounded text-[10px] uppercase font-mono tracking-wider text-[#00F0FF] border border-[#00F0FF]/30">
+                  {article.category}
+                </span>
               </div>
-              <div className="absolute top-3 right-3 bg-[#1B4D3E]/90 text-[#F5F0EB] px-2.5 py-1 rounded text-[10px] font-medium">
-                {article.readTime}
+
+              {/* Text Info */}
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-[11px] text-[#A69BB5] font-mono mb-2">
+                  <span>{article.date}</span>
+                  <span>•</span>
+                  <span>{article.readTime}</span>
+                </div>
+                <h2 className="font-serif text-lg sm:text-xl text-white font-semibold leading-snug group-hover:text-[#00F0FF] transition-colors mb-2">
+                  {article.title}
+                </h2>
+                <p className="text-xs text-[#A69BB5] line-clamp-3 leading-relaxed">
+                  {article.excerpt}
+                </p>
               </div>
             </div>
 
-            {/* Body */}
-            <div className="p-6 flex flex-col flex-1">
-              <div className="flex items-center gap-2 text-[11px] text-[#e9c176] mb-2">
-                <span>{article.date}</span>
-                <span>•</span>
-                <span className="text-[#F5F0EB] font-semibold">{article.author}</span>
-              </div>
-
-              <h2 className="font-serif text-xl text-[#F5F0EB] group-hover:text-[#f2ca50] transition-colors mb-2 line-clamp-2">
-                {article.title}
-              </h2>
-
-              <p className="text-xs text-[#d0c5af] leading-relaxed mb-4 line-clamp-3">
-                {article.excerpt}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
-                {article.tags.slice(0, 3).map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="text-[10px] px-2 py-0.5 bg-[#1f1f23] text-[#d0c5af] rounded border border-[rgba(212,175,55,0.1)]"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Read button */}
-              <button
-                onClick={() => { setSelectedArticleId(article.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="w-full py-2.5 bg-[#1f1f23] text-[#f2ca50] group-hover:bg-[#f2ca50] group-hover:text-[#3c2f00] text-xs font-semibold uppercase tracking-wider rounded-lg border border-[rgba(212,175,55,0.2)] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-              >
+            {/* Card Footer */}
+            <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-[#8A2BE2]/20">
+              <span className="text-xs text-[#FF007F] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 <span>Leggi Articolo Completo</span>
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </button>
+              </span>
+              <span className="text-[10px] font-mono text-[#A69BB5]">di {article.author}</span>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
