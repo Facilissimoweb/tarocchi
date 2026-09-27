@@ -2019,21 +2019,26 @@ export default function App() {
       {/* BOOKING MODAL */}
       {isBookingOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)]">
-            <button
-              onClick={() => setIsBookingOpen(false)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
-              aria-label="Chiudi finestra"
-            >
-              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
-            </button>
+          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-5 sm:p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[90vh] overflow-y-auto">
+            {/* Header del widget con titolo e pulsante Chiudi Widget chiaro */}
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#8A2BE2]/30 sticky top-0 bg-[#130924]/95 backdrop-blur-md pt-1 z-20">
+              <div className="flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] uppercase tracking-widest font-semibold">
+                <span className="material-symbols-outlined text-sm">calendar_month</span>
+                <span>Widget Prenotazioni</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsBookingOpen(false)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1C0F33] hover:bg-[#FF007F]/20 text-[#00F0FF] hover:text-[#FF007F] border border-[#00F0FF]/40 hover:border-[#FF007F] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                aria-label="Chiudi widget"
+              >
+                <span className="material-symbols-outlined text-base">close</span>
+                <span>Chiudi Widget</span>
+              </button>
+            </div>
 
             {!bookingSubmitted ? (
               <form onSubmit={handleBookingSubmit} className="space-y-4">
-                <div className="flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] uppercase tracking-widest font-semibold">
-                  <span className="material-symbols-outlined text-sm">calendar_month</span>
-                  <span>Prenotazione Consulto</span>
-                </div>
                 <h3 className="font-serif text-2xl text-white font-bold">
                   Riserva la Tua Ora di Introspezione
                 </h3>
@@ -2141,25 +2146,33 @@ export default function App() {
                   ></textarea>
                 </div>
 
-                <div className="pt-2">
-                  <p className="text-[10px] text-[#A69BB5] mb-2 leading-relaxed">
-                    Inviando i tuoi dati accetti il trattamento ai sensi della{' '}
-                    <button
-                      type="button"
-                      onClick={() => setIsLegalModalOpen('privacy')}
-                      className="text-[#00F0FF] underline hover:text-white cursor-pointer"
-                    >
-                      Privacy Policy
-                    </button>{' '}
-                    e la nostra informativa sui{' '}
-                    <button
-                      type="button"
-                      onClick={() => setIsCookieCustomizerOpen(true)}
-                      className="text-[#00F0FF] underline hover:text-white cursor-pointer"
-                    >
-                      Cookie
-                    </button>.
-                  </p>
+                <div className="pt-3 border-t border-[#8A2BE2]/30 space-y-3">
+                  {/* Richiamo formale Privacy e Cookie */}
+                  <div className="p-3 bg-[#1C0F33]/80 rounded-xl border border-[#00F0FF]/30 text-[11px] text-[#A69BB5] leading-relaxed space-y-1">
+                    <div className="flex items-center gap-1.5 text-[#00F0FF] font-mono font-semibold text-[10px] uppercase tracking-wider">
+                      <span className="material-symbols-outlined text-xs">shield_lock</span>
+                      <span>Informativa Privacy &amp; Cookie (GDPR UE 2016/679)</span>
+                    </div>
+                    <p>
+                      Inviando i tuoi dati accetti il trattamento per la gestione del consulto ai sensi della nostra{' '}
+                      <button
+                        type="button"
+                        onClick={() => setIsLegalModalOpen('privacy')}
+                        className="text-[#00F0FF] font-semibold underline hover:text-white cursor-pointer"
+                      >
+                        Privacy Policy
+                      </button>{' '}
+                      e della nostra informativa estesa sui{' '}
+                      <button
+                        type="button"
+                        onClick={() => setIsCookieCustomizerOpen(true)}
+                        className="text-[#00F0FF] font-semibold underline hover:text-white cursor-pointer"
+                      >
+                        Cookie
+                      </button>. Riservatezza garantita.
+                    </p>
+                  </div>
+
                   <button
                     type="submit"
                     className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all cursor-pointer"
@@ -2167,9 +2180,20 @@ export default function App() {
                     <span className="material-symbols-outlined text-base">send</span>
                     <span>Conferma e Apri su WhatsApp (+39 379 1038253)</span>
                   </button>
-                  <p className="text-[10px] text-center text-[#A69BB5]/70 mt-2">
-                    Nessun pagamento anticipato richiesto in questa fase. Risposta entro poche ore.
-                  </p>
+
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <p className="text-[10px] text-[#A69BB5]/70">
+                      Nessun pagamento anticipato richiesto.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setIsBookingOpen(false)}
+                      className="inline-flex items-center gap-1 px-3 py-1 bg-[#1C0F33] text-[#00F0FF] hover:text-white text-[10px] font-semibold uppercase tracking-wider rounded-lg border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all cursor-pointer"
+                    >
+                      <span className="material-symbols-outlined text-xs">close</span>
+                      <span>Chiudi Widget</span>
+                    </button>
+                  </div>
                 </div>
               </form>
             ) : (
