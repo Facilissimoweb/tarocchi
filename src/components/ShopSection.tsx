@@ -148,42 +148,60 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
   };
 
   return (
-    <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-8 lg:py-12 animate-in fade-in duration-300">
-      {/* Top Header */}
-      <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#8A2BE2]/30">
-        <button
-          onClick={onBackToHome}
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00F0FF] hover:text-[#FF007F] transition-colors cursor-pointer"
-        >
-          <span className="material-symbols-outlined text-sm">arrow_back</span>
-          Torna alla Home
-        </button>
+    <div className="relative w-full bg-[#08030F] text-[#F5F0EB] py-8 lg:py-14 overflow-hidden border-t-2 border-[#D4AF37]/40 shadow-[inset_0_0_80px_rgba(212,175,55,0.15)]">
+      {/* Sfondo Esoterico Dinamico: Nebulosa Alchemica, Aureola Dorata e Sigillo Cosmico */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-[#D4AF37]/15 via-[#FF007F]/10 to-transparent rounded-full blur-[150px] pointer-events-none animate-pulse"></div>
+      <div className="absolute -top-40 -left-20 w-[450px] h-[450px] bg-[#8A2BE2]/20 rounded-full blur-[130px] pointer-events-none"></div>
+      <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-        {/* Cart Trigger Badge */}
-        <button
-          onClick={() => setIsCartOpen(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#130924] border border-[#FF007F]/40 hover:border-[#FF007F] text-[#FF007F] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all hover:shadow-[0_0_20px_rgba(255,0,127,0.35)] cursor-pointer"
-        >
-          <span className="material-symbols-outlined text-base">shopping_bag</span>
-          <span>Carrello ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})</span>
-        </button>
-      </div>
+      <section className="max-w-[1280px] mx-auto px-4 lg:px-12 relative z-10 animate-in fade-in duration-500">
+        {/* Top Header con accenti alchemici dorati */}
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#D4AF37]/30 bg-[#120724]/60 backdrop-blur-md p-4 rounded-2xl border">
+          <button
+            onClick={onBackToHome}
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D4AF37] hover:text-[#00F0FF] transition-colors cursor-pointer font-mono font-semibold"
+          >
+            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            Torna alla Home
+          </button>
 
-      <BrandSectionDivider title="Tarot Italia • Bottega Olistica & Strumenti" className="mb-8" />
+          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#D4AF37]">
+            <span className="material-symbols-outlined text-sm animate-spin" style={{ animationDuration: '12s' }}>auto_awesome</span>
+            <span>Atelier Olistico &amp; Consacrazioni Macerata</span>
+          </div>
 
-      {/* Hero Narrative of Shop */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-[12px] font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center gap-1.5">
-          <span className="material-symbols-outlined text-sm">storefront</span>
-          <span>Bottega Olistica &amp; Strumenti Rituali</span>
-        </span>
-        <h1 className="font-serif text-3xl sm:text-4xl text-white mt-1.5 mb-3">
-          Oggetti Sacri per la Cura dell’Anima
-        </h1>
-        <p className="text-sm text-[#A69BB5] leading-relaxed">
-          Strumenti di radiestesia calibrati, erbe spontanee dei Sibillini, cere vergini per rituali d’armonia e mazzi storici restaurati. Ogni articolo è purificato e testato singolarmente da <strong>Teresa</strong> e <strong>Maura</strong> nello studio di Macerata.
-        </p>
-      </div>
+          {/* Cart Trigger Badge Esoterico */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C0F33] border-2 border-[#D4AF37] hover:border-[#FF007F] text-[#D4AF37] hover:text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(212,175,55,0.35)] hover:shadow-[0_0_25px_rgba(255,0,127,0.5)] cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-base text-[#D4AF37]">shopping_bag</span>
+            <span>Carrello Bottega ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})</span>
+          </button>
+        </div>
+
+        <BrandSectionDivider title="Tarot Italia • Bottega Olistica Esoterica" className="mb-8" />
+
+        {/* Hero Narrative della Bottega con Stile Alchemico Visivamente Unico */}
+        <div className="relative bg-gradient-to-r from-[#170B2E]/90 via-[#220B3B]/90 to-[#170B2E]/90 border-2 border-[#D4AF37]/50 rounded-3xl p-8 sm:p-12 mb-12 text-center shadow-[0_0_50px_rgba(212,175,55,0.2)] overflow-hidden">
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full bg-[#1C0F33] border-2 border-[#D4AF37] flex items-center justify-center text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.5)]">
+            <span className="material-symbols-outlined text-4xl">vpn_key</span>
+          </div>
+
+          <div className="pt-4 max-w-3xl mx-auto">
+            <span className="text-[12px] font-mono font-bold text-[#D4AF37] uppercase tracking-[0.25em] flex items-center justify-center gap-2 mb-2">
+              <span className="material-symbols-outlined text-sm text-[#FF007F]">flare</span>
+              <span>Compendio di Strumenti Consacrati &amp; Artigianato Sacro</span>
+              <span className="material-symbols-outlined text-sm text-[#FF007F]">flare</span>
+            </span>
+            <h1 className="font-serif text-3xl sm:text-5xl text-white mt-2 mb-4 font-bold leading-tight drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+              La Bottega Alchemica <span className="italic text-[#D4AF37]">&amp;</span> Sacra
+            </h1>
+            <p className="text-sm sm:text-base text-[#C7B8DA] leading-relaxed max-w-2xl mx-auto font-sans">
+              Strumenti di radiestesia ed alchimia individuale calibrati ad uno ad uno, erbe della tradizione marchigiana raccolte sui Sibillini, cere naturali vergini per riti di protezione ed antichi mazzi d'arte.
+            </p>
+          </div>
+        </div>
 
       {/* CATEGORY FILTER SECTION */}
       <div className="bg-[#130924]/90 backdrop-blur-xl border border-[#8A2BE2]/40 rounded-2xl p-4 sm:p-6 mb-10 shadow-2xl">
@@ -665,10 +683,11 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
       {/* Floating Notification Toast */}
       {notification && (
-        <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 bg-[#130924] text-[#00F0FF] text-xs font-mono rounded-xl border border-[#00F0FF] shadow-[0_0_20px_rgba(0,240,255,0.4)] animate-in slide-in-from-bottom duration-200">
+        <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 bg-[#130924] text-[#D4AF37] text-xs font-mono rounded-xl border-2 border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.4)] animate-in slide-in-from-bottom duration-200">
           {notification}
         </div>
       )}
-    </section>
+      </section>
+    </div>
   );
 };
