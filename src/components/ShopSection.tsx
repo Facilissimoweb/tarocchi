@@ -40,16 +40,16 @@ const CATEGORY_FILTERS: CategoryFilter[] = [
     description: 'Caricati ed equilibrati ritualmente in studio'
   },
   {
-    id: 'Mazzi',
-    label: 'Mazzi',
-    icon: 'style',
-    description: 'Mazzi di tarocchi storici e riedizioni d’arte'
+    id: 'Rituali',
+    label: 'Rituali',
+    icon: 'local_fire_department',
+    description: 'Candele in cera vergine e preparati rituali'
   },
   {
-    id: 'Candele',
-    label: 'Candele',
-    icon: 'local_fire_department',
-    description: 'Cere vergini d’api per armonizzazione'
+    id: 'Tarocchi',
+    label: 'Tarocchi',
+    icon: 'style',
+    description: 'Mazzi di tarocchi storici e riedizioni d’arte'
   }
 ];
 
