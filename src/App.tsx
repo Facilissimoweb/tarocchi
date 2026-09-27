@@ -345,6 +345,7 @@ export default function App() {
             </div>
 
             {/* SECTION 1: TERESA / ABOUT ME */}
+            <BrandSectionDivider title="Tarot Italia • Chi Siamo & Studio Olistico" className="mb-8" />
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
               {/* Profile Card & Bio Column */}
               <div className="lg:col-span-8 flex flex-col gap-6">
@@ -590,6 +591,7 @@ export default function App() {
             </div>
 
             {/* SECTION 2: COLLABORATORI ESTERNI - MAURA RITUALISTA ESOTERICA */}
+            <BrandSectionDivider title="Tarot Italia • Ritualistica & Tradizione Popolare" className="mb-8" />
             <div className="bg-[#16161F] p-8 lg:p-12 rounded-xl border border-[rgba(212,175,55,0.3)] shadow-2xl relative overflow-hidden mb-12">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#604403]/15 rounded-full blur-[110px] pointer-events-none"></div>
 
@@ -738,6 +740,8 @@ export default function App() {
                 Dizionario Archetipico • 22 Lame Cibernetiche
               </span>
             </div>
+
+            <BrandSectionDivider title="Tarot Italia • Compendio dei 22 Arcani" className="mb-8" />
 
             {/* Header Narrative */}
             <div className="text-center max-w-3xl mx-auto mb-10">
@@ -1114,20 +1118,23 @@ export default function App() {
             </section>
 
             {/* VALORI & FILOSOFIA (3 CORE CARDS) */}
-            <section className="w-full bg-[#131317] py-20" id="metodi">
-              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
+            <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20" id="metodi">
+              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                {/* Logo ad inizio sezione centrato e visibile con bagliore sobrio */}
+                <BrandSectionDivider title="Tarot Italia • Metodo Introspettivo" />
+
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="flex flex-col gap-1 max-w-xl">
-                    <div className="inline-flex items-center gap-1 text-[12px] font-semibold text-[#f2ca50] uppercase tracking-widest">
+                    <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest">
                       <span>◆</span>
                       <span>Visione &amp; Deontologia</span>
                     </div>
-                    <h2 className="font-serif text-2xl lg:text-3xl text-[#F5F0EB]">
+                    <h2 className="font-serif text-2xl lg:text-3xl text-white font-bold">
                       Un Approccio Rigoroso, Empatico e Intuitivo
                     </h2>
                   </div>
-                  <p className="text-[15px] text-[#d0c5af] max-w-md">
+                  <p className="text-[15px] text-[#A69BB5] max-w-md leading-relaxed">
                     I tarocchi non sono predestinazione immutabile, ma una grammatica per svelare l'invisibile e risvegliare le tue decisioni più autentiche.
                   </p>
                 </div>
@@ -1135,66 +1142,66 @@ export default function App() {
                 {/* 3 Pillars Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Card 1 */}
-                  <div className="bg-[#16161F] p-7 rounded-xl shadow-lg flex flex-col gap-4 transition-all duration-300 hover:bg-[#1E1E2B] border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)]">
-                    <div className="w-12 h-12 rounded-lg bg-[#2a292e] flex items-center justify-center text-[#f2ca50] shadow-sm">
+                  <div className="bg-[#130924]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#1C0F33] border border-[#8A2BE2]/40 hover:border-[#00F0FF] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
+                    <div className="w-12 h-12 rounded-xl bg-[#1C0F33] border border-[#00F0FF]/30 flex items-center justify-center text-[#00F0FF] shadow-sm">
                       <span className="material-symbols-outlined text-2xl">psychology_alt</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-medium text-[#e9c176] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest">
                         Pilastro 01
                       </span>
-                      <h3 className="font-serif text-xl text-[#F5F0EB]">
+                      <h3 className="font-serif text-xl text-white font-bold">
                         Introspezione non Dogmatica
                       </h3>
                     </div>
-                    <p className="text-[15px] text-[#d0c5af] leading-relaxed">
+                    <p className="text-[15px] text-[#A69BB5] leading-relaxed">
                       I tarocchi come specchio della psiche e bussola d'orientamento personale. Nessun fatalismo: stimoliamo il pensiero critico e la consapevolezza emotiva.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#f2ca50] text-[11px] font-semibold uppercase tracking-wider">
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-wider">
                       <span>Specchio Archetipico</span>
                       <span className="material-symbols-outlined text-xs">arrow_forward</span>
                     </div>
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-[#16161F] p-7 rounded-xl shadow-lg flex flex-col gap-4 transition-all duration-300 hover:bg-[#1E1E2B] border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)]">
-                    <div className="w-12 h-12 rounded-lg bg-[#2a292e] flex items-center justify-center text-[#f2ca50] shadow-sm">
+                  <div className="bg-[#130924]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#1C0F33] border border-[#8A2BE2]/40 hover:border-[#00F0FF] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
+                    <div className="w-12 h-12 rounded-xl bg-[#1C0F33] border border-[#00F0FF]/30 flex items-center justify-center text-[#00F0FF] shadow-sm">
                       <span className="material-symbols-outlined text-2xl">nest_clock_farsight_analog</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-medium text-[#e9c176] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest">
                         Pilastro 02
                       </span>
-                      <h3 className="font-serif text-xl text-[#F5F0EB]">
+                      <h3 className="font-serif text-xl text-white font-bold">
                         Spazio d'Ascolto Protetto
                       </h3>
                     </div>
-                    <p className="text-[15px] text-[#d0c5af] leading-relaxed">
+                    <p className="text-[15px] text-[#A69BB5] leading-relaxed">
                       Un'ora integrale (60 min) dedicata senza fretta ai tuoi sogni, desideri nascosti, nodi emotivi e scelte di vita, in un contesto privo di giudizio.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#f2ca50] text-[11px] font-semibold uppercase tracking-wider">
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-wider">
                       <span>Riservatezza Assoluta</span>
                       <span className="material-symbols-outlined text-xs">arrow_forward</span>
                     </div>
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-[#16161F] p-7 rounded-xl shadow-lg flex flex-col gap-4 transition-all duration-300 hover:bg-[#1E1E2B] border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)]">
-                    <div className="w-12 h-12 rounded-lg bg-[#2a292e] flex items-center justify-center text-[#f2ca50] shadow-sm">
+                  <div className="bg-[#130924]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#1C0F33] border border-[#8A2BE2]/40 hover:border-[#00F0FF] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
+                    <div className="w-12 h-12 rounded-xl bg-[#1C0F33] border border-[#00F0FF]/30 flex items-center justify-center text-[#00F0FF] shadow-sm">
                       <span className="material-symbols-outlined text-2xl">distance</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-medium text-[#e9c176] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest">
                         Pilastro 03
                       </span>
-                      <h3 className="font-serif text-xl text-[#F5F0EB]">
+                      <h3 className="font-serif text-xl text-white font-bold">
                         Doppia Modalità Fluida
                       </h3>
                     </div>
-                    <p className="text-[15px] text-[#d0c5af] leading-relaxed">
+                    <p className="text-[15px] text-[#A69BB5] leading-relaxed">
                       Consulti dal vivo presso la quiete dello studio storico di Macerata, oppure comodamente online via WhatsApp o videochiamata ovunque ti trovi nel mondo.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#f2ca50] text-[11px] font-semibold uppercase tracking-wider">
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-wider">
                       <span>Presenza &amp; Digitale</span>
                       <span className="material-symbols-outlined text-xs">arrow_forward</span>
                     </div>
@@ -1206,6 +1213,7 @@ export default function App() {
             {/* ANTEPRIMA SERVIZI CHIAVE */}
             <section className="w-full bg-[#0e0e12] py-20" id="servizi-section">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
+                <BrandSectionDivider title="Tarot Italia • Consulti & Percorsi" />
                 {/* Section Title & Narrative */}
                 <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
                   <span className="text-[12px] font-semibold text-[#f2ca50] uppercase tracking-widest">
@@ -1366,6 +1374,7 @@ export default function App() {
             {/* INTERACTIVE FAQ SECTION */}
             <section className="w-full bg-[#131317] py-20">
               <div className="max-w-[1000px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                <BrandSectionDivider title="Tarot Italia • Domande Frequenti" />
                 <div className="text-center flex flex-col items-center gap-2">
                   <span className="text-[12px] font-semibold text-[#f2ca50] uppercase tracking-widest">
                     Chiarezza &amp; Verità
@@ -1478,6 +1487,7 @@ export default function App() {
             {/* TESTIMONIANZE E GOOGLE REVIEWS SECTION */}
             <section className="w-full bg-[#0e0e12] py-20">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
+                <BrandSectionDivider title="Tarot Italia • Esperienze & Recensioni" />
                 {/* Top Title and Google Rating Header */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <div className="flex flex-col gap-1 text-center md:text-left">
@@ -1587,6 +1597,7 @@ export default function App() {
             {/* SEZIONE ANTEPRIMA BLOG (3 ARTICOLI) */}
             <section className="w-full bg-[#131317] py-20 border-t border-[rgba(212,175,55,0.15)]">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                <BrandSectionDivider title="Tarot Italia • Grimorio & Guide Simboliche" />
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="flex flex-col gap-1 max-w-xl">
                     <div className="inline-flex items-center gap-1.5 text-xs text-[#f2ca50] uppercase tracking-widest font-semibold">
@@ -1663,6 +1674,7 @@ export default function App() {
             {/* SEZIONE ANTEPRIMA SHOP / BOTTEGA OLISTICA */}
             <section className="w-full bg-[#0e0e12] py-20 border-t border-[rgba(212,175,55,0.15)]">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
+                <BrandSectionDivider title="Tarot Italia • Bottega Olistica" />
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="flex flex-col gap-1 max-w-xl">
                     <div className="inline-flex items-center gap-1.5 text-xs text-[#f2ca50] uppercase tracking-widest font-semibold">
@@ -1773,6 +1785,7 @@ export default function App() {
             {/* BANNER CALL TO ACTION FINALE */}
             <section className="w-full bg-[#131317] py-20 relative overflow-hidden">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12">
+                <BrandSectionDivider title="Tarot Italia • Inizia il Tuo Percorso" className="mb-10" />
                 <div className="relative bg-[#16161F] rounded-xl p-8 lg:p-16 shadow-2xl flex flex-col items-center text-center gap-4 overflow-hidden border border-[rgba(212,175,55,0.25)]">
                   {/* Occult Aureole Background */}
                   <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#f2ca50]/10 rounded-full blur-[90px] pointer-events-none"></div>

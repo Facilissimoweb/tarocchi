@@ -38,6 +38,8 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
           </span>
         </div>
 
+        <BrandSectionDivider title="Tarot Italia • Journal & Articoli" className="mb-8" />
+
         {/* Article Header */}
         <article className="bg-[#130924]/90 backdrop-blur-xl p-6 sm:p-10 lg:p-12 rounded-2xl border border-[#8A2BE2]/40 shadow-[0_0_30px_rgba(138,43,226,0.3)] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF007F]/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -211,6 +213,8 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
           Tarot Italia Journal • {filteredArticles.length} Articoli
         </span>
       </div>
+
+      <BrandSectionDivider title="Tarot Italia • Archivio Simbolico & Blog" className="mb-8" />
 
       {/* Hero Narrative of Blog */}
       <div className="text-center max-w-2xl mx-auto mb-10">

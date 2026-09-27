@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SHOP_PRODUCTS, ShopProduct } from '../data/shopData';
-import { BrandSeal } from './BrandSeal';
+import { BrandSeal, BrandSectionDivider } from './BrandSeal';
 
 interface ShopSectionProps {
   onBackToHome: () => void;
@@ -71,7 +71,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
   const getFilterCount = (catId: string) => {
     if (catId === 'Tutti') return SHOP_PRODUCTS.length;
     return SHOP_PRODUCTS.filter(
-      p => p.category === catId || (p.filterTags && p.filterTags.includes(catId))
+      p => p.category === catId || (p.filterTags && (p.filterTags as string[]).includes(catId))
     ).length;
   };
 
@@ -79,7 +79,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
     const matchesCategory =
       activeCategory === 'Tutti' ||
       product.category === activeCategory ||
-      (product.filterTags && product.filterTags.includes(activeCategory));
+      (product.filterTags && (product.filterTags as string[]).includes(activeCategory));
 
     const matchesSearch =
       searchQuery.trim() === '' ||
@@ -166,6 +166,8 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           <span>Carrello ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})</span>
         </button>
       </div>
+
+      <BrandSectionDivider title="Tarot Italia • Bottega Olistica & Strumenti" className="mb-8" />
 
       {/* Hero Narrative of Shop */}
       <div className="text-center max-w-2xl mx-auto mb-10">
@@ -292,7 +294,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 className="relative w-full aspect-[4/3] overflow-hidden bg-[#1C0F33] cursor-pointer"
               >
                 <img
-                  src={product.imageUrl}
+                  src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -563,7 +565,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg overflow-hidden bg-black/50 flex-shrink-0">
                         <img
-                          src={product.imageUrl}
+                          src={product.image}
                           alt={product.title}
                           className="w-full h-full object-cover"
                         />

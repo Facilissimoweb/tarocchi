@@ -75,16 +75,28 @@ export const BrandSectionDivider: React.FC<{
   title?: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
-}> = ({ title, size = 'md', className = '' }) => {
+}> = ({ title = 'Tarot Italia • Metodo Introspettivo', className = '' }) => {
   return (
-    <div className={`flex flex-col items-center justify-center my-6 ${className}`}>
-      <div className="flex items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto">
-        <div className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#8A2BE2] to-[#FF007F]"></div>
-        <BrandSeal size={size} glow={true} />
-        <div className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#8A2BE2] to-[#00F0FF]"></div>
+    <div className={`flex flex-col items-center justify-center text-center ${className}`}>
+      <div className="flex items-center justify-center gap-4 w-full max-w-md mx-auto">
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#8A2BE2]/60 to-[#FF007F]/60"></div>
+        <div className="relative group cursor-default">
+          {/* Neon glow ring */}
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_20px_rgba(255,0,127,0.45),_0_0_30px_rgba(0,240,255,0.25)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="w-full h-full rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
+              <img
+                src={BRAND_LOGO_URL}
+                alt="Logo Tarot Italia"
+                referrerPolicy="no-referrer"
+                className="w-full h-full rounded-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#8A2BE2]/60 to-[#00F0FF]/60"></div>
       </div>
       {title && (
-        <span className="text-[11px] font-serif uppercase tracking-[0.25em] text-[#00F0FF] mt-2.5 font-bold drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]">
+        <span className="text-[10px] font-mono tracking-[0.25em] text-[#00F0FF] uppercase mt-2.5 font-semibold">
           {title}
         </span>
       )}
