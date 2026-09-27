@@ -10,6 +10,13 @@ interface BlogSectionProps {
 export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBooking }) => {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('Tutti');
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2500);
+  };
 
   const categories = ['Tutti', 'Tarologia & Archetipi', 'Radiestesia & Geometria Sacra', 'Folklore & Tradizione Popolare'];
 
@@ -146,17 +153,79 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
             </div>
           </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap items-center gap-2 pt-8 mt-8 border-t border-[#8A2BE2]/30">
-            <span className="text-xs text-[#A69BB5] mr-2">Temi trattati:</span>
-            {selectedArticle.tags.map((tag, tIdx) => (
-              <span
-                key={tIdx}
-                className="px-2.5 py-1 bg-[#1C0F33] rounded-lg text-xs text-[#00F0FF] border border-[#00F0FF]/30 font-mono"
+          {/* Tags & Social Share Buttons */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-8 mt-8 border-t border-[#8A2BE2]/30">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-[#A69BB5] mr-1 font-mono uppercase tracking-wider">Temi:</span>
+              {selectedArticle.tags.map((tag, tIdx) => (
+                <span
+                  key={tIdx}
+                  className="px-2.5 py-1 bg-[#1C0F33] rounded-lg text-xs text-[#00F0FF] border border-[#00F0FF]/30 font-mono"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Social Share Bar */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs text-[#A69BB5] mr-1 font-mono uppercase tracking-wider">Condividi:</span>
+
+              {/* WhatsApp */}
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${selectedArticle.title} - ${window.location.href}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-[#1C0F33] hover:bg-[#251245] text-[#00F0FF] hover:text-white rounded-xl border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all flex items-center justify-center cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                title="Condividi su WhatsApp"
               >
-                #{tag}
-              </span>
-            ))}
+                <span className="material-symbols-outlined text-sm">chat</span>
+              </a>
+
+              {/* Telegram */}
+              <a
+                href={`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(selectedArticle.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-[#1C0F33] hover:bg-[#251245] text-[#00F0FF] hover:text-white rounded-xl border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all flex items-center justify-center cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                title="Condividi su Telegram"
+              >
+                <span className="material-symbols-outlined text-sm">send</span>
+              </a>
+
+              {/* Facebook */}
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-[#1C0F33] hover:bg-[#251245] text-[#00F0FF] hover:text-white rounded-xl border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all flex items-center justify-center cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                title="Condividi su Facebook"
+              >
+                <span className="material-symbols-outlined text-sm">share</span>
+              </a>
+
+              {/* X / Twitter */}
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedArticle.title)}&url=${encodeURIComponent(window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-[#1C0F33] hover:bg-[#251245] text-[#00F0FF] hover:text-white rounded-xl border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all flex items-center justify-center cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                title="Condividi su X"
+              >
+                <span className="material-symbols-outlined text-sm">tag</span>
+              </a>
+
+              {/* Copy Link */}
+              <button
+                type="button"
+                onClick={handleCopyLink}
+                className="px-3 py-1.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_12px_rgba(255,0,127,0.4)] transition-all flex items-center gap-1.5 cursor-pointer"
+                title="Copia link articolo"
+              >
+                <span className="material-symbols-outlined text-sm">link</span>
+                <span>{copiedLink ? 'Copiato!' : 'Copia Link'}</span>
+              </button>
+            </div>
           </div>
 
           {/* Author Bio Box */}
