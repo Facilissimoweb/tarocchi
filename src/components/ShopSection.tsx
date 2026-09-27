@@ -420,10 +420,10 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-4 right-4 text-[#A69BB5] hover:text-white transition-colors cursor-pointer"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
               aria-label="Chiudi dettagli prodotto"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
             </button>
 
             <div className="flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-widest mb-1">
@@ -538,9 +538,10 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
               </div>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="p-1 text-[#A69BB5] hover:text-white transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] flex items-center justify-center transition-all cursor-pointer"
+                aria-label="Chiudi carrello"
               >
-                <span className="material-symbols-outlined text-xl">close</span>
+                <span className="material-symbols-outlined text-lg sm:text-xl">close</span>
               </button>
             </div>
 
