@@ -2001,9 +2001,15 @@ export default function App() {
             <p className="text-[13px] text-[#A69BB5]/70">
               © 2012–2025 Tarot Italia di Studio Olistico Macerata. P.IVA 02136780430. Professione disciplinata ai sensi della Legge 14 gennaio 2013, n. 4.
             </p>
-            <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
-              I consulti non sostituiscono pareri medici o psicologici.
-            </p>
+            <div className="flex flex-col md:items-end gap-1">
+              <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center md:justify-end gap-1">
+                <span className="material-symbols-outlined text-xs">explicit</span>
+                <span>Servizi riservati esclusivamente a un pubblico maggiorenne (+18)</span>
+              </span>
+              <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
+                I consulti non sostituiscono pareri medici o psicologici.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
@@ -2014,10 +2020,10 @@ export default function App() {
           <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)]">
             <button
               onClick={() => setIsBookingOpen(false)}
-              className="absolute top-4 right-4 text-[#A69BB5] hover:text-white"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
               aria-label="Chiudi finestra"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
             </button>
 
             {!bookingSubmitted ? (
@@ -2177,10 +2183,10 @@ export default function App() {
           <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[85vh] overflow-y-auto">
             <button
               onClick={() => setIsLegalModalOpen(null)}
-              className="absolute top-4 right-4 text-[#A69BB5] hover:text-white"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
               aria-label="Chiudi finestra"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
             </button>
 
             {isLegalModalOpen === 'privacy' ? (
@@ -2297,10 +2303,10 @@ export default function App() {
           <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[85vh] overflow-y-auto">
             <button
               onClick={() => setIsCookieCustomizerOpen(false)}
-              className="absolute top-4 right-4 text-[#A69BB5] hover:text-white"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
               aria-label="Chiudi gestione cookie"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
             </button>
 
             <div className="flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] font-semibold uppercase tracking-widest mb-1">
