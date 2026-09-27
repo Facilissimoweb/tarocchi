@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BlogSection } from './components/BlogSection';
 import { ShopSection } from './components/ShopSection';
 import { BrandSeal, BrandSectionDivider, BRAND_LOGO_URL } from './components/BrandSeal';
@@ -18,6 +18,15 @@ const IMAGES = {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'>('home');
+
+  useEffect(() => {
+    if (activeTab === 'servizi') {
+      setTimeout(() => {
+        const el = document.getElementById('servizi-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [activeTab]);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('Lettura On Line 1h');
@@ -996,8 +1005,8 @@ export default function App() {
           />
         )}
 
-        {/* DEFAULT HOME VIEW */}
-        {activeTab === 'home' && (
+        {/* DEFAULT HOME VIEW (ALSO RENDERED WHEN SERVIZI IS SELECTED) */}
+        {(activeTab === 'home' || activeTab === 'servizi') && (
           <div className="flex flex-col w-full">
             {/* HERO SECTION */}
             <section className="relative w-full overflow-hidden bg-[#0C0714]">

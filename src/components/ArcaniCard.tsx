@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArcanoInfo } from '../data/arcaniData';
 import { ArcaniVisualMotif } from './ArcaniVisualMotif';
 import { BRAND_LOGO_URL } from './BrandSeal';
@@ -19,6 +19,10 @@ export const ArcaniCard: React.FC<ArcaniCardProps> = ({
   size = 'md'
 }) => {
   const [isFlipped, setIsFlipped] = useState<boolean>(defaultFlipped);
+
+  useEffect(() => {
+    setIsFlipped(defaultFlipped);
+  }, [defaultFlipped]);
 
   const handleCardClick = (e: React.MouseEvent) => {
     // If not flipped, flip it first!
