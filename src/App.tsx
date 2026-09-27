@@ -17,7 +17,71 @@ const IMAGES = {
 };
 
 export default function App() {
+  const tabsList: Array<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'> = [
+    'home',
+    'servizi',
+    'chi-siamo',
+    'arcani',
+    'blog',
+    'shop'
+  ];
+
   const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'>('home');
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+
+  const [blogArticleId, setBlogArticleId] = useState<string | null>(null);
+
+  const changeTab = (newTab: 'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop') => {
+    if (newTab === activeTab) return;
+    const currentIndex = tabsList.indexOf(activeTab);
+    const newIndex = tabsList.indexOf(newTab);
+    setSlideDirection(newIndex > currentIndex ? 'right' : 'left');
+    setActiveTab(newTab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    // Only track single touch points
+    if (e.touches.length === 1) {
+      setTouchStartX(e.touches[0].clientX);
+      setTouchStartY(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || touchStartY === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Ensure horizontal gesture is predominant over vertical scroll
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      const currentIndex = tabsList.indexOf(activeTab);
+      if (deltaX < 0) {
+        // Swiped Left -> go to next tab
+        if (currentIndex < tabsList.length - 1) {
+          changeTab(tabsList[currentIndex + 1]);
+        }
+      } else {
+        // Swiped Right -> go to previous tab
+        if (currentIndex > 0) {
+          changeTab(tabsList[currentIndex - 1]);
+        }
+      }
+    }
+
+    setTouchStartX(null);
+    setTouchStartY(null);
+  };
+
+  const openBlogArticle = (articleId: string) => {
+    setBlogArticleId(articleId);
+    changeTab('blog');
+  };
 
   useEffect(() => {
     if (activeTab === 'servizi') {
@@ -118,7 +182,11 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white">
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white overflow-x-hidden"
+    >
       {/* HEADER / NAVIGATION */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#0C0714]/90 backdrop-blur-xl border-b border-[#8A2BE2]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)]">
         {/* Top Info Bar */}
@@ -141,7 +209,7 @@ export default function App() {
         <div className="h-16 sm:h-20 max-w-[1240px] mx-auto px-3 sm:px-4 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Wordmark & Seal with Neon Glow */}
           <button
-            onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onClick={() => changeTab('home')}
             className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none min-w-0"
           >
             <div className="relative flex items-center justify-center p-1 rounded-full bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_16px_rgba(255,0,127,0.6),_0_0_25px_rgba(0,240,255,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
@@ -170,7 +238,7 @@ export default function App() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1.5">
             <button
-              onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('home')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'home'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -181,7 +249,7 @@ export default function App() {
             </button>
             <button
               onClick={() => {
-                setActiveTab('servizi');
+                changeTab('servizi');
                 const el = document.getElementById('servizi-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -194,7 +262,7 @@ export default function App() {
               Servizi &amp; Consulti
             </button>
             <button
-              onClick={() => { setActiveTab('chi-siamo'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('chi-siamo')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'chi-siamo'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -204,7 +272,7 @@ export default function App() {
               Chi Siamo / About
             </button>
             <button
-              onClick={() => { setActiveTab('arcani'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('arcani')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'arcani'
                   ? 'bg-[#FF007F]/20 text-[#FF007F] border border-[#FF007F]/60 shadow-[0_0_15px_rgba(255,0,127,0.4)]'
@@ -215,7 +283,7 @@ export default function App() {
               <span>22 Arcani</span>
             </button>
             <button
-              onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('blog')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
                 activeTab === 'blog'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -225,7 +293,7 @@ export default function App() {
               Blog
             </button>
             <button
-              onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('shop')}
               className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'shop'
                   ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
@@ -240,7 +308,7 @@ export default function App() {
           {/* Action Button & Mobile Toggle */}
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <button
-              onClick={() => { setActiveTab('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => changeTab('shop')}
               className="hidden md:inline-flex items-center gap-1 px-3 py-2 text-xs text-[#00F0FF] hover:text-white transition-colors border border-[#00F0FF]/40 hover:border-[#00F0FF] rounded-xl hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] cursor-pointer"
               title="Apri Bottega"
             >
@@ -274,14 +342,14 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#130924] border-b border-[#8A2BE2]/40 px-4 py-4 flex flex-col gap-2 shadow-2xl animate-in fade-in duration-200">
             <button
-              onClick={() => { setActiveTab('home'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { changeTab('home'); setMobileMenuOpen(false); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg"
             >
               Home
             </button>
             <button
               onClick={() => {
-                setActiveTab('servizi');
+                changeTab('servizi');
                 setMobileMenuOpen(false);
                 const el = document.getElementById('servizi-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -291,27 +359,27 @@ export default function App() {
               Servizi &amp; Consulti
             </button>
             <button
-              onClick={() => { setActiveTab('chi-siamo'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { changeTab('chi-siamo'); setMobileMenuOpen(false); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg"
             >
               Chi Siamo / About
             </button>
             <button
-              onClick={() => { setActiveTab('arcani'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { changeTab('arcani'); setMobileMenuOpen(false); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#FF007F] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
             >
               <span>22 Arcani Maggiori (Carte 3D)</span>
               <span className="text-[10px] text-[#00F0FF] bg-[#1C0F33] px-2 py-0.5 rounded border border-[#00F0FF]/30 font-mono">✦ Svela</span>
             </button>
             <button
-              onClick={() => { setActiveTab('blog'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { changeTab('blog'); setMobileMenuOpen(false); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
             >
               <span>Blog &amp; Articoli</span>
               <span className="text-[10px] text-[#FF007F] bg-[#1C0F33] px-2 py-0.5 rounded border border-[#FF007F]/30 font-mono">Journal</span>
             </button>
             <button
-              onClick={() => { setActiveTab('shop'); setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { changeTab('shop'); setMobileMenuOpen(false); }}
               className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
             >
               <span className="flex items-center gap-1.5">
@@ -333,8 +401,18 @@ export default function App() {
         )}
       </header>
 
-      {/* MAIN CONTAINER */}
+      {/* MAIN CONTAINER WITH SLIDE TRANSITION ANIMATIONS */}
       <main className="w-full pt-16 sm:pt-20 lg:pt-24 bg-[#0C0714] flex-1">
+        <div
+          key={activeTab}
+          className={`w-full ${
+            slideDirection === 'right'
+              ? 'animate-in slide-in-from-right duration-300 ease-out'
+              : slideDirection === 'left'
+              ? 'animate-in slide-in-from-left duration-300 ease-out'
+              : 'animate-in fade-in duration-300'
+          }`}
+        >
         {/* CONDITIONAL VIEW: CHI SIAMO TERESA / ABOUT ME & COLLABORATORI */}
         {activeTab === 'chi-siamo' && (
           <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
@@ -992,6 +1070,7 @@ export default function App() {
         {/* CONDITIONAL VIEW: BLOG SECTION */}
         {activeTab === 'blog' && (
           <BlogSection
+            initialSelectedArticleId={blogArticleId}
             onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             onOpenBooking={openBookingFor}
           />
@@ -1605,78 +1684,84 @@ export default function App() {
               </div>
             </section>
 
-            {/* SEZIONE ANTEPRIMA BLOG (3 ARTICOLI) */}
+            {/* SEZIONE ARTICOLI NELLA HOME (Query Loop compatto Cyber-Mistico Neon Fluo) */}
             <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20">
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
-                <BrandSectionDivider title="Tarot Italia • Grimorio & Guide Simboliche" />
+                <BrandSectionDivider title="Tarot Italia • Grimorio &amp; Guide Simboliche" />
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="flex flex-col gap-1 max-w-xl">
                     <div className="inline-flex items-center gap-1.5 text-xs text-[#00F0FF] font-mono uppercase tracking-widest font-semibold">
-                      <span className="material-symbols-outlined text-sm">auto_stories</span>
-                      <span>Grimorio &amp; Guide Simboliche</span>
+                      <span className="material-symbols-outlined text-sm text-[#FF007F]">auto_awesome</span>
+                      <span>Query Loop • Ultimi Articoli</span>
                     </div>
                     <h2 className="font-serif text-2xl lg:text-3xl text-white font-bold">
-                      Dal Nostro Blog: Sapere Archetipico &amp; Pratiche
+                      Saperi Archetipici &amp; Pratiche Esoteriche
                     </h2>
                   </div>
                   <button
-                    onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    onClick={() => { setBlogArticleId(null); setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                     className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00F0FF] hover:text-[#FF007F] transition-colors self-start md:self-auto cursor-pointer"
                   >
-                    <span>Leggi Tutti gli Articoli del Blog</span>
+                    <span>Vedi Tutti gli Articoli del Blog</span>
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
                 </div>
 
-                {/* 3 Articles Cards Grid */}
+                {/* Query Loop Card Grid - Glassmorphic Cyber-Mistico Neon Fluo */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {BLOG_ARTICLES.map((article) => (
-                    <div
+                    <article
                       key={article.id}
-                      className="bg-[#130924]/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-xl flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,240,255,0.25)]"
+                      onClick={() => openBlogArticle(article.id)}
+                      className="group bg-[#130924]/60 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300 flex flex-col justify-between cursor-pointer transform hover:-translate-y-1 relative"
                     >
-                      <div className="relative w-full h-44 overflow-hidden bg-[#0C0714]">
-                        <img
-                          src={article.coverImage}
-                          alt={article.title}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#130924] via-transparent to-transparent"></div>
-                        <div className="absolute top-3 left-3 bg-[#1C0F33]/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-[#00F0FF] text-[10px] font-mono font-medium uppercase tracking-widest border border-[#00F0FF]/30">
-                          {article.category}
-                        </div>
-                        <div className="absolute top-3 right-3 bg-[#130924]/90 text-[#FF007F] border border-[#FF007F]/30 px-2 py-0.5 rounded-lg text-[10px] font-mono font-medium">
-                          {article.readTime}
-                        </div>
-                      </div>
+                      {/* Neon border glow effect on hover */}
+                      <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#00F0FF]/60 pointer-events-none transition-all duration-300"></div>
 
-                      <div className="p-5 flex flex-col flex-1">
-                        <div className="flex items-center gap-2 text-[10px] text-[#00F0FF] font-mono mb-1.5">
-                          <span>{article.date}</span>
-                          <span>•</span>
-                          <span className="text-white font-medium">{article.author}</span>
+                      <div className="flex flex-col">
+                        {/* 1. Immagine di Copertina */}
+                        <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0C0714]">
+                          <img
+                            src={article.coverImage}
+                            alt={article.title}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-500 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#130924] via-transparent to-transparent opacity-80"></div>
+                          <div className="absolute top-3 left-3 bg-[#0C0714]/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[#00F0FF] text-[10px] font-mono font-medium uppercase tracking-widest border border-[#00F0FF]/30">
+                            {article.category}
+                          </div>
                         </div>
 
-                        <h3 className="font-serif text-lg text-white group-hover:text-[#00F0FF] transition-colors mb-2 line-clamp-2 font-bold">
-                          {article.title}
-                        </h3>
+                        {/* Card Body */}
+                        <div className="p-5 flex flex-col gap-2">
+                          {/* 2. Titolo dell'articolo */}
+                          <h3 className="font-serif text-lg text-white group-hover:text-[#00F0FF] transition-colors font-bold leading-snug">
+                            {article.title}
+                          </h3>
 
-                        <p className="text-xs text-[#A69BB5] leading-relaxed mb-4 line-clamp-2">
-                          {article.excerpt}
-                        </p>
-
-                        <div className="mt-auto pt-2">
-                          <button
-                            onClick={() => { setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                            className="w-full py-2 bg-[#1C0F33] text-[#00F0FF] group-hover:bg-[#FF007F] group-hover:text-white text-[11px] font-semibold uppercase tracking-wider rounded-xl border border-[#00F0FF]/40 group-hover:border-[#FF007F] group-hover:shadow-[0_0_15px_rgba(255,0,127,0.5)] transition-all flex items-center justify-center gap-1 cursor-pointer"
-                          >
-                            <span>Leggi Articolo</span>
-                            <span className="material-symbols-outlined text-xs">arrow_forward</span>
-                          </button>
+                          {/* 3. Estratto breve (snippet) di 2 righe */}
+                          <p className="text-xs text-[#A69BB5] leading-relaxed line-clamp-2">
+                            {article.excerpt}
+                          </p>
                         </div>
                       </div>
-                    </div>
+
+                      {/* 4. Pulsante "Leggi di più" */}
+                      <div className="p-5 pt-0 mt-auto">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openBlogArticle(article.id);
+                          }}
+                          className="w-full py-2.5 px-4 bg-[#1C0F33]/80 group-hover:bg-[#FF007F] text-[#00F0FF] group-hover:text-white text-[11px] font-bold uppercase tracking-wider rounded-xl border border-[#00F0FF]/40 group-hover:border-[#FF007F] shadow-[0_0_10px_rgba(0,240,255,0.2)] group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                          <span>Leggi di più</span>
+                          <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </button>
+                      </div>
+                    </article>
                   ))}
                 </div>
               </div>
@@ -1851,6 +1936,7 @@ export default function App() {
             </section>
           </div>
         )}
+        </div>
       </main>
 
       {/* FOOTER */}
