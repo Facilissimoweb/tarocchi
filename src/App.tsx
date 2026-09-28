@@ -1908,22 +1908,33 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t border-[#8A2BE2]/20 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <p className="text-[13px] text-[#A69BB5]/70">
-              © 2012–2025 Tarot Italia di Studio Olistico Macerata. P.IVA 02136780430. Professione disciplinata ai sensi della Legge 14 gennaio 2013, n. 4.
-            </p>
-            <div className="flex flex-col md:items-end gap-1.5 max-w-md text-right">
-              <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center md:justify-end gap-1">
-                <span className="material-symbols-outlined text-xs">explicit</span>
-                <span>Servizi riservati esclusivamente a un pubblico maggiorenne (+18)</span>
+          {/* BOTTOM FOOTER SECTION: CLEAN VERTICAL COLUMN LAYOUT */}
+          <div className="border-t border-[#8A2BE2]/20 pt-10 pb-4 flex flex-col items-center justify-center text-center gap-6 max-w-3xl mx-auto">
+            {/* 1. Disclaimer Maggiorennità (+18) */}
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 bg-[#1C0F33] rounded-full border border-[#FF007F]/40 shadow-[0_0_12px_rgba(255,0,127,0.25)]">
+              <span className="material-symbols-outlined text-[#FF007F] text-base">explicit</span>
+              <span className="text-xs font-mono font-semibold text-[#FF007F] uppercase tracking-widest">
+                Servizi riservati esclusivamente a un pubblico maggiorenne (+18)
               </span>
-              <p className="text-[11px] text-[#A69BB5] leading-relaxed">
-                Per la prenotazione online di un consulto tarologico o cartomatico, la seduta va saldata in accordo con la prenotazione. Metodi di pagamento accettati: Mastercard, PayPal, IBAN bancario istantaneo.
-              </p>
-              <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
-                I consulti non sostituiscono pareri medici o psicologici.
+            </div>
+
+            {/* 2. Testo sui Pagamenti e Condizioni */}
+            <p className="text-xs sm:text-[13px] text-[#A69BB5] leading-relaxed max-w-2xl">
+              Per la prenotazione online di un consulto tarologico o cartomatico, la seduta va saldata in accordo con la prenotazione. Metodi di pagamento accettati: <strong className="text-white font-medium">Mastercard, PayPal, IBAN bancario istantaneo</strong>.
+            </p>
+
+            {/* 3. Avvertenza Legale / Disclaimer Sanitario */}
+            <div className="p-3 bg-[#130924]/80 rounded-xl border border-[#8A2BE2]/30 w-full max-w-xl">
+              <p className="text-xs font-mono font-medium text-[#00ffcc] uppercase tracking-wider flex items-center justify-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">info</span>
+                <span>I consulti non sostituiscono pareri medici o psicologici.</span>
               </p>
             </div>
+
+            {/* 4. Copyright e Note legali finali */}
+            <p className="text-xs text-[#A69BB5]/70 pt-2 border-t border-[#8A2BE2]/20 w-full">
+              © 2012–2025 Tarot Italia di Studio Olistico Macerata. P.IVA 02136780430. Professione disciplinata ai sensi della Legge 14 gennaio 2013, n. 4.
+            </p>
           </div>
         </div>
       </footer>
