@@ -1765,32 +1765,32 @@ export default function App() {
       {/* FOOTER */}
       <footer className="w-full bg-[#0C0714] border-t border-[#8A2BE2]/30 pt-16 pb-12 text-[#A69BB5]">
         <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Col 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <img
-                  alt="Profile"
-                  referrerPolicy="no-referrer"
-                  className="w-8 h-8 rounded-full object-cover border border-[#00F0FF]/40 shadow-[0_0_10px_rgba(0,240,255,0.3)]"
-                  src={IMAGES.avatar}
-                />
-                <span className="font-serif text-lg uppercase tracking-wider font-bold bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent">
-                  Tarot Italia
-                </span>
-              </div>
-              <p className="text-[13px] text-[#A69BB5] leading-relaxed">
-                Sanctuario olistico di divinazione introspettiva e archetipica. Consulti professionali con Tarocchi di Marsiglia e Rider Waite Smith condotti dal 2012 con etica, riservatezza e profondità d'animo.
-              </p>
-              <div className="flex items-center gap-2 pt-1">
-                <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#00F0FF] bg-[#1C0F33] px-2.5 py-1 rounded-lg border border-[#00F0FF]/30">
-                  <span className="material-symbols-outlined text-xs">verified</span>
-                  Operatore Olistico L. 4/2013
-                </span>
-              </div>
+          {/* HEADER DEL FOOTER: LOGO CENTRALE E PIÙ GRANDE */}
+          <div className="flex flex-col items-center justify-center text-center pb-8 border-b border-[#8A2BE2]/25">
+            <div className="w-24 h-24 rounded-full bg-[#1C0F33] p-2 border-2 border-[#00ffcc] shadow-[0_0_25px_rgba(0,255,204,0.5)] flex items-center justify-center mb-3">
+              <img
+                alt="Tarot Italia Logo"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-contain rounded-full"
+                src={IMAGES.avatar}
+              />
             </div>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold uppercase tracking-widest bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00ffcc] bg-clip-text text-transparent mb-2">
+              TAROT ITALIA
+            </h2>
+            <p className="text-xs sm:text-sm text-[#A69BB5] max-w-xl leading-relaxed">
+              Santuario olistico di divinazione introspettiva e archetipica. Consulti professionali con Tarocchi di Marsiglia e Rider Waite Smith condotti dal 2012 con etica, riservatezza e profondità d'animo.
+            </p>
+            <div className="mt-3">
+              <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[#00ffcc] bg-[#1C0F33] px-3 py-1 rounded-full border border-[#00ffcc]/30 shadow-[0_0_10px_rgba(0,255,204,0.2)]">
+                <span className="material-symbols-outlined text-sm">verified</span>
+                Operatore Olistico L. 4/2013
+              </span>
+            </div>
+          </div>
 
-            {/* Col 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Col 1 */}
             <div className="flex flex-col gap-3">
               <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#00F0FF]">
                 Studio Macerata &amp; Orari
