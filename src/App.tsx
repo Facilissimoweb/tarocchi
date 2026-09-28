@@ -9,6 +9,48 @@ import { ARCANI_22, ArcanoInfo } from './data/arcaniData';
 import { BLOG_ARTICLES } from './data/blogData';
 import { SHOP_PRODUCTS } from './data/shopData';
 
+// Dynamic Moon / Esoteric Glow Overlay Component for Cookie Banner
+export const DynamicMoonBackground: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    setMousePosition({
+      x: (clientX / innerWidth - 0.5) * 40,
+      y: (clientY / innerHeight - 0.5) * 40,
+    });
+  };
+
+  return (
+    <div
+      onMouseMove={handleMouseMove}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md overflow-hidden transition-all duration-300 animate-in fade-in duration-300 p-4"
+    >
+      {/* Sfumature e "lune" dinamiche reattive al movimento */}
+      <div
+        className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-purple-900/40 via-fuchsia-600/30 to-emerald-500/20 blur-[120px] pointer-events-none transition-transform duration-700 ease-out"
+        style={{
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.1)`,
+        }}
+      />
+      <div
+        className="absolute w-[400px] h-[400px] rounded-full bg-gradient-to-br from-emerald-600/20 via-indigo-900/30 to-pink-500/20 blur-[100px] pointer-events-none transition-transform duration-500 ease-out"
+        style={{
+          transform: `translate(${-mousePosition.x * 1.5}px, ${-mousePosition.y * 1.5}px)`,
+        }}
+      />
+
+      {/* Contenuto del modale */}
+      <div className="relative z-10 w-full max-w-lg">
+        {children}
+      </div>
+    </div>
+  );
+};
+
 // Image assets directly linked from reference HTML
 const IMAGES = {
   avatar: BRAND_LOGO_URL,
@@ -2281,12 +2323,12 @@ export default function App() {
 
       {/* COOKIE CONSENT PROMINENT OVERLAY / BANNER */}
       {!cookieConsent && !isCookieCustomizerOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-300">
+        <DynamicMoonBackground>
           <aside
             role="dialog"
             aria-live="polite"
             aria-label="Informativa Cookie e Legale"
-            className="bg-[#130924] border-2 border-[#00ffcc]/60 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-[0_0_50px_rgba(0,255,204,0.35)] animate-in zoom-in-95 duration-300"
+            className="bg-[#0f0718]/90 border border-fuchsia-500/40 rounded-2xl p-6 sm:p-8 relative shadow-2xl backdrop-blur-xl animate-in zoom-in-95 duration-300"
           >
             {/* Tasto di chiusura X circolare */}
             <button
@@ -2299,15 +2341,18 @@ export default function App() {
               <span className="material-symbols-outlined text-lg">close</span>
             </button>
 
-            {/* Logo circolare in primo piano in alto al centro */}
-            <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.5)] flex items-center justify-center mb-2">
+            {/* Logo Ingrandito e Scritta "TAROT ITALIA" */}
+            <div className="flex flex-col items-center justify-center mb-5 pt-1">
+              <div className="w-24 h-24 rounded-full bg-[#1C0F33] p-2 border-2 border-[#00ffcc] shadow-[0_0_25px_rgba(0,255,204,0.6)] flex items-center justify-center mb-3">
                 <img
                   src={IMAGES.avatar}
                   alt="Tarot Italia Logo"
                   className="w-full h-full object-contain rounded-full"
                 />
               </div>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold tracking-widest text-white uppercase mb-1">
+                TAROT ITALIA
+              </h2>
               <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-sm text-[#00ffcc]">cookie</span>
                 <span>COOKIE, PRIVACY &amp; DISCLAIMER</span>
@@ -2364,7 +2409,7 @@ export default function App() {
               </div>
             </div>
           </aside>
-        </div>
+        </DynamicMoonBackground>
       )}
 
       {/* COOKIE CUSTOMIZER MODAL */}
