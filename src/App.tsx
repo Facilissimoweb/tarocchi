@@ -9,44 +9,37 @@ import { ARCANI_22, ArcanoInfo } from './data/arcaniData';
 import { BLOG_ARTICLES } from './data/blogData';
 import { SHOP_PRODUCTS } from './data/shopData';
 
-// Dynamic Moon / Esoteric Glow Overlay Component for Cookie Banner
-export const DynamicMoonBackground: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    setMousePosition({
-      x: (clientX / innerWidth - 0.5) * 40,
-      y: (clientY / innerHeight - 0.5) * 40,
-    });
-  };
-
+export const ImmersiveEsotericBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div
-      onMouseMove={handleMouseMove}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md overflow-hidden transition-all duration-300 animate-in fade-in duration-300 p-4"
-    >
-      {/* Sfumature e "lune" dinamiche reattive al movimento */}
-      <div
-        className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-purple-900/40 via-fuchsia-600/30 to-emerald-500/20 blur-[120px] pointer-events-none transition-transform duration-700 ease-out"
-        style={{
-          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.1)`,
-        }}
-      />
-      <div
-        className="absolute w-[400px] h-[400px] rounded-full bg-gradient-to-br from-emerald-600/20 via-indigo-900/30 to-pink-500/20 blur-[100px] pointer-events-none transition-transform duration-500 ease-out"
-        style={{
-          transform: `translate(${-mousePosition.x * 1.5}px, ${-mousePosition.y * 1.5}px)`,
-        }}
-      />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#0d0714]/95 backdrop-blur-md overflow-hidden transition-all duration-300 animate-in fade-in duration-300">
 
-      {/* Contenuto del modale */}
+      {/* PUNTI DI LUCE E COSTELLAZIONI */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-70">
+        <div className="absolute top-[15%] left-[20%] w-2 h-2 bg-purple-300 rounded-full blur-[1px] shadow-[0_0_8px_#d8b4fe]" />
+        <div className="absolute top-[10%] right-[30%] w-1.5 h-1.5 bg-indigo-200 rounded-full shadow-[0_0_6px_#c7d2fe]" />
+        <div className="absolute top-[45%] left-[10%] w-2.5 h-2.5 bg-fuchsia-300 rounded-full blur-[1px] shadow-[0_0_10px_#f0abfc]" />
+        <div className="absolute bottom-[20%] right-[15%] w-2 h-2 bg-blue-200 rounded-full shadow-[0_0_8px_#bfdbfe]" />
+        <div className="absolute bottom-[30%] left-[25%] w-1.5 h-1.5 bg-purple-200 rounded-full" />
+
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20%" y1="15%" x2="35%" y2="28%" stroke="#e879f9" strokeWidth="0.7" strokeDasharray="2 2" />
+          <line x1="35%" y1="28%" x2="25%" y2="45%" stroke="#a855f7" strokeWidth="0.7" />
+          <line x1="70%" y1="10%" x2="85%" y2="25%" stroke="#818cf8" strokeWidth="0.7" />
+        </svg>
+      </div>
+
+      {/* MEZZE LUNE COLORATE E AUREE LUMINOSE (Glow) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -right-[10%] top-[35%] w-[400px] h-[400px] rounded-full bg-gradient-to-l from-cyan-400/30 via-teal-500/10 to-transparent blur-[60px] transform rotate-45 pointer-events-none" />
+        <div className="absolute -left-[10%] -top-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-600/20 via-indigo-900/10 to-transparent blur-[80px] pointer-events-none" />
+        <div className="absolute left-[30%] -bottom-[20%] w-[600px] h-[300px] rounded-full bg-gradient-to-t from-fuchsia-600/15 via-purple-900/5 to-transparent blur-[90px] pointer-events-none" />
+      </div>
+
+      {/* CONTENUTO PRINCIPALE / MODALE */}
       <div className="relative z-10 w-full max-w-lg">
         {children}
       </div>
+
     </div>
   );
 };
@@ -2323,7 +2316,7 @@ export default function App() {
 
       {/* COOKIE CONSENT PROMINENT OVERLAY / BANNER */}
       {!cookieConsent && !isCookieCustomizerOpen && (
-        <DynamicMoonBackground>
+        <ImmersiveEsotericBackground>
           <aside
             role="dialog"
             aria-live="polite"
@@ -2409,7 +2402,7 @@ export default function App() {
               </div>
             </div>
           </aside>
-        </DynamicMoonBackground>
+        </ImmersiveEsotericBackground>
       )}
 
       {/* COOKIE CUSTOMIZER MODAL */}
