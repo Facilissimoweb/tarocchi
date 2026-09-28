@@ -680,7 +680,7 @@ export default function App() {
               {/* Element Filter Pills */}
               <div className="flex flex-wrap items-center justify-center gap-1.5">
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[#A69BB5] mr-1 hidden sm:inline">Elemento:</span>
-                {['Tutti', 'Fuoco', 'Acqua', 'Aria', 'Terra', 'Cosmo', 'Etere', 'Vuoto'].map((elem) => (
+                {['Tutti', 'Fuoco 🔥', 'Acqua 💧', 'Aria 💨', 'Terra 🌱'].map((elem) => (
                   <button
                     key={elem}
                     type="button"
@@ -803,6 +803,11 @@ export default function App() {
                     <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/30">
                       Elemento: {selectedArcanoObj.element}
                     </span>
+                    {selectedArcanoObj.astrology && (
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#1C0F33] text-[#FF007F] border border-[#FF007F]/30">
+                        Astrologia: {selectedArcanoObj.astrology}
+                      </span>
+                    )}
                     <span className="text-xs text-[#A69BB5] font-mono">
                       ✦ {selectedArcanoObj.archetypeRole}
                     </span>
@@ -824,14 +829,27 @@ export default function App() {
                     ))}
                   </div>
 
-                  {/* Meaning */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs uppercase tracking-widest text-[#00F0FF] font-semibold">
-                      Significato Simbolico ed Evolutivo:
-                    </h4>
-                    <p className="text-sm sm:text-base text-[#F5F0EB] leading-relaxed">
-                      {selectedArcanoObj.meaning}
-                    </p>
+                  {/* Meanings: Luce & Ombra */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div className="p-4 rounded-xl bg-[#160C2A] border border-[#00F0FF]/40 shadow-sm">
+                      <h4 className="text-xs uppercase tracking-widest text-[#00F0FF] font-bold mb-1.5 flex items-center gap-1.5">
+                        <span>☀️</span>
+                        <span>Luce (Carta Dritta)</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#F5F0EB] leading-relaxed">
+                        {selectedArcanoObj.meaningLight}
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-[#160C2A] border border-[#FF007F]/40 shadow-sm">
+                      <h4 className="text-xs uppercase tracking-widest text-[#FF007F] font-bold mb-1.5 flex items-center gap-1.5">
+                        <span>🌙</span>
+                        <span>Ombra (Carta Rovesciata)</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#F5F0EB] leading-relaxed">
+                        {selectedArcanoObj.meaningShadow}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Advice */}
