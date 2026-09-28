@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export type NavTab = 'home' | 'chi-siamo' | 'arcani' | 'blog' | 'servizi' | 'shop';
 
@@ -16,6 +16,30 @@ export const Header: React.FC<HeaderProps> = ({
   logoUrl,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show navbar near top of page
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && !mobileMenuOpen) {
+        // Scrolling DOWN -> hide navbar
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling UP -> show navbar
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, mobileMenuOpen]);
 
   const navItems: { id: NavTab; label: string }[] = [
     { id: 'home', label: 'HOME' },
@@ -32,7 +56,11 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 left-0 w-full z-50 bg-[#0C0714]/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 bg-[#0C0714]/90 backdrop-blur-md border-b border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       {/* MOBILE NAVBAR ROW */}
       <div className="lg:hidden h-16 sm:h-20 max-w-[1240px] mx-auto px-4 flex items-center justify-between gap-3">
         {/* Mobile Brand Logo & Title with Guaranteed High Visibility */}
