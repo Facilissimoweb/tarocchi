@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cyber-bg: #0C0714;
-  --color-cyber-surface: #130924;
-  --color-cyber-surface-elevated: #1C0F33;
-  --color-neon-magenta: #FF007F;
-  --color-neon-magenta-hover: #FF1A8C;
-  --color-neon-cyan: #00F0FF;
-  --color-neon-cyan-hover: #33F5FF;
-  --color-electric-violet: #8A2BE2;
-  --color-cyber-purple: #9D4EDD;
-  --color-on-cyber: #F5F0EB;
-  --color-on-cyber-muted: #A69BB5;
-  --color-cyber-border: rgba(138, 43, 226, 0.35);
-  --color-cyber-border-active: rgba(255, 0, 127, 0.6);
-  --color-cyber-border-cyan: rgba(0, 240, 255, 0.5);
+  --color-cyber-bg: #2C3539;
+  --color-cyber-surface: #36454F;
+  --color-cyber-surface-elevated: #48545B;
+  --color-neon-magenta: #778899;
+  --color-neon-magenta-hover: #8A9BAA;
+  --color-neon-cyan: #C0C0C0;
+  --color-neon-cyan-hover: #D3D3D3;
+  --color-electric-violet: #708090;
+  --color-cyber-purple: #A9A9A9;
+  --color-on-cyber: #E0E0E0;
+  --color-on-cyber-muted: #B0C4DE;
+  --color-cyber-border: rgba(192, 192, 192, 0.3);
+  --color-cyber-border-active: rgba(211, 211, 211, 0.5);
+  --color-cyber-border-cyan: rgba(192, 192, 192, 0.4);
 
   --spacing-space-xs: 0.25rem;
   --spacing-space-sm: 0.5rem;
@@ -28,13 +28,13 @@
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #0C0714;
-    color: #F5F0EB;
+    background-color: #2C3539;
+    color: #E0E0E0;
     font-family: 'Inter', sans-serif;
   }
   body {
     overscroll-behavior: none;
-    background-image: radial-gradient(circle at 50% 0%, rgba(138, 43, 226, 0.15) 0%, rgba(12, 7, 20, 0.95) 50%, #0C0714 100%);
+    background-image: radial-gradient(circle at 50% 0%, rgba(112, 128, 144, 0.2) 0%, rgba(44, 53, 57, 0.98) 50%, #2C3539 100%);
     background-attachment: fixed;
   }
 }
