@@ -323,13 +323,22 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
         ))}
       </div>
 
-      {/* ARTICLES GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* MOBILE SWIPE HINT */}
+      <div className="md:hidden flex items-center justify-between text-[11px] text-[#00F0FF] font-mono mb-3 px-1">
+        <span className="flex items-center gap-1">
+          <span className="material-symbols-outlined text-sm text-[#FF007F] animate-pulse">swipe</span>
+          <span>Scorri lateralmente gli articoli</span>
+        </span>
+        <span className="text-[10px] text-[#A69BB5] font-sans">Swipe ➔</span>
+      </div>
+
+      {/* ARTICLES CAROUSEL (Mobile) & GRID (Desktop) */}
+      <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {filteredArticles.map((article) => (
           <article
             key={article.id}
             onClick={() => { setSelectedArticleId(article.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="group bg-[#130924]/80 backdrop-blur-md rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-xl hover:shadow-[0_0_25px_rgba(0,240,255,0.25)] transition-all duration-300 flex flex-col justify-between cursor-pointer"
+            className="w-[85vw] sm:w-[320px] md:w-auto flex-shrink-0 md:flex-shrink snap-center group bg-[#130924]/80 backdrop-blur-md rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-xl hover:shadow-[0_0_25px_rgba(0,240,255,0.25)] transition-all duration-300 flex flex-col justify-between cursor-pointer"
           >
             <div>
               {/* Cover Image */}
@@ -346,13 +355,13 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
               </div>
 
               {/* Text Info */}
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <div className="flex items-center gap-2 text-[11px] text-[#A69BB5] font-mono mb-2">
                   <span>{article.date}</span>
                   <span>•</span>
                   <span>{article.readTime}</span>
                 </div>
-                <h2 className="font-serif text-lg sm:text-xl text-white font-semibold leading-snug group-hover:text-[#00F0FF] transition-colors mb-2">
+                <h2 className="font-serif text-base sm:text-lg lg:text-xl text-white font-semibold leading-snug group-hover:text-[#00F0FF] transition-colors mb-2 line-clamp-2">
                   {article.title}
                 </h2>
                 <p className="text-xs text-[#A69BB5] line-clamp-3 leading-relaxed">
@@ -362,7 +371,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
             </div>
 
             {/* Card Footer */}
-            <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-[#8A2BE2]/20">
+            <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 flex items-center justify-between border-t border-[#8A2BE2]/20">
               <span className="text-xs text-[#FF007F] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 <span>Leggi Articolo Completo</span>
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
