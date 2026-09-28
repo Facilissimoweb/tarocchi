@@ -164,6 +164,7 @@ export default function App() {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('11:00');
   const [bookingNote, setBookingNote] = useState('');
+  const [bookingPrivacyConsent, setBookingPrivacyConsent] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
 
   const toggleFaq = (index: number) => {
@@ -2027,35 +2028,61 @@ export default function App() {
                 </div>
 
                 <div className="pt-3 border-t border-[#8A2BE2]/30 space-y-3">
-                  {/* Richiamo formale Privacy e Cookie */}
-                  <div className="p-3 bg-[#1C0F33]/80 rounded-xl border border-[#00F0FF]/30 text-[11px] text-[#A69BB5] leading-relaxed space-y-1">
-                    <div className="flex items-center gap-1.5 text-[#00F0FF] font-mono font-semibold text-[10px] uppercase tracking-wider">
+                  {/* Richiamo formale Privacy, Cookie e Disclaimer */}
+                  <div className="p-3 bg-[#1C0F33]/80 rounded-xl border border-[#00ffcc]/30 text-[11px] text-[#A69BB5] leading-relaxed space-y-2">
+                    <div className="flex items-center gap-1.5 text-[#00ffcc] font-mono font-semibold text-[10px] uppercase tracking-wider">
                       <span className="material-symbols-outlined text-xs">shield_lock</span>
-                      <span>Informativa Privacy &amp; Cookie (GDPR UE 2016/679)</span>
+                      <span>Informativa Privacy, Cookie &amp; Disclaimer</span>
                     </div>
                     <p>
                       Inviando i tuoi dati accetti il trattamento per la gestione del consulto ai sensi della nostra{' '}
                       <button
                         type="button"
                         onClick={() => changeTab('privacy-policy')}
-                        className="text-[#00F0FF] font-semibold underline hover:text-white cursor-pointer"
+                        className="text-[#00ffcc] font-semibold underline hover:text-white cursor-pointer"
                       >
                         Privacy Policy
-                      </button>{' '}
-                      e della nostra informativa estesa sui{' '}
+                      </button>, della nostra informativa sui{' '}
                       <button
                         type="button"
                         onClick={() => setIsCookieCustomizerOpen(true)}
-                        className="text-[#00F0FF] font-semibold underline hover:text-white cursor-pointer"
+                        className="text-[#00ffcc] font-semibold underline hover:text-white cursor-pointer"
                       >
                         Cookie
+                      </button>{' '}
+                      e del nostro{' '}
+                      <button
+                        type="button"
+                        onClick={() => setIsLegalModalOpen(true)}
+                        className="text-[#00ffcc] font-semibold underline hover:text-white cursor-pointer"
+                      >
+                        Disclaimer e Liberatoria
                       </button>. Riservatezza garantita.
                     </p>
+
+                    {/* Checkbox obbligatorio prima dell'invio */}
+                    <label className="flex items-start gap-2 pt-1 border-t border-[#8A2BE2]/30 cursor-pointer text-white font-medium">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={bookingPrivacyConsent}
+                        onChange={(e) => setBookingPrivacyConsent(e.target.checked)}
+                        className="mt-0.5 accent-[#FF007F] w-4 h-4 rounded cursor-pointer"
+                      />
+                      <span className="text-[11px] text-white leading-snug">
+                        Dichiaro di aver preso visione e di accettare la Privacy Policy, l'Informativa Cookie ed il Disclaimer e Liberatoria. <span className="text-[#FF007F] font-bold">*</span>
+                      </span>
+                    </label>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all cursor-pointer"
+                    disabled={!bookingPrivacyConsent}
+                    className={`w-full inline-flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
+                      bookingPrivacyConsent
+                        ? 'bg-[#FF007F] hover:bg-[#FF1A8C] text-white shadow-[0_0_20px_rgba(255,0,127,0.5)] cursor-pointer'
+                        : 'bg-[#1C0F33] text-[#A69BB5]/50 border border-[#8A2BE2]/30 cursor-not-allowed opacity-60'
+                    }`}
                   >
                     <span className="material-symbols-outlined text-base">send</span>
                     <span>Conferma e Apri su WhatsApp (+39 379 1038253)</span>
