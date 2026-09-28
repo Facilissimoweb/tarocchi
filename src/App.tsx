@@ -19,23 +19,29 @@ const IMAGES = {
 };
 
 export default function App() {
-  const tabsList: Array<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'> = [
+  const tabsList: Array<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop' | 'privacy-policy'> = [
     'home',
     'servizi',
     'chi-siamo',
     'arcani',
     'blog',
-    'shop'
+    'shop',
+    'privacy-policy'
   ];
 
-  const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop' | 'privacy-policy'>(() => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/privacy-policy') {
+      return 'privacy-policy';
+    }
+    return 'home';
+  });
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   const [blogArticleId, setBlogArticleId] = useState<string | null>(null);
 
-  const changeTab = (newTab: 'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop') => {
+  const changeTab = (newTab: 'home' | 'servizi' | 'chi-siamo' | 'arcani' | 'blog' | 'shop' | 'privacy-policy') => {
     if (newTab === activeTab) return;
     const currentIndex = tabsList.indexOf(activeTab);
     const newIndex = tabsList.indexOf(newTab);
@@ -96,7 +102,7 @@ export default function App() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('Lettura On Line 1h');
-  const [isLegalModalOpen, setIsLegalModalOpen] = useState<'privacy' | 'disclaimer' | null>(null);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedArcanoObj, setSelectedArcanoObj] = useState<ArcanoInfo>(ARCANI_22[0]);
   const [arcaniFilterElement, setArcaniFilterElement] = useState<string>('Tutti');
@@ -187,7 +193,7 @@ export default function App() {
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white overflow-x-hidden"
+      className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white overflow-x-clip"
     >
       {/* HEADER / NAVIGATION */}
       <Header
@@ -905,12 +911,152 @@ export default function App() {
           />
         )}
 
+        {/* CONDITIONAL VIEW: PRIVACY POLICY PAGE */}
+        {activeTab === 'privacy-policy' && (
+          <section className="max-w-[1000px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
+            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#8A2BE2]/30">
+              <button
+                onClick={() => { changeTab('home'); }}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00F0FF] hover:text-[#FF007F] transition-colors cursor-pointer font-mono"
+              >
+                <span className="material-symbols-outlined text-sm">arrow_back</span>
+                Torna alla Home
+              </button>
+              <span className="text-xs uppercase tracking-widest text-[#A69BB5] flex items-center gap-1.5 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF]"></span>
+                www.tarotitalia.com • Privacy Policy
+              </span>
+            </div>
+
+            <BrandSectionDivider title="Tarot Italia • Informativa sulla Privacy" className="mb-8" />
+
+            <div className="bg-[#130924]/90 backdrop-blur-xl p-6 sm:p-10 lg:p-12 rounded-3xl border border-[#8A2BE2]/40 shadow-[0_0_40px_rgba(138,43,226,0.25)] space-y-6 text-[#F5F0EB]">
+              <div className="flex flex-col items-center text-center pb-6 border-b border-[#8A2BE2]/30">
+                <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-3">
+                  <img
+                    src={IMAGES.avatar}
+                    alt="Tarot Italia Logo"
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </div>
+                <h1 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">
+                  Informativa sulla privacy
+                </h1>
+                <p className="text-xs text-[#00ffcc] font-mono uppercase tracking-widest">
+                  www.tarotitalia.com • Tarot Italia
+                </p>
+              </div>
+
+              <div className="space-y-4 text-xs sm:text-sm text-[#A69BB5] leading-relaxed">
+                <p>
+                  Il sito web <strong className="text-white">www.tarotitalia.com</strong> è di proprietà di <strong className="text-white">Tarot Italia</strong>, che è un titolare del trattamento dei tuoi dati personali.
+                </p>
+                <p>
+                  Abbiamo adottato questa Informativa sulla privacy, che determina come elaboriamo le informazioni raccolte da tarotitalia.com, che fornisce anche i motivi per cui dobbiamo raccogliere determinati dati personali su di te. Pertanto, devi leggere questa Informativa sulla privacy prima di utilizzare il sito web tarotitalia.com.
+                </p>
+                <p>
+                  Ci prendiamo cura dei tuoi dati personali e ci impegniamo a garantirne la riservatezza e la sicurezza.
+                </p>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">shield</span>
+                    <span>Informazioni personali che raccogliamo:</span>
+                  </h2>
+                  <p>
+                    Quando visiti tarotitalia.com, raccogliamo automaticamente determinate informazioni sul tuo dispositivo, tra cui informazioni sul tuo browser web, indirizzo IP, fuso orario e alcuni dei cookie installati sul tuo dispositivo. Inoltre, mentre navighi sul Sito, raccogliamo informazioni sulle singole pagine web o prodotti che visualizzi, quali siti web o termini di ricerca ti hanno indirizzato al Sito e come interagisci con il Sito. Ci riferiamo a queste informazioni raccolte automaticamente come "Informazioni sul dispositivo". Inoltre, potremmo raccogliere i dati personali che ci fornisci (inclusi, ma non limitati a, Nome, Cognome, Indirizzo, informazioni di pagamento, ecc.) durante la registrazione per poter adempiere all'accordo.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">settings</span>
+                    <span>Perché elaboriamo i tuoi dati?</span>
+                  </h2>
+                  <p>
+                    La nostra massima priorità è la sicurezza dei dati dei clienti e, in quanto tale, potremmo elaborare solo dati utente minimi, solo nella misura in cui è assolutamente necessario per mantenere il sito web. Le informazioni raccolte automaticamente vengono utilizzate solo per identificare potenziali casi di abuso e stabilire informazioni statistiche sull'utilizzo del sito web. Queste informazioni statistiche non vengono altrimenti aggregate in modo tale da identificare un particolare utente del sistema.
+                  </p>
+                  <p>
+                    Puoi visitare il sito web senza dirci chi sei o rivelare alcuna informazione, tramite la quale qualcuno potrebbe identificarti come un individuo specifico e identificabile. Se, tuttavia, desideri utilizzare alcune delle funzionalità del sito web o desideri ricevere la nostra newsletter o fornire altri dettagli compilando un modulo, puoi fornirci dati personali, come la tua e-mail, nome, cognome, città di residenza, organizzazione, numero di telefono. Puoi scegliere di non fornirci i tuoi dati personali, ma in tal caso potresti non essere in grado di sfruttare alcune delle funzionalità del sito web. Ad esempio, non sarai in grado di ricevere la nostra Newsletter o di contattarci direttamente dal sito web. Gli utenti che non sono certi su quali informazioni siano obbligatorie sono invitati a contattarci tramite <a href="mailto:mariateresarogani@gmail.com" className="text-[#00ffcc] underline font-semibold">mariateresarogani@gmail.com</a>.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">gavel</span>
+                    <span>I tuoi diritti:</span>
+                  </h2>
+                  <p>
+                    Se sei un residente europeo, hai i seguenti diritti relativi ai tuoi dati personali:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-1 text-white font-medium">
+                    <li>Il diritto di essere informato.</li>
+                    <li>Il diritto di accesso.</li>
+                    <li>Il diritto di rettifica.</li>
+                    <li>Il diritto di cancellazione.</li>
+                    <li>Il diritto di limitare il trattamento.</li>
+                    <li>Il diritto alla portabilità dei dati.</li>
+                    <li>Il diritto di opposizione.</li>
+                    <li>Diritti in relazione al processo decisionale automatizzato e alla profilazione.</li>
+                  </ul>
+                  <p>
+                    Se desideri esercitare questo diritto, ti preghiamo di contattarci tramite le informazioni di contatto riportate di seguito.
+                  </p>
+                  <p>
+                    Inoltre, se sei un residente europeo, ti informiamo che stiamo elaborando le tue informazioni per adempiere ai contratti che potremmo avere con te (ad esempio, se effettui un ordine tramite il Sito) o altrimenti per perseguire i nostri legittimi interessi commerciali elencati sopra. Inoltre, tieni presente che le tue informazioni potrebbero essere trasferite al di fuori dell'Europa, inclusi Canada e Stati Uniti.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">link</span>
+                    <span>Collegamenti ad altri siti Web:</span>
+                  </h2>
+                  <p>
+                    Il nostro sito Web potrebbe contenere collegamenti ad altri siti Web che non sono di nostra proprietà o controllati da noi. Tieni presente che non siamo responsabili per tali altri siti Web o per le pratiche sulla privacy di terze parti. Ti invitiamo a prestare attenzione quando lasci il nostro sito Web e a leggere le dichiarazioni sulla privacy di ciascun sito Web che potrebbe raccogliere informazioni personali.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">lock</span>
+                    <span>Sicurezza delle informazioni:</span>
+                  </h2>
+                  <p>
+                    Proteggiamo le informazioni che fornisci su server informatici in un ambiente controllato e sicuro, protetto da accessi, usi o divulgazioni non autorizzati. Manteniamo ragionevoli misure di sicurezza amministrative, tecniche e fisiche per proteggere da accessi, usi, modifiche e divulgazioni non autorizzati di dati personali sotto il nostro controllo e la nostra custodia. Tuttavia, non è possibile garantire alcuna trasmissione di dati tramite Internet o rete wireless.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">policy</span>
+                    <span>Divulgazione legale:</span>
+                  </h2>
+                  <p>
+                    Divulgheremo qualsiasi informazione che raccogliamo, utilizziamo o riceviamo se richiesto o consentito dalla legge, ad esempio per ottemperare a una citazione in giudizio o a un procedimento legale simile, e quando riteniamo in buona fede che la divulgazione sia necessaria per proteggere i nostri diritti, proteggere la tua sicurezza o la sicurezza di altri, indagare su frodi o rispondere a una richiesta governativa.
+                  </p>
+                </div>
+
+                <div className="pt-4 space-y-2">
+                  <h2 className="font-serif text-lg text-white font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[#00ffcc] text-lg">mail</span>
+                    <span>Informazioni di contatto:</span>
+                  </h2>
+                  <p>
+                    Se desideri contattarci per saperne di più su questa Politica o desideri contattarci in merito a qualsiasi questione relativa ai diritti individuali e alle tue Informazioni personali, puoi inviare un'e-mail a <a href="mailto:mariateresarogani@gmail.com" className="text-[#00ffcc] underline font-semibold">mariateresarogani@gmail.com</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* CONDITIONAL VIEW: SHOP SECTION */}
         {activeTab === 'shop' && (
           <ShopSection
             onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             initialCategory={shopCategory}
-            onOpenPrivacy={() => setIsLegalModalOpen('privacy')}
+            onOpenPrivacy={() => changeTab('privacy-policy')}
             onOpenCookie={() => setIsCookieCustomizerOpen(true)}
           />
         )}
@@ -1406,88 +1552,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* SEZIONE ARTICOLI NELLA HOME (Query Loop compatto Cyber-Mistico Neon Fluo) */}
-            <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20">
-              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-10">
-                <BrandSectionDivider title="Tarot Italia • Grimorio &amp; Guide Simboliche" />
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                  <div className="flex flex-col gap-1 max-w-xl">
-                    <div className="inline-flex items-center gap-1.5 text-xs text-[#00F0FF] font-mono uppercase tracking-widest font-semibold">
-                      <span className="material-symbols-outlined text-sm text-[#FF007F]">auto_awesome</span>
-                      <span>Query Loop • Ultimi Articoli</span>
-                    </div>
-                    <h2 className="font-serif text-2xl lg:text-3xl text-white font-bold">
-                      Saperi Archetipici &amp; Pratiche Esoteriche
-                    </h2>
-                  </div>
-                  <button
-                    onClick={() => { setBlogArticleId(null); setActiveTab('blog'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00F0FF] hover:text-[#FF007F] transition-colors self-start md:self-auto cursor-pointer"
-                  >
-                    <span>Vedi Tutti gli Articoli del Blog</span>
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                  </button>
-                </div>
-
-                {/* Query Loop Card Grid - Glassmorphic Cyber-Mistico Neon Fluo */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {BLOG_ARTICLES.map((article) => (
-                    <article
-                      key={article.id}
-                      onClick={() => openBlogArticle(article.id)}
-                      className="group bg-[#130924]/60 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300 flex flex-col justify-between cursor-pointer transform hover:-translate-y-1 relative"
-                    >
-                      {/* Neon border glow effect on hover */}
-                      <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#00F0FF]/60 pointer-events-none transition-all duration-300"></div>
-
-                      <div className="flex flex-col">
-                        {/* 1. Immagine di Copertina */}
-                        <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0C0714]">
-                          <img
-                            src={article.coverImage}
-                            alt={article.title}
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-500 ease-out"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#130924] via-transparent to-transparent opacity-80"></div>
-                          <div className="absolute top-3 left-3 bg-[#0C0714]/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[#00F0FF] text-[10px] font-mono font-medium uppercase tracking-widest border border-[#00F0FF]/30">
-                            {article.category}
-                          </div>
-                        </div>
-
-                        {/* Card Body */}
-                        <div className="p-5 flex flex-col gap-2">
-                          {/* 2. Titolo dell'articolo */}
-                          <h3 className="font-serif text-lg text-white group-hover:text-[#00F0FF] transition-colors font-bold leading-snug">
-                            {article.title}
-                          </h3>
-
-                          {/* 3. Estratto breve (snippet) di 2 righe */}
-                          <p className="text-xs text-[#A69BB5] leading-relaxed line-clamp-2">
-                            {article.excerpt}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* 4. Pulsante "Leggi di più" */}
-                      <div className="p-5 pt-0 mt-auto">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openBlogArticle(article.id);
-                          }}
-                          className="w-full py-2.5 px-4 bg-[#1C0F33]/80 group-hover:bg-[#FF007F] text-[#00F0FF] group-hover:text-white text-[11px] font-bold uppercase tracking-wider rounded-xl border border-[#00F0FF]/40 group-hover:border-[#FF007F] shadow-[0_0_10px_rgba(0,240,255,0.2)] group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] transition-all flex items-center justify-center gap-2 cursor-pointer"
-                        >
-                          <span>Leggi di più</span>
-                          <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                        </button>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </section>
 
             {/* SEZIONE ANTEPRIMA SHOP / BOTTEGA OLISTICA */}
             <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20">
@@ -1785,10 +1849,10 @@ export default function App() {
                   Bottega Olistica &amp; Strumenti
                 </button>
                 <button
-                  onClick={() => setIsLegalModalOpen('privacy')}
+                  onClick={() => changeTab('privacy-policy')}
                   className="text-left text-[#A69BB5] hover:text-[#00F0FF] transition-colors cursor-pointer"
                 >
-                  Privacy Policy &amp; Cookie
+                  Privacy Policy
                 </button>
                 <button
                   onClick={() => setIsCookieCustomizerOpen(true)}
@@ -1798,10 +1862,10 @@ export default function App() {
                   Gestisci Preferenze Cookie
                 </button>
                 <button
-                  onClick={() => setIsLegalModalOpen('disclaimer')}
-                  className="text-left text-[#A69BB5] hover:text-[#00F0FF] transition-colors cursor-pointer"
+                  onClick={() => setIsLegalModalOpen(true)}
+                  className="text-left text-[#A69BB5] hover:text-[#00F0FF] transition-colors cursor-pointer font-semibold text-[#00ffcc]"
                 >
-                  Disclaimer Olistico Legale
+                  Disclaimer e Liberatoria
                 </button>
               </div>
             </div>
@@ -1973,7 +2037,7 @@ export default function App() {
                       Inviando i tuoi dati accetti il trattamento per la gestione del consulto ai sensi della nostra{' '}
                       <button
                         type="button"
-                        onClick={() => setIsLegalModalOpen('privacy')}
+                        onClick={() => changeTab('privacy-policy')}
                         className="text-[#00F0FF] font-semibold underline hover:text-white cursor-pointer"
                       >
                         Privacy Policy
@@ -2060,55 +2124,106 @@ export default function App() {
             {/* Tasto di chiusura (X) circolare in alto a destra */}
             <button
               type="button"
-              onClick={() => setIsLegalModalOpen(null)}
+              onClick={() => setIsLegalModalOpen(false)}
               className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi finestra"
             >
               <span className="material-symbols-outlined text-lg">close</span>
             </button>
 
-            {isLegalModalOpen === 'privacy' ? (
-              <div className="space-y-4">
-                <h3 className="font-serif text-2xl text-white font-bold text-center">
-                  Privacy Policy &amp; Trattamento Dati
-                </h3>
-                <div className="text-xs text-[#A69BB5] space-y-3 leading-relaxed">
+            <div className="space-y-4">
+              <span className="text-[11px] font-mono font-semibold text-[#00ffcc] uppercase tracking-widest block text-center">
+                www.tarotitalia.com • Deontologia &amp; Legge
+              </span>
+              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold text-center">
+                INFORMATIVA E LIBERATORIA PER ESCLUSIONE DA RESPONSABILITÀ
+              </h3>
+
+              <div className="text-xs text-[#A69BB5] space-y-3 leading-relaxed max-h-[55vh] overflow-y-auto pr-1">
+                <p>
+                  I corsi, i servizi e i trattamenti offerti da Maria Teresa Rogani, e da chiunque operi per suo conto, la cui lista è disponibile presso la sede del Titolare, sono pratiche senza alcuna valenza scientifica e gli operatori e le operatrici che le svolgono non sono né medici, né psichiatri, né psicologi o psicoterapeuti, non possono quindi fornire diagnosi, prescrivere o somministrare farmaci, né formulare terapie.
+                </p>
+                <p>
+                  Le persone che decidono di usufruire di questi servizi lo fanno in piena coscienza, libertà e responsabilità. In nessun caso le suddette pratiche possono essere considerate una terapia, né tantomeno è consigliato sospendere o ridurre le terapie mediche in corso. Le suddette pratiche non costituiscono formalmente una cura fisica, pertanto non è garantito alcun risultato specifico.
+                </p>
+                <p>
+                  Consultare sempre un medico abilitato per prendersi cura del proprio stato fisico e/o psichico. Ogni individuo è responsabile per sé stesso e per le proprie cure mediche, psicologiche o psichiatriche. Chi prende visione di tali informazioni e le sottoscrive rinuncia ad ogni tipo di azione legale nei confronti di Maria Teresa Rogani, o di chiunque operi per suo conto, la cui lista è disponibile presso la sede del Titolare, e libera tutti i soggetti indicati in questo documento da ogni e qualsivoglia responsabilità.
+                </p>
+
+                <div className="pt-2">
+                  <h4 className="font-serif text-sm font-bold text-[#00ffcc] uppercase tracking-wider mb-1">
+                    L’OPERATORE OLISTICO
+                  </h4>
                   <p>
-                    Ai sensi dell’art. 13 del Regolamento UE 2016/679 (GDPR), Tarot Italia garantisce che i dati personali trasmessi volontariamente (nome, recapito telefonico, indirizzo email o messaggi preliminari) sono trattati esclusivamente per la gestione delle richieste di consulto o appuntamento.
+                    L’operatore olistico non si pone come sostituto della medicina classica occidentale, ma come strumento complementare. Si occupa di preservare il benessere dell’individuo a 360°, aiutandolo ad integrarsi nei cicli naturali della vita, ristabilendo gli equilibri del benessere.
                   </p>
-                  <p>
-                    I dati non vengono in alcun caso ceduti a terzi né utilizzati per comunicazioni pubblicitarie non sollecitate. La consultazione è coperta da segreto e riservatezza etica assoluta.
+                  <p className="mt-2">
+                    Non formula diagnosi, non rilascia ricette e non interferisce con le prescrizioni di farmaci e rimedi dati o suggeriti dai medici. Fornisce consigli su come utilizzare nel migliore dei modi i rimedi naturali ritenuti più idonei per il miglioramento del proprio benessere psico-fisico e energetico.
                   </p>
+                  <p className="mt-2">
+                    Questo sito non intende offrire consigli medici e le informazioni qui contenute non possono sostituirsi ad un consulto personalizzato effettuato da un medico.
+                  </p>
+                  <p className="mt-2">
+                    Il cliente dovrebbe consultare un medico a proposito della propria salute, soprattutto riguardo a sintomi che possano richiedere diagnosi e/o trattamento.
+                  </p>
+                  <p className="mt-2">
+                    L’operatore olistico può supportare chi si rivolge a lui, nella scelta del metodo di cura naturale più indicato al suo problema.
+                  </p>
+                  <p className="mt-2">
+                    L’operatore olistico non si assume alcuna responsabilità per qualsiasi conseguenza che possa derivare da qualsiasi trattamento, procedura, azione, modifica dello stato di salute o applicazione di qualsiasi metodo da parte di qualsiasi persona che legga o segua le informazioni contenute su questo sito.
+                  </p>
+                  <p className="mt-2">
+                    Non si può garantire che le informazioni e i consigli qui contenuti siano adatti o sicuri per ogni persona.
+                  </p>
+                  <p className="mt-2">
+                    Ogni sforzo è stato fatto per garantire che le informazioni qui contenute siano il più complete ed accurate possibile, oltre che aggiornate. Ma queste informazioni dovrebbero essere usate soltanto come guida, e non come la fonte definitiva di informazioni sui disturbi e disagi a cui qui si fa cenno.
+                  </p>
+                  <p className="mt-2">
+                    Per tutti questi motivi si declina ogni responsabilità per qualsiasi conseguenza, danno o perdita che possano essere causate dal contenuto di questo sito e dagli articoli in esso pubblicati.
+                  </p>
+                </div>
+
+                <div className="pt-2">
                   <p>
-                    Il titolare del trattamento è lo Studio Olistico Macerata, P.IVA 02136780430. Per qualsiasi richiesta di rettifica o cancellazione, è sufficiente scrivere a <code>info@tarotitalia.it</code>.
+                    Ad oggi le discipline Olistiche dette anche Bio-Naturali non hanno ottenuto una normativa a livello nazionale. In attesa di una regolamentazione “ufficiale” alcune regioni come la Lombardia, Toscana, Liguria, Emilia Romagna, hanno stabilito leggi regionali che permettono alla medicina Olistica di affiancarsi a quella tradizionale. Viene riportata di seguito la LEGGE REGIONALE 1 febbraio 2005, N. 2 “Norme in materia di discipline bio-naturali”. (BURL n. 5, 1º suppl. ord. del 04 Febbraio 2005) urn:nir:regione.lombardia:legge:2005-02-01;2
+                  </p>
+                  <p className="mt-2">
+                    Tali pratiche, che non hanno carattere di prestazioni sanitarie, tendono a stimolare le risorse vitali dell’individuo attraverso metodi ed elementi naturali la cui efficacia sia stata verificata nei contesti culturali e geografici in cui le discipline sono sorgenti e si sono sviluppate.
+                  </p>
+                </div>
+
+                <div className="pt-2">
+                  <p>
+                    Le informazioni contenute in essi non sono a carattere medico e non vogliono in alcun modo sostituirsi a qualunque consulenza o prescrizione medica. Questo sito fornisce informazioni su argomenti riguardanti il benessere inteso in senso olistico.
+                  </p>
+                  <p className="mt-2">
+                    L’approccio olistico non si pone in contrapposizione, né in alcun modo intende sostituire la medicina tradizionale. Pertanto, è sempre richiesto di utilizzare con intelligenza e buon senso tutte le informazioni presenti su questo sito.
+                  </p>
+                  <p className="mt-2">
+                    Le informazioni contenute in questo sito non costituiscono pareri di tipo professionale, medico o giuridico e non possono in nessun caso essere utilizzate per la cura di patologie o disturbi di qualsivoglia natura.
+                  </p>
+                  <p className="mt-2">
+                    Per qualsiasi decisione o informazione riguardante lo stato di salute è necessario che la persona si rivolga al proprio medico curante o ad un’altra figura professionale autorizzata.
+                  </p>
+                  <p className="mt-2">
+                    Se credi di essere in una condizione che richiede cure mediche, psicologiche, ecc., per favore rivogliti subito alla figura professionale di riferimento.
+                  </p>
+                  <p className="mt-2">
+                    Nessun professionista olistico può dunque sovrapporsi alle figure medico/psicologiche o ricoprirne le vesti.
+                  </p>
+                  <p className="mt-2">
+                    L’Operatore Olistico, l’Operatore del Benessere e l’Operatore Energetico possono intervenire esclusivamente per aiutare il soggetto in questione a riequilibrare il proprio sistema energetico, ma non possono in nessun caso fare diagnosi, prescrivere e/o somministrare farmaci, sostituire un medico o qualunque altra figura professionale preposta.
+                  </p>
+                  <p className="mt-2">
+                    In Italia, la professione dell’operatore olistico è regolamentata dalla legge 4/2013. I trattamenti olistici sono trattamenti di riequilibrio energetico volti al recupero ed al mantenimento del benessere e della vitalità della persona.
                   </p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-4">
-                <span className="text-[11px] font-mono font-semibold text-[#00F0FF] uppercase tracking-widest">
-                  Deontologia Professionale
-                </span>
-                <h3 className="font-serif text-2xl text-white font-bold">
-                  Disclaimer Olistico Legale
-                </h3>
-                <div className="text-xs text-[#A69BB5] space-y-3 leading-relaxed">
-                  <p>
-                    I consulti di lettura dei Tarocchi e i percorsi olistici proposti da Tarot Italia sono attività di relazione d’aiuto, orientamento personale ed esplorazione introspettiva disciplinate dalla <strong>Legge 14 gennaio 2013, n. 4</strong> (Disposizioni in materia di professioni non organizzate in ordini o collegi).
-                  </p>
-                  <p>
-                    I consulti <strong>non costituiscono</strong>, non intendono sostituire e non devono in alcun modo essere interpretati come pareri medici, psicoterapeutici, psichiatrici, legali o finanziari. L’operatore non effettua diagnosi cliniche né prescrizioni terapeutiche.
-                  </p>
-                  <p>
-                    Ogni consultante mantiene la piena e insindacabile responsabilità etica, morale e materiale delle proprie scelte e azioni.
-                  </p>
-                </div>
-              </div>
-            )}
+            </div>
 
             <div className="pt-6 border-t border-[#8A2BE2]/30 mt-4">
               <button
-                onClick={() => setIsLegalModalOpen(null)}
+                onClick={() => setIsLegalModalOpen(false)}
                 className="w-full py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all cursor-pointer"
               >
                 Ho Letto e Compreso
@@ -2118,73 +2233,92 @@ export default function App() {
         </div>
       )}
 
-      {/* COOKIE CONSENT BANNER (Sticky Bottom-Left) */}
+      {/* COOKIE CONSENT PROMINENT OVERLAY / BANNER */}
       {!cookieConsent && !isCookieCustomizerOpen && (
-        <aside
-          role="dialog"
-          aria-live="polite"
-          aria-label="Informativa Cookie"
-          className="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-40 bg-[#130924]/95 backdrop-blur-xl p-5 rounded-2xl border border-[#00ffcc]/40 shadow-[0_12px_40px_rgba(0,0,0,0.85)] animate-in slide-in-from-bottom-5 duration-300 relative"
-        >
-          {/* Tasto di chiusura X circolare */}
-          <button
-            type="button"
-            onClick={handleDeclineCookies}
-            className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#1C0F33] border border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_8px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-10"
-            title="Chiudi banner cookie"
-            aria-label="Chiudi banner cookie"
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-300">
+          <aside
+            role="dialog"
+            aria-live="polite"
+            aria-label="Informativa Cookie e Legale"
+            className="bg-[#130924] border-2 border-[#00ffcc]/60 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-[0_0_50px_rgba(0,255,204,0.35)] animate-in zoom-in-95 duration-300"
           >
-            <span className="material-symbols-outlined text-sm">close</span>
-          </button>
+            {/* Tasto di chiusura X circolare */}
+            <button
+              type="button"
+              onClick={handleDeclineCookies}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-10"
+              title="Chiudi banner cookie"
+              aria-label="Chiudi banner cookie"
+            >
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
 
-          {/* Logo circolare in primo piano in alto al centro */}
-          <div className="flex flex-col items-center justify-center mb-3">
-            <div className="w-14 h-14 rounded-full bg-[#1C0F33] p-1 border-2 border-[#00ffcc] shadow-[0_0_16px_rgba(0,255,204,0.4)] flex items-center justify-center mb-1">
-              <img
-                src={IMAGES.avatar}
-                alt="Tarot Italia Logo"
-                className="w-full h-full object-contain rounded-full"
-              />
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.5)] flex items-center justify-center mb-2">
+                <img
+                  src={IMAGES.avatar}
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">cookie</span>
+                <span>COOKIE, PRIVACY &amp; DISCLAIMER</span>
+              </span>
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1">
-              <span className="material-symbols-outlined text-xs text-[#00ffcc]">cookie</span>
-              <span>COOKIE &amp; PRIVACY</span>
-            </span>
-          </div>
 
-          <div className="text-center">
-            <h4 className="font-serif text-[15px] font-bold text-white mb-1.5">
-              Rispettiamo la tua riservatezza
-            </h4>
-            <p className="text-[12px] text-[#A69BB5] leading-relaxed mb-4">
-              Utilizziamo cookie tecnici essenziali per la navigazione. Puoi liberamente accettarli, rifiutarli o personalizzarli.
-            </p>
+            <div className="text-center">
+              <h3 className="font-serif text-2xl font-bold text-white mb-2">
+                Informativa &amp; Consenso
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A69BB5] leading-relaxed mb-4">
+                Utilizziamo cookie tecnici per garantire il corretto funzionamento del sito. Accettando, confermi di aver preso visione della nostra{' '}
+                <button
+                  type="button"
+                  onClick={() => {
+                    changeTab('privacy-policy');
+                  }}
+                  className="text-[#00ffcc] font-semibold underline hover:text-white cursor-pointer"
+                >
+                  Privacy Policy
+                </button>{' '}
+                e del{' '}
+                <button
+                  type="button"
+                  onClick={() => setIsLegalModalOpen(true)}
+                  className="text-[#00ffcc] font-semibold underline hover:text-white cursor-pointer"
+                >
+                  Disclaimer sui servizi olistici
+                </button>.
+              </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-              <button
-                type="button"
-                onClick={handleAcceptAllCookies}
-                className="px-3.5 py-1.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[11px] font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all cursor-pointer"
-              >
-                Accetta Tutti
-              </button>
-              <button
-                type="button"
-                onClick={handleDeclineCookies}
-                className="px-3 py-1.5 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00ffcc] text-[11px] font-medium uppercase tracking-wider rounded-xl border border-[#00ffcc]/40 hover:border-[#00ffcc] transition-all cursor-pointer"
-              >
-                Solo Necessari
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsCookieCustomizerOpen(true)}
-                className="px-2 py-1.5 text-[11px] text-[#00ffcc] hover:text-[#FF007F] underline underline-offset-2 transition-colors cursor-pointer font-mono font-semibold"
-              >
-                Personalizza
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={handleAcceptAllCookies}
+                  className="px-5 py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all cursor-pointer"
+                >
+                  Accetta Tutti
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeclineCookies}
+                  className="px-4 py-2.5 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00ffcc] text-xs font-medium uppercase tracking-wider rounded-xl border border-[#00ffcc]/40 hover:border-[#00ffcc] transition-all cursor-pointer"
+                >
+                  Solo Necessari
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsCookieCustomizerOpen(true)}
+                  className="px-3 py-2.5 text-xs text-[#00ffcc] hover:text-[#FF007F] underline underline-offset-2 transition-colors cursor-pointer font-mono font-semibold"
+                >
+                  Personalizza
+                </button>
+              </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        </div>
       )}
 
       {/* COOKIE CUSTOMIZER MODAL */}
