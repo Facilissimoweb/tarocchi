@@ -165,6 +165,7 @@ export default function App() {
   const [bookingTime, setBookingTime] = useState('11:00');
   const [bookingNote, setBookingNote] = useState('');
   const [bookingPrivacyConsent, setBookingPrivacyConsent] = useState(false);
+  const [bookingAgeConsent, setBookingAgeConsent] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
 
   const toggleFaq = (index: number) => {
@@ -1876,11 +1877,14 @@ export default function App() {
             <p className="text-[13px] text-[#A69BB5]/70">
               © 2012–2025 Tarot Italia di Studio Olistico Macerata. P.IVA 02136780430. Professione disciplinata ai sensi della Legge 14 gennaio 2013, n. 4.
             </p>
-            <div className="flex flex-col md:items-end gap-1">
+            <div className="flex flex-col md:items-end gap-1.5 max-w-md text-right">
               <span className="text-[11px] font-mono font-semibold text-[#FF007F] uppercase tracking-widest flex items-center justify-center md:justify-end gap-1">
                 <span className="material-symbols-outlined text-xs">explicit</span>
                 <span>Servizi riservati esclusivamente a un pubblico maggiorenne (+18)</span>
               </span>
+              <p className="text-[11px] text-[#A69BB5] leading-relaxed">
+                Per la prenotazione online di un consulto tarologico o cartomatico, la seduta va saldata in accordo con la prenotazione. Metodi di pagamento accettati: Mastercard, PayPal, IBAN bancario istantaneo.
+              </p>
               <p className="text-[11px] font-mono font-medium text-[#A69BB5]/50 uppercase tracking-widest">
                 I consulti non sostituiscono pareri medici o psicologici.
               </p>
@@ -2060,8 +2064,8 @@ export default function App() {
                       </button>. Riservatezza garantita.
                     </p>
 
-                    {/* Checkbox obbligatorio prima dell'invio */}
-                    <label className="flex items-start gap-2 pt-1 border-t border-[#8A2BE2]/30 cursor-pointer text-white font-medium">
+                    {/* Prima spunta obbligatoria */}
+                    <label className="flex items-start gap-2 pt-2 border-t border-[#8A2BE2]/30 cursor-pointer text-white font-medium">
                       <input
                         type="checkbox"
                         required
@@ -2073,13 +2077,31 @@ export default function App() {
                         Dichiaro di aver preso visione e di accettare la Privacy Policy, l'Informativa Cookie ed il Disclaimer e Liberatoria. <span className="text-[#FF007F] font-bold">*</span>
                       </span>
                     </label>
+
+                    {/* Seconda spunta obbligatoria (Maggiorenne) */}
+                    <label className="flex items-start gap-2 pt-1.5 cursor-pointer text-white font-medium">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={bookingAgeConsent}
+                        onChange={(e) => setBookingAgeConsent(e.target.checked)}
+                        className="mt-0.5 accent-[#FF007F] w-4 h-4 rounded cursor-pointer"
+                      />
+                      <span className="text-[11px] text-white leading-snug">
+                        Dichiaro di essere maggiorenne (+18) e di usufruire dei servizi in piena autonomia e responsabilità. <span className="text-[#FF007F] font-bold">*</span>
+                      </span>
+                    </label>
                   </div>
+
+                  <p className="text-[10px] text-[#A69BB5] leading-relaxed bg-[#1C0F33]/40 p-2.5 rounded-xl border border-[#8A2BE2]/20 text-center">
+                    Per la prenotazione online di un consulto tarologico o cartomatico, la seduta va saldata in accordo con la prenotazione. Metodi di pagamento accettati: Mastercard, PayPal, IBAN bancario istantaneo.
+                  </p>
 
                   <button
                     type="submit"
-                    disabled={!bookingPrivacyConsent}
+                    disabled={!bookingPrivacyConsent || !bookingAgeConsent}
                     className={`w-full inline-flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
-                      bookingPrivacyConsent
+                      bookingPrivacyConsent && bookingAgeConsent
                         ? 'bg-[#FF007F] hover:bg-[#FF1A8C] text-white shadow-[0_0_20px_rgba(255,0,127,0.5)] cursor-pointer'
                         : 'bg-[#1C0F33] text-[#A69BB5]/50 border border-[#8A2BE2]/30 cursor-not-allowed opacity-60'
                     }`}
@@ -2088,10 +2110,7 @@ export default function App() {
                     <span>Conferma e Apri su WhatsApp (+39 379 1038253)</span>
                   </button>
 
-                  <div className="flex items-center justify-between gap-2 pt-1">
-                    <p className="text-[10px] text-[#A69BB5]/70">
-                      Nessun pagamento anticipato richiesto.
-                    </p>
+                  <div className="flex items-center justify-end gap-2 pt-1">
                     <button
                       type="button"
                       onClick={() => setIsBookingOpen(false)}
