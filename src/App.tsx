@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BlogSection } from './components/BlogSection';
 import { ShopSection } from './components/ShopSection';
 import { BrandSeal, BrandSectionDivider, BRAND_LOGO_URL } from './components/BrandSeal';
+import { Hero } from './components/Hero';
 import { ArcaniCard } from './components/ArcaniCard';
 import { ARCANI_22, ArcanoInfo } from './data/arcaniData';
 import { BLOG_ARTICLES } from './data/blogData';
@@ -194,7 +195,7 @@ export default function App() {
           <div className="max-w-[1240px] mx-auto flex items-center justify-between text-[#A69BB5] text-[11px] font-medium uppercase tracking-widest font-mono">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse shadow-[0_0_8px_#00F0FF]"></span>
-              <span className="truncate">Studio Olistico Macerata &amp; Sessioni Online • Cyber-Misticismo dal 2012</span>
+              <span className="truncate">Studio Olistico Macerata &amp; Sessioni Online • Tarologia Archetipica dal 2012</span>
             </div>
             <div className="hidden sm:flex items-center gap-4">
               <span className="flex items-center gap-1.5 text-[#00F0FF]">
@@ -1090,122 +1091,15 @@ export default function App() {
         {(activeTab === 'home' || activeTab === 'servizi') && (
           <div className="flex flex-col w-full">
             {/* HERO SECTION */}
-            <section className="relative w-full overflow-hidden bg-[#0C0714]">
-              {/* Cyber-Mystic Radial Background Glows */}
-              <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-[#8A2BE2]/15 rounded-full blur-[140px] pointer-events-none"></div>
-              <div className="absolute top-1/4 -left-20 w-[420px] h-[420px] bg-[#FF007F]/15 rounded-full blur-[120px] pointer-events-none"></div>
-              <div className="absolute top-1/3 -right-20 w-[460px] h-[460px] bg-[#00F0FF]/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-              {/* Brand Logo Decorative Watermark in soft blurred transparency */}
-              <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] rounded-full overflow-hidden opacity-15 pointer-events-none select-none blur-[2px] mix-blend-screen animate-pulse">
-                <img
-                  src={IMAGES.avatar}
-                  alt="Tarot Italia Seal Watermark"
-                  className="w-full h-full object-cover filter contrast-125 saturate-150"
-                />
-              </div>
-
-              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 py-10 sm:py-16 lg:py-24 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                  {/* Text Content Column */}
-                  <div className="lg:col-span-7 flex flex-col gap-4">
-                    {/* Cyber Badge */}
-                    <div className="inline-flex items-center gap-2 self-start px-3 py-1 bg-[#130924]/90 rounded-full border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.25)] backdrop-blur-md">
-                      <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse shadow-[0_0_6px_#00F0FF]"></span>
-                      <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-widest text-[#00F0FF]">
-                        Dal 2012 • Cyber-Misticismo &amp; Tarologia Archetipica
-                      </span>
-                    </div>
-
-                    {/* Main Title */}
-                    <h1 className="font-serif text-[28px] sm:text-[38px] lg:text-[46px] text-white leading-tight max-w-2xl font-bold">
-                      Il Linguaggio Segreto degli <span className="bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,0,127,0.5)]">Arcani</span> per la Tua Evoluzione Interiore
-                    </h1>
-
-                    {/* Poetic Subtitle */}
-                    <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-[#A69BB5] max-w-xl leading-relaxed">
-                      Uno spazio sacro e cibernetico per decodificare il tuo destino interiore. Sessioni individuali di ascolto empatico e divinazione archetipica, online via WhatsApp ovunque nel mondo o nello studio esoterico di Macerata.
-                    </p>
-
-                    {/* Dual CTAs */}
-                    <div className="flex flex-wrap items-center gap-3 pt-2">
-                      <button
-                        onClick={() => openBookingFor('Lettura On Line 1h')}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] hover:shadow-[0_0_30px_rgba(255,0,127,0.8)] transition-all duration-300 cursor-pointer"
-                      >
-                        <span className="material-symbols-outlined text-base leading-none">flare</span>
-                        <span>Prenota Lettura (1h)</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          setActiveTab('arcani');
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#130924] text-[#00F0FF] text-[12px] font-semibold uppercase tracking-wider rounded-xl hover:bg-[#1C0F33] hover:text-white transition-all duration-300 border border-[#00F0FF]/50 shadow-[0_0_15px_rgba(0,240,255,0.2)] cursor-pointer"
-                      >
-                        <span className="material-symbols-outlined text-base leading-none text-[#FF007F]">style</span>
-                        <span>Esplora i 22 Arcani</span>
-                      </button>
-                    </div>
-
-                    {/* Social Proof & Trust Metric */}
-                    <div className="flex items-center gap-4 pt-3">
-                      <div className="flex items-center gap-1 text-[#FF007F]">
-                        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm leading-none" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[11px] text-white font-semibold uppercase tracking-wider font-mono">
-                          Valutato 5.0 su Google Recensioni
-                        </span>
-                        <span className="text-[12px] text-[#A69BB5]">
-                          Oltre 10 anni di consulti, etica e supporto profondo
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Visual Esoteric Portrait Column */}
-                  <div className="lg:col-span-5 relative flex justify-center">
-                    <div className="relative w-full max-w-[380px] aspect-[2/3] rounded-2xl overflow-hidden shadow-[0_0_35px_rgba(138,43,226,0.4)] bg-[#130924] group border-2 border-[#8A2BE2]/50 hover:border-[#00F0FF] transition-all duration-500">
-                      <img
-                        alt="Evocazione rituale di Tarot Italia"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover filter contrast-110 grayscale brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src={IMAGES.hero}
-                        onError={(e) => {
-                          (e.target as HTMLElement).style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C0714] via-[#0C0714]/40 to-transparent"></div>
-
-                      {/* Recessed Archival Stamp Overlay with Neon Halo */}
-                      <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-[#130924]/90 backdrop-blur-md rounded-xl shadow-lg flex items-center gap-3.5 border border-[#00F0FF]/40">
-                        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 p-0.5 bg-gradient-to-tr from-[#FF007F] to-[#00F0FF] shadow-[0_0_12px_rgba(255,0,127,0.6)]">
-                          <img
-                            alt="Sigillo Tarot Italia"
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full rounded-full object-cover bg-[#0C0714]"
-                            src={IMAGES.avatar}
-                          />
-                        </div>
-                        <div className="flex flex-col min-w-0">
-                          <span className="font-serif text-[16px] text-white truncate font-bold">
-                            Sanctuario Simbolico
-                          </span>
-                          <span className="text-[10px] text-[#00F0FF] font-mono tracking-wider truncate">
-                            Studio Macerata • Online Globale
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <Hero
+              heroImage={IMAGES.hero}
+              avatarImage={IMAGES.avatar}
+              onOpenBooking={openBookingFor}
+              onExploreArcani={() => {
+                setActiveTab('arcani');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
 
             {/* VALORI & FILOSOFIA (3 CORE CARDS) */}
             <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20" id="metodi">
