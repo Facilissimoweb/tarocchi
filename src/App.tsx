@@ -762,7 +762,7 @@ export default function App() {
             {/* Selected Arcano In-Depth Contemplation Panel */}
             <div
               id="arcano-focus-panel"
-              className="bg-[#130924] p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-[#8A2BE2]/60 shadow-[0_0_40px_rgba(138,43,226,0.3)] relative overflow-hidden"
+              className="bg-[#130924] p-6 sm:p-10 lg:p-12 rounded-3xl border-2 border-[#00ffcc]/50 shadow-[0_0_40px_rgba(0,255,204,0.25)] relative overflow-hidden"
             >
               {/* Background ambient glow */}
               <div
@@ -770,10 +770,25 @@ export default function App() {
                 style={{ backgroundColor: selectedArcanoObj.primaryColor }}
               />
 
+              {/* Logo circolare in primo piano in alto al centro del pannello focus */}
+              <div className="flex flex-col items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                  <img
+                    src={IMAGES.avatar}
+                    alt="Tarot Italia Logo"
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm text-[#00ffcc]">style</span>
+                  <span>DETTAGLI ARCANO SELEZIONATO</span>
+                </span>
+              </div>
+
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* 3D Interactive Card Spotlight */}
                 <div className="lg:col-span-4 flex flex-col items-center justify-center">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#00F0FF] mb-3">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] mb-3 font-semibold">
                     Lama Selezionata
                   </span>
                   <ArcaniCard
@@ -1812,23 +1827,31 @@ export default function App() {
       {/* BOOKING MODAL */}
       {isBookingOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-5 sm:p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[90vh] overflow-y-auto">
-            {/* Header del widget con titolo e pulsante Chiudi Widget chiaro */}
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#8A2BE2]/30 sticky top-0 bg-[#130924]/95 backdrop-blur-md pt-1 z-20">
-              <div className="flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] uppercase tracking-widest font-semibold">
-                <span className="material-symbols-outlined text-sm">calendar_month</span>
-                <span>Widget Prenotazioni</span>
+          <div className="bg-[#130924] border border-[#00ffcc]/40 rounded-2xl max-w-lg w-full p-5 sm:p-6 lg:p-8 relative shadow-[0_0_40px_rgba(0,255,204,0.25)] max-h-[90vh] overflow-y-auto">
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                <img
+                  src={IMAGES.avatar}
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
-              <button
-                type="button"
-                onClick={() => setIsBookingOpen(false)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1C0F33] hover:bg-[#FF007F]/20 text-[#00F0FF] hover:text-[#FF007F] border border-[#00F0FF]/40 hover:border-[#FF007F] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.2)]"
-                aria-label="Chiudi widget"
-              >
-                <span className="material-symbols-outlined text-base">close</span>
-                <span>Chiudi Widget</span>
-              </button>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">calendar_month</span>
+                <span>WIDGET PRENOTAZIONI</span>
+              </span>
             </div>
+
+            {/* Tasto di chiusura (X) circolare in alto a destra */}
+            <button
+              type="button"
+              onClick={() => setIsBookingOpen(false)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-30"
+              aria-label="Chiudi widget"
+            >
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
 
             {!bookingSubmitted ? (
               <form onSubmit={handleBookingSubmit} className="space-y-4">
@@ -1841,13 +1864,13 @@ export default function App() {
 
                 {/* Service Selection */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                     Tipologia di Consulto
                   </label>
                   <select
                     value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
-                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF]/50"
+                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#00ffcc] focus:ring-1 focus:ring-[#00ffcc]/50"
                   >
                     <option value="Lettura On Line 1h">Lettura On Line 1h (Video / WhatsApp)</option>
                     <option value="Lettura Dal Vivo (Macerata)">Lettura Dal Vivo in Studio a Macerata (1h)</option>
@@ -1858,7 +1881,7 @@ export default function App() {
 
                 {/* Name */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                     Il Tuo Nome
                   </label>
                   <input
@@ -1867,13 +1890,13 @@ export default function App() {
                     placeholder="Es. Maria Teresa"
                     value={bookingName}
                     onChange={(e) => setBookingName(e.target.value)}
-                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-sm text-white placeholder:text-[#A69BB5]/50 focus:outline-none focus:border-[#00F0FF] focus:ring-1 focus:ring-[#00F0FF]/50"
+                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-sm text-white placeholder:text-[#A69BB5]/50 focus:outline-none focus:border-[#00ffcc] focus:ring-1 focus:ring-[#00ffcc]/50"
                   />
                 </div>
 
                 {/* Modalità Canale */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                     Modalità Preferita
                   </label>
                   <div className="grid grid-cols-3 gap-2">
@@ -1882,10 +1905,10 @@ export default function App() {
                         type="button"
                         key={channel}
                         onClick={() => setBookingChannel(channel)}
-                        className={`py-2 px-2 text-center text-xs rounded-xl border transition-all ${
+                        className={`py-2 px-2 text-center text-xs rounded-xl border transition-all cursor-pointer ${
                           bookingChannel === channel
-                            ? 'bg-[#1C0F33] border-[#00F0FF] text-[#00F0FF] font-semibold shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                            : 'bg-[#0C0714] border-[#8A2BE2]/30 text-[#A69BB5] hover:border-[#00F0FF]/50 hover:text-white'
+                            ? 'bg-[#1C0F33] border-[#00ffcc] text-[#00ffcc] font-semibold shadow-[0_0_12px_rgba(0,255,204,0.35)]'
+                            : 'bg-[#0C0714] border-[#8A2BE2]/30 text-[#A69BB5] hover:border-[#00ffcc]/50 hover:text-white'
                         }`}
                       >
                         {channel}
@@ -1897,24 +1920,24 @@ export default function App() {
                 {/* Date & Time slot */}
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                       Data Desiderata
                     </label>
                     <input
                       type="date"
                       value={bookingDate}
                       onChange={(e) => setBookingDate(e.target.value)}
-                      className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00F0FF]"
+                      className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00ffcc] focus:ring-1 focus:ring-[#00ffcc]/50"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                       Fascia Oraria
                     </label>
                     <select
                       value={bookingTime}
                       onChange={(e) => setBookingTime(e.target.value)}
-                      className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00F0FF]"
+                      className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00ffcc] focus:ring-1 focus:ring-[#00ffcc]/50"
                     >
                       <option value="10:00">10:00 Mattina</option>
                       <option value="11:30">11:30 Mattina</option>
@@ -1927,7 +1950,7 @@ export default function App() {
 
                 {/* Notes */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00F0FF] font-semibold mb-1">
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#00ffcc] font-semibold mb-1">
                     Quesito o Intenzione (Opzionale)
                   </label>
                   <textarea
@@ -1935,7 +1958,7 @@ export default function App() {
                     placeholder="Descrivi brevemente su quale area della vita desideri fare luce..."
                     value={bookingNote}
                     onChange={(e) => setBookingNote(e.target.value)}
-                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white placeholder:text-[#A69BB5]/50 focus:outline-none focus:border-[#00F0FF]"
+                    className="w-full bg-[#0C0714] border border-[#8A2BE2]/50 rounded-xl px-3 py-2 text-xs text-white placeholder:text-[#A69BB5]/50 focus:outline-none focus:border-[#00ffcc] focus:ring-1 focus:ring-[#00ffcc]/50"
                   ></textarea>
                 </div>
 
@@ -1981,10 +2004,11 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() => setIsBookingOpen(false)}
-                      className="inline-flex items-center gap-1 px-3 py-1 bg-[#1C0F33] text-[#00F0FF] hover:text-white text-[10px] font-semibold uppercase tracking-wider rounded-lg border border-[#00F0FF]/30 hover:border-[#00F0FF] transition-all cursor-pointer"
+                      className="w-8 h-8 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_10px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer"
+                      title="Chiudi Widget"
+                      aria-label="Chiudi Widget"
                     >
-                      <span className="material-symbols-outlined text-xs">close</span>
-                      <span>Chiudi Widget</span>
+                      <span className="material-symbols-outlined text-base">close</span>
                     </button>
                   </div>
                 </div>
@@ -2017,21 +2041,35 @@ export default function App() {
       {/* LEGAL & PRIVACY MODAL */}
       {isLegalModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[85vh] overflow-y-auto">
+          <div className="bg-[#130924] border border-[#00ffcc]/40 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(0,255,204,0.25)] max-h-[85vh] overflow-y-auto">
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                <img
+                  src={IMAGES.avatar}
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">gavel</span>
+                <span>INFORMATIVA LEGALE</span>
+              </span>
+            </div>
+
+            {/* Tasto di chiusura (X) circolare in alto a destra */}
             <button
+              type="button"
               onClick={() => setIsLegalModalOpen(null)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi finestra"
             >
-              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
+              <span className="material-symbols-outlined text-lg">close</span>
             </button>
 
             {isLegalModalOpen === 'privacy' ? (
               <div className="space-y-4">
-                <span className="text-[11px] font-mono font-semibold text-[#00F0FF] uppercase tracking-widest">
-                  Informativa Legale
-                </span>
-                <h3 className="font-serif text-2xl text-white font-bold">
+                <h3 className="font-serif text-2xl text-white font-bold text-center">
                   Privacy Policy &amp; Trattamento Dati
                 </h3>
                 <div className="text-xs text-[#A69BB5] space-y-3 leading-relaxed">
@@ -2086,49 +2124,64 @@ export default function App() {
           role="dialog"
           aria-live="polite"
           aria-label="Informativa Cookie"
-          className="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-40 bg-[#130924]/95 backdrop-blur-xl p-5 rounded-2xl border border-[#8A2BE2]/50 shadow-[0_12px_40px_rgba(0,0,0,0.8)] animate-in slide-in-from-bottom-5 duration-300"
+          className="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-40 bg-[#130924]/95 backdrop-blur-xl p-5 rounded-2xl border border-[#00ffcc]/40 shadow-[0_12px_40px_rgba(0,0,0,0.85)] animate-in slide-in-from-bottom-5 duration-300 relative"
         >
-          <div className="flex items-start gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#1C0F33] flex-shrink-0 flex items-center justify-center text-[#00F0FF] border border-[#00F0FF]/30">
-              <span className="material-symbols-outlined text-xl">cookie</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-mono font-semibold text-[#00F0FF] uppercase tracking-widest">
-                  Trasparenza &amp; Cookie
-                </span>
-                <span className="text-[10px] text-[#A69BB5] font-mono">GDPR / ePrivacy</span>
-              </div>
-              <h4 className="font-serif text-[15px] font-bold text-white mt-0.5 mb-1.5">
-                Rispettiamo la tua riservatezza
-              </h4>
-              <p className="text-[12px] text-[#A69BB5] leading-relaxed mb-3">
-                Utilizziamo cookie tecnici essenziali per garantire la corretta navigazione e funzionalità dello studio. Puoi scegliere liberamente se acconsentire a metriche anonime o personalizzare le tue preferenze.
-              </p>
+          {/* Tasto di chiusura X circolare */}
+          <button
+            type="button"
+            onClick={handleDeclineCookies}
+            className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#1C0F33] border border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_8px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-10"
+            title="Chiudi banner cookie"
+            aria-label="Chiudi banner cookie"
+          >
+            <span className="material-symbols-outlined text-sm">close</span>
+          </button>
 
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={handleAcceptAllCookies}
-                  className="px-3.5 py-1.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[11px] font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all cursor-pointer"
-                >
-                  Accetta Tutti
-                </button>
-                <button
-                  type="button"
-                  onClick={handleDeclineCookies}
-                  className="px-3 py-1.5 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00F0FF] text-[11px] font-medium uppercase tracking-wider rounded-xl border border-[#8A2BE2]/40 hover:border-[#00F0FF] transition-all cursor-pointer"
-                >
-                  Solo Necessari
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsCookieCustomizerOpen(true)}
-                  className="px-2 py-1.5 text-[11px] text-[#00F0FF] hover:text-[#FF007F] underline underline-offset-2 transition-colors cursor-pointer font-mono"
-                >
-                  Personalizza
-                </button>
-              </div>
+          {/* Logo circolare in primo piano in alto al centro */}
+          <div className="flex flex-col items-center justify-center mb-3">
+            <div className="w-14 h-14 rounded-full bg-[#1C0F33] p-1 border-2 border-[#00ffcc] shadow-[0_0_16px_rgba(0,255,204,0.4)] flex items-center justify-center mb-1">
+              <img
+                src={IMAGES.avatar}
+                alt="Tarot Italia Logo"
+                className="w-full h-full object-contain rounded-full"
+              />
+            </div>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1">
+              <span className="material-symbols-outlined text-xs text-[#00ffcc]">cookie</span>
+              <span>COOKIE &amp; PRIVACY</span>
+            </span>
+          </div>
+
+          <div className="text-center">
+            <h4 className="font-serif text-[15px] font-bold text-white mb-1.5">
+              Rispettiamo la tua riservatezza
+            </h4>
+            <p className="text-[12px] text-[#A69BB5] leading-relaxed mb-4">
+              Utilizziamo cookie tecnici essenziali per la navigazione. Puoi liberamente accettarli, rifiutarli o personalizzarli.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              <button
+                type="button"
+                onClick={handleAcceptAllCookies}
+                className="px-3.5 py-1.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[11px] font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all cursor-pointer"
+              >
+                Accetta Tutti
+              </button>
+              <button
+                type="button"
+                onClick={handleDeclineCookies}
+                className="px-3 py-1.5 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00ffcc] text-[11px] font-medium uppercase tracking-wider rounded-xl border border-[#00ffcc]/40 hover:border-[#00ffcc] transition-all cursor-pointer"
+              >
+                Solo Necessari
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsCookieCustomizerOpen(true)}
+                className="px-2 py-1.5 text-[11px] text-[#00ffcc] hover:text-[#FF007F] underline underline-offset-2 transition-colors cursor-pointer font-mono font-semibold"
+              >
+                Personalizza
+              </button>
             </div>
           </div>
         </aside>
@@ -2137,33 +2190,46 @@ export default function App() {
       {/* COOKIE CUSTOMIZER MODAL */}
       {isCookieCustomizerOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(138,43,226,0.35)] max-h-[85vh] overflow-y-auto">
+          <div className="bg-[#130924] border border-[#00ffcc]/40 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(0,255,204,0.25)] max-h-[85vh] overflow-y-auto">
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                <img
+                  src={IMAGES.avatar}
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">tune</span>
+                <span>COOKIE &amp; PRIVACY</span>
+              </span>
+            </div>
+
+            {/* Tasto di chiusura (X) circolare in alto a destra */}
             <button
+              type="button"
               onClick={() => setIsCookieCustomizerOpen(false)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi gestione cookie"
             >
-              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
+              <span className="material-symbols-outlined text-lg">close</span>
             </button>
 
-            <div className="flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] font-semibold uppercase tracking-widest mb-1">
-              <span className="material-symbols-outlined text-base">tune</span>
-              <span>Centro Preferenze Riservatezza</span>
-            </div>
-            <h3 className="font-serif text-2xl text-white font-bold mb-2">
+            <h3 className="font-serif text-2xl text-white font-bold mb-2 text-center">
               Configura i Tuoi Cookie
             </h3>
-            <p className="text-xs text-[#A69BB5] leading-relaxed mb-6">
+            <p className="text-xs text-[#A69BB5] leading-relaxed mb-6 text-center">
               Di seguito puoi abilitare o disabilitare le diverse tipologie di cookie impiegate sul sito. I cookie necessari non possono essere disattivati in quanto fondamentali per l’accesso alle sessioni e ai moduli di prenotazione.
             </p>
 
             <div className="space-y-4">
               {/* Necessari */}
-              <div className="p-4 bg-[#1C0F33] rounded-xl border border-[#8A2BE2]/30 flex items-start justify-between gap-4">
+              <div className="p-4 bg-[#1C0F33] rounded-xl border border-[#00ffcc]/30 flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-serif text-sm font-semibold text-white">Cookie Tecnici Necessari</span>
-                    <span className="px-2 py-0.5 text-[9px] uppercase font-mono font-semibold bg-[#130924] text-[#00F0FF] border border-[#00F0FF]/30 rounded">
+                    <span className="px-2 py-0.5 text-[9px] uppercase font-mono font-semibold bg-[#130924] text-[#00ffcc] border border-[#00ffcc]/40 rounded">
                       Sempre Attivi
                     </span>
                   </div>
@@ -2172,7 +2238,7 @@ export default function App() {
                   </p>
                 </div>
                 <div className="pt-1">
-                  <span className="material-symbols-outlined text-[#00F0FF] text-xl">check_box</span>
+                  <span className="material-symbols-outlined text-[#00ffcc] text-xl">check_box</span>
                 </div>
               </div>
 
@@ -2195,7 +2261,7 @@ export default function App() {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-10 h-5 bg-[#0C0714] border border-[#8A2BE2]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#FF007F] peer-checked:border-[#FF007F]"></div>
+                  <div className="w-10 h-5 bg-[#0C0714] border border-[#8A2BE2]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ffcc] peer-checked:border-[#00ffcc]"></div>
                 </label>
               </div>
 
@@ -2218,7 +2284,7 @@ export default function App() {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-10 h-5 bg-[#0C0714] border border-[#8A2BE2]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#FF007F] peer-checked:border-[#FF007F]"></div>
+                  <div className="w-10 h-5 bg-[#0C0714] border border-[#8A2BE2]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ffcc] peer-checked:border-[#00ffcc]"></div>
                 </label>
               </div>
             </div>
@@ -2227,7 +2293,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={handleDeclineCookies}
-                className="px-4 py-2 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00F0FF] text-xs font-semibold uppercase tracking-wider rounded-xl border border-[#8A2BE2]/40 hover:border-[#00F0FF] transition-colors"
+                className="px-4 py-2 bg-[#1C0F33] hover:bg-[#130924] text-white hover:text-[#00ffcc] text-xs font-semibold uppercase tracking-wider rounded-xl border border-[#8A2BE2]/40 hover:border-[#00ffcc] transition-colors cursor-pointer"
               >
                 Rifiuta Opzionali
               </button>
@@ -2235,14 +2301,14 @@ export default function App() {
                 <button
                   type="button"
                   onClick={handleAcceptAllCookies}
-                  className="px-4 py-2 bg-[#1C0F33] text-[#00F0FF] hover:bg-[#130924] text-xs font-semibold uppercase tracking-wider rounded-xl hover:border-[#00F0FF] transition-colors border border-[#00F0FF]/40"
+                  className="px-4 py-2 bg-[#1C0F33] text-[#00ffcc] hover:bg-[#130924] text-xs font-semibold uppercase tracking-wider rounded-xl hover:border-[#00ffcc] transition-colors border border-[#00ffcc]/40 cursor-pointer"
                 >
                   Accetta Tutti
                 </button>
                 <button
                   type="button"
                   onClick={handleSaveCookiePreferences}
-                  className="px-5 py-2 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all"
+                  className="px-5 py-2 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all cursor-pointer"
                 >
                   Salva Scelte
                 </button>
