@@ -437,21 +437,33 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
       {/* PRODUCT DETAIL MODAL */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button
-              onClick={() => setSelectedProduct(null)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
-              aria-label="Chiudi dettagli prodotto"
-            >
-              <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
-            </button>
-
-            <div className="flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-widest mb-1">
-              <span className="material-symbols-outlined text-sm">verified</span>
-              <span>{selectedProduct.category}</span>
+          <div className="bg-[#130924] border border-[#00ffcc]/40 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(0,255,204,0.25)] max-h-[90vh] overflow-y-auto">
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">storefront</span>
+                <span>BOTTEGA OLISTICA • {selectedProduct.category.toUpperCase()}</span>
+              </span>
             </div>
 
-            <h3 className="font-serif text-2xl sm:text-3xl text-white mb-2">
+            {/* Tasto di chiusura (X) circolare in alto a destra */}
+            <button
+              type="button"
+              onClick={() => setSelectedProduct(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
+              aria-label="Chiudi dettagli prodotto"
+            >
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
+
+            <h3 className="font-serif text-2xl sm:text-3xl text-white mb-2 text-center">
               {selectedProduct.title}
             </h3>
 
@@ -569,21 +581,31 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
       {/* SLIDE-OVER / CART DRAWER */}
       {isCartOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#130924] h-full shadow-2xl border-l border-[#8A2BE2]/50 flex flex-col p-6 overflow-hidden">
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-[#8A2BE2]/30">
-              <div className="flex items-center gap-2 text-[#00F0FF]">
-                <span className="material-symbols-outlined text-xl">shopping_bag</span>
-                <h3 className="font-serif text-lg text-white">Il Tuo Carrello</h3>
+          <div className="w-full max-w-md bg-[#130924] h-full shadow-[0_0_40px_rgba(0,255,204,0.25)] border-l border-[#00ffcc]/40 flex flex-col p-6 overflow-hidden relative">
+            {/* Logo circolare in primo piano in alto al centro */}
+            <div className="flex flex-col items-center justify-center mb-4 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#1C0F33] p-1.5 border-2 border-[#00ffcc] shadow-[0_0_20px_rgba(0,255,204,0.4)] flex items-center justify-center mb-2">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="w-9 h-9 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Chiudi carrello"
-              >
-                <span className="material-symbols-outlined text-lg sm:text-xl">close</span>
-              </button>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00ffcc] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#00ffcc]">shopping_bag</span>
+                <span>CARRELLO BOTTEGA</span>
+              </span>
             </div>
+
+            {/* Tasto di chiusura (X) circolare in alto a destra */}
+            <button
+              type="button"
+              onClick={() => setIsCartOpen(false)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] text-[#FF007F] hover:bg-[#FF007F] hover:text-white shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
+              aria-label="Chiudi carrello"
+            >
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
 
             {/* Cart Items List */}
             <div className="flex-1 overflow-y-auto py-4 space-y-4">
