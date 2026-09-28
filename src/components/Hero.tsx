@@ -14,19 +14,16 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreArcani,
 }) => {
   return (
-    <section className="relative w-full overflow-hidden bg-[#0C0714] min-h-[85vh] flex items-center">
-      {/* Background Image with Gradient Overlay (Girls Photo on right/center with smooth fade to left) */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Tarot Italia - Percorsi di Evoluzione Interiore"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center lg:object-right filter contrast-105 brightness-90"
-        />
-        {/* Soft dark gradient mask: pitch black/dark anthracite on left for full text contrast, fading out to transparent on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0714] via-[#0C0714]/85 sm:via-[#0C0714]/75 to-transparent"></div>
-        {/* Subtle vertical gradient for top/bottom integration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0C0714]/80 via-transparent to-[#0C0714]"></div>
+    <section className="relative w-full overflow-hidden bg-[#0C0714] min-h-[90vh] lg:min-h-[95vh] py-24 lg:py-36 flex items-center">
+      {/* Background Parallax Layer */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-fixed filter contrast-105 brightness-105"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        {/* Balanced gradient overlay allowing rich background visibility while keeping high readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0714]/90 via-[#0C0714]/65 to-[#0C0714]/30"></div>
+        {/* Vertical subtle vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C0714]/60 via-transparent to-[#0C0714]/80"></div>
       </div>
 
       {/* Cyber-Mystic Background Radial Glows */}
