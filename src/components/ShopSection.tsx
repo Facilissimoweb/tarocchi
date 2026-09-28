@@ -437,18 +437,21 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
       {/* PRODUCT DETAIL MODAL */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#130924] border border-[#8A2BE2]/50 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto text-center">
             <button
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] shadow-[0_0_12px_rgba(0,240,255,0.3)] flex items-center justify-center transition-all cursor-pointer z-10"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] hover:border-[#00ffcc] text-[#FF007F] hover:text-[#00ffcc] shadow-[0_0_12px_rgba(255,0,127,0.4)] flex items-center justify-center transition-all cursor-pointer z-10"
               aria-label="Chiudi dettagli prodotto"
             >
               <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
             </button>
 
-            <div className="flex items-center gap-2 text-[#00F0FF] text-[11px] font-semibold uppercase tracking-widest mb-1">
+            {/* Logo Circolare in Primo Piano */}
+            <BrandSeal size="md" className="mx-auto mb-3" />
+
+            <div className="flex items-center justify-center gap-2 text-[#00ffcc] text-[11px] font-semibold uppercase tracking-widest mb-1">
               <span className="material-symbols-outlined text-sm">verified</span>
-              <span>{selectedProduct.category}</span>
+              <span>DETTAGLI ARTICOLO • {selectedProduct.category}</span>
             </div>
 
             <h3 className="font-serif text-2xl sm:text-3xl text-white mb-2">
@@ -569,20 +572,22 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
       {/* SLIDE-OVER / CART DRAWER */}
       {isCartOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#130924] h-full shadow-2xl border-l border-[#8A2BE2]/50 flex flex-col p-6 overflow-hidden">
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-[#8A2BE2]/30">
-              <div className="flex items-center gap-2 text-[#00F0FF]">
-                <span className="material-symbols-outlined text-xl">shopping_bag</span>
-                <h3 className="font-serif text-lg text-white">Il Tuo Carrello</h3>
+          <div className="w-full max-w-md bg-[#130924] h-full shadow-2xl border-l border-[#8A2BE2]/50 flex flex-col p-6 overflow-hidden relative">
+            <button
+              onClick={() => setIsCartOpen(false)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C0F33] border-2 border-[#FF007F] hover:border-[#00ffcc] text-[#FF007F] hover:text-[#00ffcc] flex items-center justify-center transition-all cursor-pointer z-10"
+              aria-label="Chiudi carrello"
+            >
+              <span className="material-symbols-outlined text-lg sm:text-xl">close</span>
+            </button>
+
+            {/* Drawer Header con Logo e Accenti Smeraldo */}
+            <div className="text-center pb-4 border-b border-[#8A2BE2]/30">
+              <BrandSeal size="sm" className="mx-auto mb-2" />
+              <div className="flex items-center justify-center gap-2 text-[#00ffcc]">
+                <span className="material-symbols-outlined text-lg">shopping_bag</span>
+                <h3 className="font-serif text-lg text-white">Il Tuo Carrello Bottega</h3>
               </div>
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="w-9 h-9 rounded-full bg-[#1C0F33] border border-[#00F0FF]/60 text-white hover:text-[#00F0FF] hover:border-[#00F0FF] flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Chiudi carrello"
-              >
-                <span className="material-symbols-outlined text-lg sm:text-xl">close</span>
-              </button>
             </div>
 
             {/* Cart Items List */}
