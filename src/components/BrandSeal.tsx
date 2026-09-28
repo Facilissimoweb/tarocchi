@@ -27,9 +27,9 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
   // Generous, prominent sizes as requested by user
   const dimensions = {
     sm: 'w-10 h-10 sm:w-12 sm:h-12',       // Header nav
-    md: 'w-14 h-14 sm:w-16 sm:h-16',       // Section headings & dividers
-    lg: 'w-18 h-18 sm:w-20 sm:h-20',       // Major section headers & modals
-    xl: 'w-22 h-22 sm:w-24 sm:h-24',       // Hero crest & CTA banner
+    md: 'w-20 h-20 md:w-24 md:h-24',       // Section headings & dividers
+    lg: 'w-20 h-20 md:w-24 md:h-24',       // Major section headers & modals
+    xl: 'w-24 h-24 sm:w-28 sm:h-28',       // Hero crest & CTA banner
     '2xl': 'w-28 h-28 sm:w-36 sm:h-36'     // Hero watermark / flagship emblem
   }[size];
 
@@ -82,7 +82,7 @@ export const BrandSectionDivider: React.FC<{
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#8A2BE2]/60 to-[#FF007F]/60"></div>
         <div className="relative group cursor-default">
           {/* Neon glow ring */}
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_20px_rgba(255,0,127,0.45),_0_0_30px_rgba(0,240,255,0.25)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_25px_rgba(255,0,127,0.65),_0_0_35px_rgba(0,240,255,0.35)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
             <div className="w-full h-full rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
               <img
                 src={BRAND_LOGO_URL}
