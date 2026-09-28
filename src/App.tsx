@@ -3,6 +3,7 @@ import { BlogSection } from './components/BlogSection';
 import { ShopSection } from './components/ShopSection';
 import { BrandSeal, BrandSectionDivider, BRAND_LOGO_URL } from './components/BrandSeal';
 import { Hero } from './components/Hero';
+import { Header, NavTab } from './components/Header';
 import { ArcaniCard } from './components/ArcaniCard';
 import { ARCANI_22, ArcanoInfo } from './data/arcaniData';
 import { BLOG_ARTICLES } from './data/blogData';
@@ -189,221 +190,15 @@ export default function App() {
       className="bg-[#0C0714] text-[#F5F0EB] min-h-screen flex flex-col font-sans selection:bg-[#FF007F] selection:text-white overflow-x-hidden"
     >
       {/* HEADER / NAVIGATION */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#0C0714]/90 backdrop-blur-xl border-b border-[#8A2BE2]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)]">
-        {/* Top Info Bar */}
-        <div className="hidden sm:block w-full bg-[#08040E] py-1 px-4 lg:px-12 border-b border-[#8A2BE2]/20">
-          <div className="max-w-[1240px] mx-auto flex items-center justify-between text-[#A69BB5] text-[11px] font-medium uppercase tracking-widest font-mono">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse shadow-[0_0_8px_#00F0FF]"></span>
-              <span className="truncate">Studio Olistico Macerata &amp; Sessioni Online • Tarologia Archetipica dal 2012</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-4">
-              <span className="flex items-center gap-1.5 text-[#00F0FF]">
-                <span className="material-symbols-outlined text-sm leading-none text-[#FF007F]">auto_awesome</span>
-                Frequenze &amp; Consulti Attivi
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Nav Bar */}
-        <div className="h-16 sm:h-20 max-w-[1240px] mx-auto px-3 sm:px-4 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
-          {/* Brand Wordmark & Seal with Neon Glow */}
-          <button
-            onClick={() => changeTab('home')}
-            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none min-w-0"
-          >
-            <div className="relative flex items-center justify-center p-1 rounded-full bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_16px_rgba(255,0,127,0.6),_0_0_25px_rgba(0,240,255,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
-                <img
-                  alt="Tarot Italia Seal"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full rounded-full object-cover"
-                  src={IMAGES.avatar}
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = 'none';
-                  }}
-                />
-              </div>
-            </div>
-            <div className="flex flex-col min-w-0">
-              <span className="font-serif text-[18px] sm:text-[22px] font-bold tracking-wider bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent uppercase leading-none drop-shadow-[0_0_12px_rgba(255,0,127,0.5)] truncate">
-                TAROT ITALIA
-              </span>
-              <span className="hidden sm:block text-[9px] font-mono tracking-[0.25em] text-[#00F0FF] uppercase pt-1 truncate">
-                Studio Olistico Macerata • Est. 2012
-              </span>
-            </div>
-          </button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1.5">
-            <button
-              onClick={() => changeTab('home')}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
-                activeTab === 'home'
-                  ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                  : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#130924]'
-              }`}
-            >
-              Home
-            </button>
-            <button
-              onClick={() => {
-                changeTab('servizi');
-                const el = document.getElementById('servizi-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
-                activeTab === 'servizi'
-                  ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                  : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#130924]'
-              }`}
-            >
-              Servizi &amp; Consulti
-            </button>
-            <button
-              onClick={() => changeTab('chi-siamo')}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
-                activeTab === 'chi-siamo'
-                  ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                  : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#130924]'
-              }`}
-            >
-              Chi Siamo / About
-            </button>
-            <button
-              onClick={() => changeTab('arcani')}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
-                activeTab === 'arcani'
-                  ? 'bg-[#FF007F]/20 text-[#FF007F] border border-[#FF007F]/60 shadow-[0_0_15px_rgba(255,0,127,0.4)]'
-                  : 'text-[#A69BB5] hover:text-[#FF007F] hover:bg-[#130924]'
-              }`}
-            >
-              <span className="material-symbols-outlined text-sm leading-none text-[#FF007F]">style</span>
-              <span>22 Arcani</span>
-            </button>
-            <button
-              onClick={() => changeTab('blog')}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg cursor-pointer ${
-                activeTab === 'blog'
-                  ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                  : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#130924]'
-              }`}
-            >
-              Blog
-            </button>
-            <button
-              onClick={() => changeTab('shop')}
-              className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all rounded-lg flex items-center gap-1.5 cursor-pointer ${
-                activeTab === 'shop'
-                  ? 'bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                  : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#130924]'
-              }`}
-            >
-              <span className="material-symbols-outlined text-sm leading-none text-[#00F0FF]">storefront</span>
-              <span>Shop</span>
-            </button>
-          </nav>
-
-          {/* Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <button
-              onClick={() => changeTab('shop')}
-              className="hidden md:inline-flex items-center gap-1 px-3 py-2 text-xs text-[#00F0FF] hover:text-white transition-colors border border-[#00F0FF]/40 hover:border-[#00F0FF] rounded-xl hover:shadow-[0_0_12px_rgba(0,240,255,0.3)] cursor-pointer"
-              title="Apri Bottega"
-            >
-              <span className="material-symbols-outlined text-sm">shopping_bag</span>
-              <span className="uppercase tracking-wider font-semibold text-[10px]">Bottega</span>
-            </button>
-
-            <button
-              onClick={() => openBookingFor('Lettura On Line 1h')}
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.5)] hover:shadow-[0_0_30px_rgba(255,0,127,0.8)] transition-all duration-300 cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-sm sm:text-base leading-none">calendar_month</span>
-              <span className="hidden sm:inline whitespace-nowrap">Prenota Lettura</span>
-              <span className="sm:hidden whitespace-nowrap">Prenota</span>
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#A69BB5] hover:text-white rounded-lg focus:outline-none"
-              aria-label="Apri menu"
-            >
-              <span className="material-symbols-outlined text-2xl">
-                {mobileMenuOpen ? 'close' : 'menu'}
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#130924] border-b border-[#8A2BE2]/40 px-4 py-4 flex flex-col gap-2 shadow-2xl animate-in fade-in duration-200">
-            <button
-              onClick={() => { changeTab('home'); setMobileMenuOpen(false); }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => {
-                changeTab('servizi');
-                setMobileMenuOpen(false);
-                const el = document.getElementById('servizi-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg"
-            >
-              Servizi &amp; Consulti
-            </button>
-            <button
-              onClick={() => { changeTab('chi-siamo'); setMobileMenuOpen(false); }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg"
-            >
-              Chi Siamo / About
-            </button>
-            <button
-              onClick={() => { changeTab('arcani'); setMobileMenuOpen(false); }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#FF007F] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
-            >
-              <span>22 Arcani Maggiori (Carte 3D)</span>
-              <span className="text-[10px] text-[#00F0FF] bg-[#1C0F33] px-2 py-0.5 rounded border border-[#00F0FF]/30 font-mono">✦ Svela</span>
-            </button>
-            <button
-              onClick={() => { changeTab('blog'); setMobileMenuOpen(false); }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
-            >
-              <span>Blog &amp; Articoli</span>
-              <span className="text-[10px] text-[#FF007F] bg-[#1C0F33] px-2 py-0.5 rounded border border-[#FF007F]/30 font-mono">Journal</span>
-            </button>
-            <button
-              onClick={() => { changeTab('shop'); setMobileMenuOpen(false); }}
-              className="text-left px-3 py-2 text-sm font-semibold tracking-wider uppercase text-[#A69BB5] hover:text-[#00F0FF] hover:bg-[#1C0F33] rounded-lg flex items-center justify-between"
-            >
-              <span className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm text-[#00F0FF]">storefront</span>
-                Bottega Olistica
-              </span>
-              <span className="text-[10px] text-[#00F0FF] bg-[#1C0F33] px-2 py-0.5 rounded font-mono">Articoli</span>
-            </button>
-            <a
-              href="https://wa.me/393791038253"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center justify-center gap-2 py-2.5 bg-[#FF007F] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.4)]"
-            >
-              <span className="material-symbols-outlined text-sm">chat</span>
-              WhatsApp Rapido (+39 379 1038253)
-            </a>
-          </div>
-        )}
-      </header>
+      <Header
+        activeTab={activeTab as NavTab}
+        onTabChange={(tab) => changeTab(tab)}
+        onOpenBooking={() => openBookingFor('Lettura On Line 1h')}
+        logoUrl={IMAGES.avatar}
+      />
 
       {/* MAIN CONTAINER WITH SLIDE TRANSITION ANIMATIONS */}
-      <main className="w-full pt-16 sm:pt-20 lg:pt-24 bg-[#0C0714] flex-1">
+      <main className="w-full bg-[#0C0714] flex-1">
         <div
           key={activeTab}
           className={`w-full ${
@@ -885,7 +680,7 @@ export default function App() {
               {/* Element Filter Pills */}
               <div className="flex flex-wrap items-center justify-center gap-1.5">
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[#A69BB5] mr-1 hidden sm:inline">Elemento:</span>
-                {['Tutti', 'Fuoco', 'Acqua', 'Aria', 'Terra', 'Cosmo', 'Etere', 'Vuoto'].map((elem) => (
+                {['Tutti', 'Fuoco 🔥', 'Acqua 💧', 'Aria 💨', 'Terra 🌱'].map((elem) => (
                   <button
                     key={elem}
                     type="button"
@@ -1008,6 +803,11 @@ export default function App() {
                     <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#1C0F33] text-[#00F0FF] border border-[#00F0FF]/30">
                       Elemento: {selectedArcanoObj.element}
                     </span>
+                    {selectedArcanoObj.astrology && (
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#1C0F33] text-[#FF007F] border border-[#FF007F]/30">
+                        Astrologia: {selectedArcanoObj.astrology}
+                      </span>
+                    )}
                     <span className="text-xs text-[#A69BB5] font-mono">
                       ✦ {selectedArcanoObj.archetypeRole}
                     </span>
@@ -1029,14 +829,27 @@ export default function App() {
                     ))}
                   </div>
 
-                  {/* Meaning */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs uppercase tracking-widest text-[#00F0FF] font-semibold">
-                      Significato Simbolico ed Evolutivo:
-                    </h4>
-                    <p className="text-sm sm:text-base text-[#F5F0EB] leading-relaxed">
-                      {selectedArcanoObj.meaning}
-                    </p>
+                  {/* Meanings: Luce & Ombra */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div className="p-4 rounded-xl bg-[#160C2A] border border-[#00F0FF]/40 shadow-sm">
+                      <h4 className="text-xs uppercase tracking-widest text-[#00F0FF] font-bold mb-1.5 flex items-center gap-1.5">
+                        <span>☀️</span>
+                        <span>Luce (Carta Dritta)</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#F5F0EB] leading-relaxed">
+                        {selectedArcanoObj.meaningLight}
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-[#160C2A] border border-[#FF007F]/40 shadow-sm">
+                      <h4 className="text-xs uppercase tracking-widest text-[#FF007F] font-bold mb-1.5 flex items-center gap-1.5">
+                        <span>🌙</span>
+                        <span>Ombra (Carta Rovesciata)</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#F5F0EB] leading-relaxed">
+                        {selectedArcanoObj.meaningShadow}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Advice */}
