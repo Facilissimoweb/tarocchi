@@ -1117,19 +1117,20 @@ export default function App() {
           <div className="flex flex-col w-full">
             {/* HERO SECTION */}
             <section className="relative w-full overflow-hidden bg-[#0C0714]">
-              {/* Cyber-Mystic Radial Background Glows */}
-              <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-[#8A2BE2]/15 rounded-full blur-[140px] pointer-events-none"></div>
-              <div className="absolute top-1/4 -left-20 w-[420px] h-[420px] bg-[#FF007F]/15 rounded-full blur-[120px] pointer-events-none"></div>
-              <div className="absolute top-1/3 -right-20 w-[460px] h-[460px] bg-[#00F0FF]/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-              {/* Brand Logo Decorative Watermark in soft blurred transparency */}
-              <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] h-[340px] sm:h-[500px] rounded-full overflow-hidden opacity-15 pointer-events-none select-none blur-[2px] mix-blend-screen animate-pulse">
+              {/* Girls Image as Full Hero Background with Transparency */}
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <img
-                  src={IMAGES.avatar}
-                  alt="Tarot Italia Seal Watermark"
-                  className="w-full h-full object-cover filter contrast-125 saturate-150"
+                  src={IMAGES.hero}
+                  alt="Sfondo Tarot Italia"
+                  className="w-full h-full object-cover opacity-25 filter contrast-125 saturate-150"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0C0714]/80 via-[#0C0714]/70 to-[#0C0714]"></div>
               </div>
+
+              {/* Cyber-Mystic Radial Background Glows */}
+              <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-[#8A2BE2]/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+              <div className="absolute top-1/4 -left-20 w-[420px] h-[420px] bg-[#FF007F]/15 rounded-full blur-[120px] pointer-events-none z-0"></div>
+              <div className="absolute top-1/3 -right-20 w-[460px] h-[460px] bg-[#00F0FF]/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
               <div className="max-w-[1240px] mx-auto px-4 lg:px-12 py-10 sm:py-16 lg:py-24 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -1194,38 +1195,16 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Visual Esoteric Portrait Column */}
-                  <div className="lg:col-span-5 relative flex justify-center">
-                    <div className="relative w-full max-w-[380px] aspect-[2/3] rounded-2xl overflow-hidden shadow-[0_0_35px_rgba(138,43,226,0.4)] bg-[#130924] group border-2 border-[#8A2BE2]/50 hover:border-[#00F0FF] transition-all duration-500">
-                      <img
-                        alt="Evocazione rituale di Tarot Italia"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover filter contrast-110 grayscale brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
-                        src={IMAGES.hero}
-                        onError={(e) => {
-                          (e.target as HTMLElement).style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C0714] via-[#0C0714]/40 to-transparent"></div>
-
-                      {/* Recessed Archival Stamp Overlay with Neon Halo */}
-                      <div className="absolute bottom-4 left-4 right-4 p-3.5 bg-[#130924]/90 backdrop-blur-md rounded-xl shadow-lg flex items-center gap-3.5 border border-[#00F0FF]/40">
-                        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 p-0.5 bg-gradient-to-tr from-[#FF007F] to-[#00F0FF] shadow-[0_0_12px_rgba(255,0,127,0.6)]">
-                          <img
-                            alt="Sigillo Tarot Italia"
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full rounded-full object-cover bg-[#0C0714]"
-                            src={IMAGES.avatar}
-                          />
-                        </div>
-                        <div className="flex flex-col min-w-0">
-                          <span className="font-serif text-[16px] text-white truncate font-bold">
-                            Sanctuario Simbolico
-                          </span>
-                          <span className="text-[10px] text-[#00F0FF] font-mono tracking-wider truncate">
-                            Studio Macerata • Online Globale
-                          </span>
-                        </div>
+                  {/* Visual Circular Logo Column (Glassmorphic + Neon Glow) */}
+                  <div className="lg:col-span-5 relative flex justify-center items-center py-6">
+                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full p-2.5 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_50px_rgba(255,0,127,0.5),_0_0_80px_rgba(0,240,255,0.35)] flex items-center justify-center animate-pulse">
+                      <div className="w-full h-full rounded-full bg-[#130924]/85 backdrop-blur-2xl p-4 border-2 border-[#00F0FF]/50 flex flex-col items-center justify-center relative overflow-hidden shadow-inner group">
+                        <img
+                          alt="Logo Circolare Tarot Italia"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full rounded-full object-cover shadow-[0_0_35px_rgba(0,240,255,0.5)] group-hover:scale-105 transition-transform duration-500"
+                          src={IMAGES.avatar}
+                        />
                       </div>
                     </div>
                   </div>
@@ -1733,13 +1712,13 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* Compact Query Loop Grid (Glassmorphic, Neon Borders, Hover Glow) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Compact Swipable Carousel on Mobile / Responsive Grid on Desktop */}
+                <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4 pb-4 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-4">
                   {BLOG_ARTICLES.map((article) => (
                     <article
                       key={article.id}
                       onClick={() => openBlogArticle(article.id)}
-                      className="bg-[#130924]/80 backdrop-blur-xl rounded-2xl border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-lg hover:shadow-[0_0_25px_rgba(0,240,255,0.35)] transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer hover:-translate-y-1"
+                      className="w-[85vw] sm:w-[320px] md:w-auto flex-shrink-0 md:flex-shrink snap-center bg-[#130924]/80 backdrop-blur-xl rounded-2xl border border-[#8A2BE2]/40 hover:border-[#00F0FF] shadow-lg hover:shadow-[0_0_25px_rgba(0,240,255,0.35)] transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer hover:-translate-y-1"
                     >
                       {/* 1. Immagine di Copertina */}
                       <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#0C0714]">
@@ -1783,6 +1762,22 @@ export default function App() {
                       </div>
                     </article>
                   ))}
+                </div>
+
+                {/* Mobile Touch Carousel Dots & Swipe Hint */}
+                <div className="flex md:hidden items-center justify-between pt-1 px-2 text-[#00F0FF]">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#A69BB5] flex items-center gap-1">
+                    <span className="material-symbols-outlined text-xs text-[#FF007F] animate-pulse">swipe</span>
+                    <span>Scorri orizzontalmente ({BLOG_ARTICLES.length} articoli)</span>
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    {BLOG_ARTICLES.map((art, idx) => (
+                      <span
+                        key={art.id}
+                        className={`w-2 h-2 rounded-full border border-[#00F0FF]/50 ${idx === 0 ? 'bg-[#FF007F] shadow-[0_0_8px_#FF007F]' : 'bg-[#1C0F33]'}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>
