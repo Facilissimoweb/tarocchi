@@ -164,6 +164,8 @@ export default function App() {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('11:00');
   const [bookingNote, setBookingNote] = useState('');
+  const [privacyConsent, setPrivacyConsent] = useState(false);
+  const [isAdultConsent, setIsAdultConsent] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
 
   const toggleFaq = (index: number) => {
@@ -178,6 +180,10 @@ export default function App() {
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!privacyConsent || !isAdultConsent) {
+      alert("È necessario accettare l'informativa Privacy/Cookie e confermare di essere maggiorenni per proseguire.");
+      return;
+    }
     setBookingSubmitted(true);
     // WhatsApp direct redirect option
     const phone = '393791038253';
@@ -193,7 +199,7 @@ export default function App() {
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="bg-[#F9F8F6] text-[#2B2523] min-h-screen flex flex-col font-sans selection:bg-[#D8CDE2] selection:text-[#2B2523] overflow-x-clip"
+      className="bg-[#F9F8F6] text-[#2B2523] min-h-screen flex flex-col font-sans selection:bg-[#7A8B78] selection:text-[#2B2523] overflow-x-clip"
     >
       {/* HEADER / NAVIGATION */}
       <Header
@@ -228,7 +234,7 @@ export default function App() {
                 Torna alla Home
               </button>
               <span className="text-xs uppercase tracking-widest text-[#5A524E] flex items-center gap-1.5 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D8CDE2] animate-pulse"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
                 Studio Olistico Macerata • Attivo dal 2012
               </span>
             </div>
@@ -239,10 +245,10 @@ export default function App() {
               {/* Profile Card & Bio Column */}
               <div className="lg:col-span-8 flex flex-col gap-6">
                 <div className="bg-[#F9F8F6]/90 backdrop-blur-xl p-8 lg:p-10 rounded-2xl border border-[#C5BCB3]/40 shadow-[0_0_30px_rgba(138,43,226,0.25)] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-80 h-80 bg-[#D8CDE2]/10 rounded-full blur-3xl pointer-events-none"></div>
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-[#7A8B78]/10 rounded-full blur-3xl pointer-events-none"></div>
 
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3F1ED] rounded-full border border-[#C5BCB3]/40 mb-4 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
-                    <span className="w-2 h-2 rounded-full bg-[#D8CDE2] animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#7A8B78] animate-pulse"></span>
                     <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#C5BCB3]">
                       About Me • Teresa
                     </span>
@@ -414,7 +420,7 @@ export default function App() {
                       referrerPolicy="no-referrer"
                       className="w-24 h-24 rounded-full object-cover border-[#E5E0D8] shadow-[0_0_20px_rgba(0,240,255,0.4)] p-0.5"
                     />
-                    <div className="absolute -bottom-1 -right-1 bg-[#D8CDE2] p-1.5 rounded-full border border-white/20 shadow-sm">
+                    <div className="absolute -bottom-1 -right-1 bg-[#7A8B78] p-1.5 rounded-full border border-white/20 shadow-sm">
                       <span className="material-symbols-outlined text-[#2B2523] text-xs block">verified</span>
                     </div>
                   </div>
@@ -429,7 +435,7 @@ export default function App() {
                   <div className="w-full border-t border-[#C5BCB3]/30 mt-5 pt-4 flex flex-col gap-2">
                     <button
                       onClick={() => openBookingFor('Lettura con Teresa (1h)')}
-                      className="w-full py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                      className="w-full py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                     >
                       Prenota Consulto con Teresa
                     </button>
@@ -482,7 +488,7 @@ export default function App() {
             {/* SECTION 2: COLLABORATORI ESTERNI - MAURA RITUALISTA ESOTERICA */}
             <BrandSectionDivider title="Tarot Italia • Ritualistica & Tradizione Popolare" className="mb-8" />
             <div className="bg-[#F9F8F6]/90 backdrop-blur-xl p-8 lg:p-12 rounded-2xl border border-[#C5BCB3]/40 shadow-[0_0_35px_rgba(138,43,226,0.3)] relative overflow-hidden mb-12">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#D8CDE2]/15 rounded-full blur-[110px] pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#7A8B78]/15 rounded-full blur-[110px] pointer-events-none"></div>
 
               {/* Header Collaboratori */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-[#C5BCB3]/30">
@@ -603,7 +609,7 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => openBookingFor('Richiesta Ritualistica d’Amore (Maura)')}
-                  className="px-5 py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer flex items-center gap-2"
+                  className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer flex items-center gap-2"
                 >
                   <span className="material-symbols-outlined text-sm">auto_fix_high</span>
                   <span>Richiedi Valutazione Rituale</span>
@@ -625,7 +631,7 @@ export default function App() {
                 Torna alla Home
               </button>
               <span className="text-xs uppercase tracking-widest text-[#5A524E] font-mono flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D8CDE2] animate-pulse"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
                 Dizionario Archetipico • 22 Lame Cibernetiche
               </span>
             </div>
@@ -674,7 +680,7 @@ export default function App() {
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }, 500);
                   }}
-                  className="px-5 py-2 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm hover:shadow-sm flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm hover:shadow-sm flex items-center gap-2 cursor-pointer"
                 >
                   <span className={`material-symbols-outlined text-sm ${isDailyDrawing ? 'animate-spin' : ''}`}>
                     auto_awesome
@@ -693,7 +699,7 @@ export default function App() {
                     onClick={() => setArcaniFilterElement(elem)}
                     className={`px-3 py-1 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                       arcaniFilterElement === elem
-                        ? 'bg-[#D8CDE2] text-[#1C1817] font-bold shadow-[0_0_12px_rgba(0,240,255,0.6)]'
+                        ? 'bg-[#7A8B78] text-[#1C1817] font-bold shadow-[0_0_12px_rgba(0,240,255,0.6)]'
                         : 'bg-[#F3F1ED] text-[#5A524E] hover:text-[#C5BCB3] border border-[#C5BCB3]/40'
                     }`}
                   >
@@ -707,7 +713,7 @@ export default function App() {
             {dailyDrawnArcano && (
               <div className="mb-10 p-4 sm:p-6 bg-gradient-to-r from-[#180A2E] via-[#1F0733] to-[#0E1A29] rounded-2xl border-[#E5E0D8] shadow-[0_0_30px_rgba(0,240,255,0.35)] flex flex-col sm:flex-row items-center justify-between gap-4 animate-in slide-in-from-top-4 duration-300">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#D8CDE2]/20 border border-[#C5BCB3] flex items-center justify-center text-[#C5BCB3]">
+                  <div className="w-12 h-12 rounded-full bg-[#7A8B78]/20 border border-[#C5BCB3] flex items-center justify-center text-[#C5BCB3]">
                     <span className="material-symbols-outlined text-2xl">flare</span>
                   </div>
                   <div>
@@ -891,7 +897,7 @@ export default function App() {
                     </p>
                     <button
                       onClick={() => openBookingFor(`Consulto con focus su ${selectedArcanoObj.name}`)}
-                      className="px-6 py-3 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
+                      className="px-6 py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
                     >
                       Richiedi Stesura su Questa Lama
                     </button>
@@ -923,7 +929,7 @@ export default function App() {
                 Torna alla Home
               </button>
               <span className="text-xs uppercase tracking-widest text-[#5A524E] flex items-center gap-1.5 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D8CDE2]"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78]"></span>
                 www.tarotitalia.com • Privacy Policy
               </span>
             </div>
@@ -1201,7 +1207,7 @@ export default function App() {
                         60 Minuti
                       </div>
                       <div className="absolute top-3 right-3 bg-[#F9F8F6]/90 text-[#C5BCB3] border border-[#C5BCB3]/40 px-2.5 py-1 rounded-lg text-[11px] font-mono font-medium flex items-center gap-1 shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D8CDE2] animate-pulse"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
                         Live Video/WA
                       </div>
                     </div>
@@ -1225,7 +1231,7 @@ export default function App() {
                       <div className="pt-4 mt-auto">
                         <button
                           onClick={() => openBookingFor('Lettura On Line 1h')}
-                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                         >
                           <span className="material-symbols-outlined text-sm">devices</span>
                           <span>Prenota Online</span>
@@ -1271,7 +1277,7 @@ export default function App() {
                       <div className="pt-4 mt-auto">
                         <button
                           onClick={() => openBookingFor('Lettura Dal Vivo (Macerata)')}
-                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                         >
                           <span className="material-symbols-outlined text-sm">storefront</span>
                           <span>Prenota in Studio</span>
@@ -1356,7 +1362,7 @@ export default function App() {
                       type="button"
                     >
                       <span className="flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 0 ? 'bg-[#D8CDE2] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#D8CDE2]/40'}`}></span>
+                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 0 ? 'bg-[#7A8B78] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#7A8B78]/40'}`}></span>
                         Cosa sono i tarocchi?
                       </span>
                       <span className={`material-symbols-outlined text-[#C5BCB3] transform transition-transform duration-300 ${expandedFaq === 0 ? 'rotate-180' : ''}`}>
@@ -1379,7 +1385,7 @@ export default function App() {
                       type="button"
                     >
                       <span className="flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 1 ? 'bg-[#D8CDE2] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#D8CDE2]/40'}`}></span>
+                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 1 ? 'bg-[#7A8B78] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#7A8B78]/40'}`}></span>
                         Quando fare una lettura?
                       </span>
                       <span className={`material-symbols-outlined text-[#C5BCB3] transform transition-transform duration-300 ${expandedFaq === 1 ? 'rotate-180' : ''}`}>
@@ -1402,7 +1408,7 @@ export default function App() {
                       type="button"
                     >
                       <span className="flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 2 ? 'bg-[#D8CDE2] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#D8CDE2]/40'}`}></span>
+                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 2 ? 'bg-[#7A8B78] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#7A8B78]/40'}`}></span>
                         A chi si rivolgono?
                       </span>
                       <span className={`material-symbols-outlined text-[#C5BCB3] transform transition-transform duration-300 ${expandedFaq === 2 ? 'rotate-180' : ''}`}>
@@ -1425,7 +1431,7 @@ export default function App() {
                       type="button"
                     >
                       <span className="flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 3 ? 'bg-[#D8CDE2] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#D8CDE2]/40'}`}></span>
+                        <span className={`w-2 h-2 rounded-full transition-colors ${expandedFaq === 3 ? 'bg-[#7A8B78] shadow-[0_0_8px_#C5BCB3]' : 'bg-[#7A8B78]/40'}`}></span>
                         Cosa aspettarsi da una lettura dei Tarocchi?
                       </span>
                       <span className={`material-symbols-outlined text-[#C5BCB3] transform transition-transform duration-300 ${expandedFaq === 3 ? 'rotate-180' : ''}`}>
@@ -1572,7 +1578,7 @@ export default function App() {
                   </div>
                   <button
                     onClick={() => openShopWithCategory('Tutti')}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all self-start md:self-auto cursor-pointer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all self-start md:self-auto cursor-pointer"
                   >
                     <span className="material-symbols-outlined text-sm">shopping_bag</span>
                     <span>Visita lo Shop Completo (6 Articoli)</span>
@@ -1670,7 +1676,7 @@ export default function App() {
                 <BrandSectionDivider title="Tarot Italia • Inizia il Tuo Percorso" className="mb-10" />
                 <div className="relative bg-[#F9F8F6]/90 backdrop-blur-xl rounded-2xl p-8 lg:p-16 shadow-[0_0_40px_rgba(138,43,226,0.3)] flex flex-col items-center text-center gap-4 overflow-hidden border border-[#C5BCB3]/50">
                   {/* Occult Aureole Background */}
-                  <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D8CDE2]/15 rounded-full blur-[100px] pointer-events-none"></div>
+                  <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#7A8B78]/15 rounded-full blur-[100px] pointer-events-none"></div>
 
                   <div className="w-16 h-16 rounded-full bg-[#F3F1ED] p-2 mb-2 flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.4)] border-[#E5E0D8]">
                     <img
@@ -1693,7 +1699,7 @@ export default function App() {
                   {/* Direct Actions */}
                   <div className="flex flex-wrap items-center justify-center gap-3 pt-3 z-10">
                     <a
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-[12px] font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all duration-300"
                       href="https://wa.me/393791038253"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1894,11 +1900,12 @@ export default function App() {
           <div className="bg-[#F9F8F6] border border-[#C5BCB3]/40 rounded-2xl max-w-lg w-full p-5 sm:p-6 lg:p-8 relative shadow-xl max-h-[90vh] overflow-y-auto">
             {/* Logo circolare in primo piano in alto al centro */}
             <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-16 h-16 rounded-full bg-[#F3F1ED] p-1.5 border-[#E5E0D8] shadow-xl flex items-center justify-center mb-2">
+              <div className="w-16 h-16 rounded-full bg-[#F3F1ED] p-0.5 border border-[#C5BCB3] shadow-sm flex items-center justify-center mb-2">
                 <img
                   src={IMAGES.avatar}
                   alt="Tarot Italia Logo"
-                  className="w-full h-full object-contain rounded-full"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5BCB3] font-semibold flex items-center gap-1.5">
@@ -1911,7 +1918,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setIsBookingOpen(false)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#D8CDE2] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-30"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#7A8B78] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-30"
               aria-label="Chiudi widget"
             >
               <span className="material-symbols-outlined text-lg">close</span>
@@ -2027,35 +2034,66 @@ export default function App() {
                 </div>
 
                 <div className="pt-3 border-t border-[#C5BCB3]/30 space-y-3">
-                  {/* Richiamo formale Privacy e Cookie */}
-                  <div className="p-3 bg-[#F3F1ED]/80 rounded-xl border border-[#C5BCB3]/30 text-[11px] text-[#5A524E] leading-relaxed space-y-1">
-                    <div className="flex items-center gap-1.5 text-[#C5BCB3] font-mono font-semibold text-[10px] uppercase tracking-wider">
-                      <span className="material-symbols-outlined text-xs">shield_lock</span>
-                      <span>Informativa Privacy &amp; Cookie (GDPR UE 2016/679)</span>
+                  {/* Richiamo formale Privacy, Cookie e Maggiorenni */}
+                  <div className="p-3 bg-[#F3F1ED]/90 rounded-xl border border-[#C5BCB3]/40 text-[11px] text-[#5A524E] leading-relaxed space-y-2.5">
+                    <div className="flex items-center gap-1.5 text-[#2B2523] font-mono font-semibold text-[10px] uppercase tracking-wider">
+                      <span className="material-symbols-outlined text-xs text-[#7A8B78]">shield_lock</span>
+                      <span>GDPR, Privacy &amp; Requisiti Legali</span>
                     </div>
-                    <p>
-                      Inviando i tuoi dati accetti il trattamento per la gestione del consulto ai sensi della nostra{' '}
-                      <button
-                        type="button"
-                        onClick={() => changeTab('privacy-policy')}
-                        className="text-[#C5BCB3] font-semibold underline hover:text-white cursor-pointer"
-                      >
-                        Privacy Policy
-                      </button>{' '}
-                      e della nostra informativa estesa sui{' '}
-                      <button
-                        type="button"
-                        onClick={() => setIsCookieCustomizerOpen(true)}
-                        className="text-[#C5BCB3] font-semibold underline hover:text-white cursor-pointer"
-                      >
-                        Cookie
-                      </button>. Riservatezza garantita.
+
+                    {/* Checkbox Privacy & Cookie */}
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={privacyConsent}
+                        onChange={(e) => setPrivacyConsent(e.target.checked)}
+                        className="mt-0.5 rounded border-[#C5BCB3] text-[#7A8B78] focus:ring-[#7A8B78] cursor-pointer"
+                      />
+                      <span>
+                        Dichiaro di aver letto e accettato la{' '}
+                        <button
+                          type="button"
+                          onClick={() => changeTab('privacy-policy')}
+                          className="text-[#2B2523] font-semibold underline hover:text-[#7A8B78] cursor-pointer"
+                        >
+                          Privacy Policy
+                        </button>{' '}
+                        e l'informativa sui{' '}
+                        <button
+                          type="button"
+                          onClick={() => setIsCookieCustomizerOpen(true)}
+                          className="text-[#2B2523] font-semibold underline hover:text-[#7A8B78] cursor-pointer"
+                        >
+                          Cookie
+                        </button>{' '}
+                        (GDPR UE 2016/679).
+                      </span>
+                    </label>
+
+                    {/* Checkbox Maggiorenni */}
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={isAdultConsent}
+                        onChange={(e) => setIsAdultConsent(e.target.checked)}
+                        className="mt-0.5 rounded border-[#C5BCB3] text-[#7A8B78] focus:ring-[#7A8B78] cursor-pointer"
+                      />
+                      <span>
+                        <strong>Dichiaro di essere maggiorenne (+18 anni).</strong>
+                      </span>
+                    </label>
+
+                    {/* Disclaimer Pubblico Maggiorenne */}
+                    <p className="text-[10px] text-[#6C645C] font-mono border-t border-[#C5BCB3]/30 pt-1.5 mt-1">
+                      AVVISO LEGALE: I servizi di consulenza, tarologia e cartomanzia offerti da Tarot Italia sono riservati esclusivamente a un pubblico maggiorenne. Le sessioni non sostituiscono in alcun modo pareri medici, legali o psicologici professionali.
                     </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                   >
                     <span className="material-symbols-outlined text-base">send</span>
                     <span>Conferma e Apri su WhatsApp (+39 379 1038253)</span>
@@ -2068,7 +2106,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() => setIsBookingOpen(false)}
-                      className="w-8 h-8 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#D8CDE2] hover:text-[#2B2523] shadow-sm flex items-center justify-center transition-all cursor-pointer"
+                      className="w-8 h-8 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#7A8B78] hover:text-[#2B2523] shadow-sm flex items-center justify-center transition-all cursor-pointer"
                       title="Chiudi Widget"
                       aria-label="Chiudi Widget"
                     >
@@ -2082,7 +2120,7 @@ export default function App() {
                 <div className="w-16 h-16 rounded-full bg-[#F3F1ED] text-[#C5BCB3] flex items-center justify-center mx-auto border-[#E5E0D8] shadow-[0_0_20px_rgba(0,240,255,0.4)]">
                   <span className="material-symbols-outlined text-3xl">done</span>
                 </div>
-                <h3 className="font-serif text-2xl text-white font-bold">
+                <h3 className="font-serif text-2xl text-[#2B2523] font-bold">
                   Richiesta Inoltrata con Successo
                 </h3>
                 <p className="text-sm text-[#5A524E] max-w-sm mx-auto leading-relaxed">
@@ -2125,7 +2163,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setIsLegalModalOpen(false)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#D8CDE2] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#7A8B78] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi finestra"
             >
               <span className="material-symbols-outlined text-lg">close</span>
@@ -2135,7 +2173,7 @@ export default function App() {
               <span className="text-[11px] font-mono font-semibold text-[#C5BCB3] uppercase tracking-widest block text-center">
                 www.tarotitalia.com • Deontologia &amp; Legge
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold text-center">
+              <h3 className="font-serif text-xl sm:text-2xl text-[#2B2523] font-bold text-center">
                 INFORMATIVA E LIBERATORIA PER ESCLUSIONE DA RESPONSABILITÀ
               </h3>
 
@@ -2224,7 +2262,7 @@ export default function App() {
             <div className="pt-6 border-t border-[#C5BCB3]/30 mt-4">
               <button
                 onClick={() => setIsLegalModalOpen(false)}
-                className="w-full py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                className="w-full py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
               >
                 Ho Letto e Compreso
               </button>
@@ -2246,7 +2284,7 @@ export default function App() {
             <button
               type="button"
               onClick={handleDeclineCookies}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#D8CDE2] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-10"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#7A8B78] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-10"
               title="Chiudi banner cookie"
               aria-label="Chiudi banner cookie"
             >
@@ -2297,7 +2335,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={handleAcceptAllCookies}
-                  className="px-5 py-2.5 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                  className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                 >
                   Accetta Tutti
                 </button>
@@ -2344,7 +2382,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setIsCookieCustomizerOpen(false)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#D8CDE2] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border-[#E5E0D8] text-[#C5BCB3] hover:bg-[#7A8B78] hover:text-[#2B2523] border border-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi gestione cookie"
             >
               <span className="material-symbols-outlined text-lg">close</span>
@@ -2362,7 +2400,7 @@ export default function App() {
               <div className="p-4 bg-[#F3F1ED] rounded-xl border border-[#C5BCB3]/30 flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-serif text-sm font-semibold text-white">Cookie Tecnici Necessari</span>
+                    <span className="font-serif text-sm font-semibold text-[#2B2523]">Cookie Tecnici Necessari</span>
                     <span className="px-2 py-0.5 text-[9px] uppercase font-mono font-semibold bg-[#F9F8F6] text-[#C5BCB3] border border-[#C5BCB3]/40 rounded">
                       Sempre Attivi
                     </span>
@@ -2380,7 +2418,7 @@ export default function App() {
               <div className="p-4 bg-[#F3F1ED] rounded-xl border border-[#C5BCB3]/30 flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-serif text-sm font-semibold text-white">Misurazione &amp; Statistiche Anonime</span>
+                    <span className="font-serif text-sm font-semibold text-[#2B2523]">Misurazione &amp; Statistiche Anonime</span>
                   </div>
                   <p className="text-[11px] text-[#5A524E] leading-relaxed">
                     Consentono di aggregare metriche anonimizzate sull’affluenza alle guide degli arcani e alle pagine dei servizi per migliorare l’esperienza d’uso.
@@ -2395,7 +2433,7 @@ export default function App() {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-10 h-5 bg-[#F9F8F6] border border-[#C5BCB3]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#D8CDE2] peer-checked:border-[#C5BCB3]"></div>
+                  <div className="w-10 h-5 bg-[#F9F8F6] border border-[#C5BCB3]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7A8B78] peer-checked:border-[#C5BCB3]"></div>
                 </label>
               </div>
 
@@ -2403,7 +2441,7 @@ export default function App() {
               <div className="p-4 bg-[#F3F1ED] rounded-xl border border-[#C5BCB3]/30 flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-serif text-sm font-semibold text-white">Preferenze e Funzioni Avanzate</span>
+                    <span className="font-serif text-sm font-semibold text-[#2B2523]">Preferenze e Funzioni Avanzate</span>
                   </div>
                   <p className="text-[11px] text-[#5A524E] leading-relaxed">
                     Permettono al sito di ricordare la modalità di consulto preferita e il percorso di lettura prescelto.
@@ -2418,7 +2456,7 @@ export default function App() {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-10 h-5 bg-[#F9F8F6] border border-[#C5BCB3]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#D8CDE2] peer-checked:border-[#C5BCB3]"></div>
+                  <div className="w-10 h-5 bg-[#F9F8F6] border border-[#C5BCB3]/40 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7A8B78] peer-checked:border-[#C5BCB3]"></div>
                 </label>
               </div>
             </div>
@@ -2442,7 +2480,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={handleSaveCookiePreferences}
-                  className="px-5 py-2 bg-[#D8CDE2] hover:bg-[#C8BCD3] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                  className="px-5 py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
                 >
                   Salva Scelte
                 </button>
@@ -2461,7 +2499,7 @@ export default function App() {
           aria-label="Gestisci preferenze cookie"
         >
           <span className="material-symbols-outlined text-lg leading-none text-[#C5BCB3] group-hover:text-[#C5BCB3] transition-colors">cookie</span>
-          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-white">
+          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-[#2B2523]">
             Cookie
           </span>
         </button>

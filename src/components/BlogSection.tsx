@@ -199,7 +199,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
               <button
                 type="button"
                 onClick={handleCopyLink}
-                className="px-3 py-1.5 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-[#C5BCB3]"
+                className="px-3 py-1.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-[#C5BCB3]"
                 title="Copia link articolo"
               >
                 <span className="material-symbols-outlined text-sm">link</span>
@@ -236,7 +236,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
             </div>
             <button
               onClick={() => onOpenBooking(`Consulto ispirato a "${selectedArticle.title}"`)}
-              className="px-5 py-2.5 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-lg transition-all cursor-pointer whitespace-nowrap border border-[#C5BCB3]"
+              className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-lg transition-all cursor-pointer whitespace-nowrap border border-[#C5BCB3]"
             >
               Prenota Sessione Dedicata
             </button>

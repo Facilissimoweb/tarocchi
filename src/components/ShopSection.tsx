@@ -168,7 +168,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           {/* Cart Trigger Badge */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D8CDE2] hover:bg-[#C9BBD7] border border-[#C5BCB3] text-[#2B2523] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#7A8B78] hover:bg-[#687866] border border-[#C5BCB3] text-[#2B2523] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
           >
             <span className="material-symbols-outlined text-base text-[#2B2523]">shopping_bag</span>
             <span>Carrello Bottega ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})</span>
@@ -382,7 +382,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
                     <button
                       onClick={() => addToCart(product)}
-                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-sm">add_shopping_cart</span>
                       <span>Aggiungi</span>
@@ -409,7 +409,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
               setActiveCategory('Tutti');
               setSearchQuery('');
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D8CDE2] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-[#C9BBD7] transition-colors border border-[#C5BCB3] cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7A8B78] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-[#687866] transition-colors border border-[#C5BCB3] cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm">restart_alt</span>
             <span>Reimposta Tutti i Filtri</span>
@@ -532,7 +532,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
                 <button
                   onClick={() => handleDirectOrderWhatsapp(selectedProduct)}
-                  className="px-5 py-2.5 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] flex items-center gap-2 cursor-pointer shadow-sm"
+                  className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] flex items-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span className="material-symbols-outlined text-sm">chat</span>
                   <span>Ordina Subito su WhatsApp</span>
@@ -639,7 +639,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 </div>
                 <button
                   onClick={handleCheckoutWhatsapp}
-                  className="w-full py-3 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-xs font-bold uppercase tracking-wider rounded-xl transition-all border border-[#C5BCB3] flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl transition-all border border-[#C5BCB3] flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span className="material-symbols-outlined text-base">chat</span>
                   <span>Completa Ordine via WhatsApp</span>
