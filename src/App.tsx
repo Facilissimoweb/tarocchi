@@ -103,6 +103,17 @@ export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('Lettura On Line 1h');
   const [isLegalModalOpen, setIsLegalModalOpen] = useState<boolean>(false);
+  const [selectedPillarModal, setSelectedPillarModal] = useState<1 | 2 | 3 | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPillarModal(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedArcanoObj, setSelectedArcanoObj] = useState<ArcanoInfo>(ARCANI_22[0]);
   const [arcaniFilterElement, setArcaniFilterElement] = useState<string>('Tutti');
@@ -1174,68 +1185,77 @@ export default function App() {
                 {/* 3 Pillars Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Card 1 */}
-                  <div className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#C5BCB3] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
-                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#C5BCB3] shadow-sm">
+                  <div
+                    onClick={() => setSelectedPillarModal(1)}
+                    className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#7A8B78] hover:shadow-[0_0_25px_rgba(122,139,120,0.2)] cursor-pointer group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#7A8B78] shadow-sm group-hover:scale-105 transition-transform">
                       <span className="material-symbols-outlined text-2xl">psychology_alt</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-mono font-semibold text-[#C5BCB3] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#7A8B78] uppercase tracking-widest">
                         Pilastro 01
                       </span>
-                      <h3 className="font-serif text-xl text-[#2B2523] font-bold">
+                      <h3 className="font-serif text-xl text-[#2B2523] font-bold group-hover:text-[#7A8B78] transition-colors">
                         Introspezione non Dogmatica
                       </h3>
                     </div>
                     <p className="text-[15px] text-[#5A524E] leading-relaxed">
                       I tarocchi come specchio della psiche e bussola d'orientamento personale. Nessun fatalismo: stimoliamo il pensiero critico e la consapevolezza emotiva.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#C5BCB3] text-[11px] font-semibold uppercase tracking-wider">
-                      <span>Specchio Archetipico</span>
-                      <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#7A8B78] text-[11px] font-semibold uppercase tracking-wider">
+                      <span>Scopri di più</span>
+                      <span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </div>
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#C5BCB3] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
-                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#C5BCB3] shadow-sm">
+                  <div
+                    onClick={() => setSelectedPillarModal(2)}
+                    className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#7A8B78] hover:shadow-[0_0_25px_rgba(122,139,120,0.2)] cursor-pointer group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#7A8B78] shadow-sm group-hover:scale-105 transition-transform">
                       <span className="material-symbols-outlined text-2xl">nest_clock_farsight_analog</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-mono font-semibold text-[#C5BCB3] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#7A8B78] uppercase tracking-widest">
                         Pilastro 02
                       </span>
-                      <h3 className="font-serif text-xl text-[#2B2523] font-bold">
+                      <h3 className="font-serif text-xl text-[#2B2523] font-bold group-hover:text-[#7A8B78] transition-colors">
                         Spazio d'Ascolto Protetto
                       </h3>
                     </div>
                     <p className="text-[15px] text-[#5A524E] leading-relaxed">
                       Un'ora integrale (60 min) dedicata senza fretta ai tuoi sogni, desideri nascosti, nodi emotivi e scelte di vita, in un contesto privo di giudizio.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#C5BCB3] text-[11px] font-semibold uppercase tracking-wider">
-                      <span>Riservatezza Assoluta</span>
-                      <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#7A8B78] text-[11px] font-semibold uppercase tracking-wider">
+                      <span>Scopri di più</span>
+                      <span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </div>
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#C5BCB3] hover:shadow-[0_0_25px_rgba(0,240,255,0.2)]">
-                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#C5BCB3] shadow-sm">
+                  <div
+                    onClick={() => setSelectedPillarModal(3)}
+                    className="bg-[#F9F8F6]/80 backdrop-blur-md p-7 rounded-2xl shadow-xl flex flex-col gap-4 transition-all duration-300 hover:bg-[#F3F1ED] border border-[#C5BCB3]/40 hover:border-[#7A8B78] hover:shadow-[0_0_25px_rgba(122,139,120,0.2)] cursor-pointer group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#F3F1ED] border border-[#C5BCB3]/30 flex items-center justify-center text-[#7A8B78] shadow-sm group-hover:scale-105 transition-transform">
                       <span className="material-symbols-outlined text-2xl">distance</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] font-mono font-semibold text-[#C5BCB3] uppercase tracking-widest">
+                      <span className="text-[11px] font-mono font-semibold text-[#7A8B78] uppercase tracking-widest">
                         Pilastro 03
                       </span>
-                      <h3 className="font-serif text-xl text-[#2B2523] font-bold">
+                      <h3 className="font-serif text-xl text-[#2B2523] font-bold group-hover:text-[#7A8B78] transition-colors">
                         Doppia Modalità Fluida
                       </h3>
                     </div>
                     <p className="text-[15px] text-[#5A524E] leading-relaxed">
                       Consulti dal vivo presso la quiete dello studio storico di Macerata, oppure comodamente online via WhatsApp o videochiamata ovunque ti trovi nel mondo.
                     </p>
-                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#C5BCB3] text-[11px] font-semibold uppercase tracking-wider">
-                      <span>Presenza &amp; Digitale</span>
-                      <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                    <div className="mt-auto pt-2 flex items-center gap-2 text-[#7A8B78] text-[11px] font-semibold uppercase tracking-wider">
+                      <span>Scopri di più</span>
+                      <span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </div>
                   </div>
                 </div>
@@ -2204,6 +2224,96 @@ export default function App() {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* 3 PILLARS INTERACTIVE MODAL */}
+      {selectedPillarModal && (
+        <div
+          onClick={() => setSelectedPillarModal(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1C1817]/60 backdrop-blur-md animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#F9F8F6] border border-[#C5BCB3]/60 rounded-3xl max-w-lg w-full p-6 sm:p-8 lg:p-10 relative shadow-2xl animate-in zoom-in-95 duration-200"
+          >
+            {/* Pulsante di chiusura (X) stilizzato in verde oliva pastello */}
+            <button
+              type="button"
+              onClick={() => setSelectedPillarModal(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#7A8B78] text-[#F9F8F6] hover:bg-[#687866] shadow-md flex items-center justify-center transition-all cursor-pointer z-20 border border-[#687866]"
+              aria-label="Chiudi finestra"
+            >
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
+
+            {/* Header Modale con Logo e Sigillo */}
+            <div className="flex flex-col items-center text-center mb-6 pt-1">
+              <div className="w-16 h-16 rounded-full bg-[#F3F1ED] p-1 border border-[#C5BCB3] shadow-sm flex items-center justify-center mb-3">
+                <img
+                  src={IMAGES.avatar}
+                  alt="Tarot Italia Logo"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#7A8B78] font-bold">
+                {selectedPillarModal === 1 && 'PILASTRO 01 • VALORE FONDANTE'}
+                {selectedPillarModal === 2 && 'PILASTRO 02 • VALORE FONDANTE'}
+                {selectedPillarModal === 3 && 'PILASTRO 03 • VALORE FONDANTE'}
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2B2523] mt-1">
+                {selectedPillarModal === 1 && 'Introspezione non Dogmatica'}
+                {selectedPillarModal === 2 && 'Spazio d\'Ascolto Protetto'}
+                {selectedPillarModal === 3 && 'Doppia Modalità Fluida'}
+              </h3>
+            </div>
+
+            {/* Testo di Approfondimento del Pilastro */}
+            <div className="p-5 sm:p-6 bg-[#F3F1ED]/90 rounded-2xl border border-[#C5BCB3]/50 shadow-inner mb-6 text-left">
+              <p className="text-[15px] sm:text-[16px] text-[#2B2523] leading-relaxed font-sans">
+                {selectedPillarModal === 1 && (
+                  <>
+                    <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
+                    I tarocchi non predicono un futuro immobile, ma tracciano le coordinate del presente. Attraverso il simbolo e l'archetipo, la lettura diventa uno specchio limpido per disinnescare i blocchi mentali, stimolare il pensiero critico e riappropriarsi del proprio potere decisionale con consapevolezza emotiva.
+                  </>
+                )}
+                {selectedPillarModal === 2 && (
+                  <>
+                    <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
+                    Un'ora integrale (60 min) totalmente dedicata a te, senza fretta né giudizio. Un rifugio sicuro dove accogliere desideri nascosti, nodi emotivi e passaggi di vita complessi, garantendo un'atmosfera di assoluta riservatezza, rispetto e accoglienza empatica.
+                  </>
+                )}
+                {selectedPillarModal === 3 && (
+                  <>
+                    <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
+                    La consulenza si adatta ai tuoi ritmi e alle tue esigenze logistiche. Puoi scegliere di vivere l'esperienza dal vivo nella quiete dello storico studio di Macerata, oppure optare per la sessione online via WhatsApp o videochiamata, mantenendo intatta la stessa intensità e profondità ovunque tu sia nel mondo.
+                  </>
+                )}
+              </p>
+            </div>
+
+            {/* Pulsanti Azione Modale */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setSelectedPillarModal(null)}
+                className="w-full sm:w-auto px-6 py-2.5 bg-[#F3F1ED] hover:bg-[#E5E0D8] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-xl border border-[#C5BCB3]/60 transition-all cursor-pointer"
+              >
+                Chiudi
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedPillarModal(null);
+                  openBookingFor('Lettura On Line 1h');
+                }}
+                className="w-full sm:w-auto px-6 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span className="material-symbols-outlined text-sm">flare</span>
+                <span>Prenota Consulto</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
