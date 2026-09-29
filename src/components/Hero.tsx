@@ -70,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* MOBILE ORDER 2°-5° & DESKTOP COLUMN LEFT: Text & CTAs Card con Sfondo Avorio Pulito */}
-          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start bg-[#F9F8F6]/90 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-[#C5BCB3]/60 shadow-2xl">
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start bg-[#F9F8F6]/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-[#C5BCB3]/50 shadow-xl">
 
             {/* 1. Pill Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F3F1ED] rounded-full border border-[#C5BCB3]/60 shadow-sm">

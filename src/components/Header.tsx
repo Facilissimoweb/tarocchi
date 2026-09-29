@@ -53,12 +53,12 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[#E5E0D8] transition-transform duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 bg-[#F9F8F6]/80 backdrop-blur-md border-b border-[#C5BCB3]/50 shadow-sm transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
       {/* HEADER SUPERIORE: LOGO CENTRATO + TITOLO "TAROT ITALIA" + SOTTOTITOLO "STUDIO OLISTICO MACERATA" */}
-      <div className="w-full bg-[#F9F8F6] pt-3.5 pb-2 px-4 border-b border-[#E5E0D8]">
+      <div className="w-full bg-[#F9F8F6]/75 backdrop-blur-md pt-3.5 pb-2 px-4 border-b border-[#E5E0D8]/60">
         <div className="max-w-[1240px] mx-auto flex flex-col items-center justify-center text-center">
           <button
             onClick={() => handleNavClick('home')}
