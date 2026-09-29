@@ -85,7 +85,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     filterTags: ['Rituali', 'Consacrati'],
     price: 28.0,
     badge: 'Creazione di Maura',
-    image: 'https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQLOvwNy2W1qr7QRcKwUiWmnyVUFEoxNlt7DLfpGOCLYir-kvrtFwJNOgbzipwez5LeGNDF4wvoGX4oi0egnh8X2WaYOumhq_ODEQ1MYeJZUStryhrvnhHoLMfPRQnqXdN4jJjx8nuM1AyGl64qU-D6TyW8NEI6-8W7c3mCEl_vdfGf9L2RpMQIkc_ZUDnxv29z29bAKEWfGQFsvkKiNh9yKhSAQVy1bhBjrAFO-WfPKlDD_OiRS7N',
     description: 'Create e caricate ritualmente dalla nostra ritualista Maura secondo l’antica ricetta popolare dell’entroterra marchigiano. La pura cera vergine d’api arde emanando un aroma caldo di miele e sottobosco, purificando i canali affettivi ed evocando pace interiore.',
     ritualUse: 'Accendere durante momenti di dialogo difficile con la persona amata, meditazioni per il superamento di incomprensioni o preghiere d’armonia familiare.',
     features: [
@@ -105,7 +105,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     filterTags: ['Erbe'],
     price: 16.0,
     badge: 'Formula dello Studio',
-    image: 'https://lh3.googleusercontent.com/aida/AEtjO1VszJaV0U802Nkof9__gEgoylN3d9vK75TWuo8bBxHaDn0gwyFs4HkF083y8s_78aReiksXnPuJjmYyPMxn5jTWFPBmJMUpEVZVRt5T5OzKn_CMhDQ12pZCMCwVbP1q6MYqlrCZIy5McdOcU3Cn2YwZ50XYU-6GrGI4p-NsflCGIwMJefPMUNmhlf4KC4yFiZu4JbfrqPkFs35kBQTe_i-ujUy7jLo4RVhy_1gr0yqRplWULLf7dwwL2w',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAoknsKwjQ5gMWL8eK1ObY_9BQ6Jk8KDgcWG1yZ87X3TLEMJfQjLDTzppcdq--GQPBLXre1C4PRFdqJ4MieRdx62up4qDZ07nPM5JI1Cyv1dSYzNqelbWZH01kAfItV_gDzSDbc8zjhdLU2ORvdUwFUimclSNQ6Ji0R7DRoQKIW2hanc9UUlFTeoatyi4ioQlXZjei6RL3trMkqD0EsLcaA-ztGTynT18R_-xNqJwTwstfvDx4rLbDU',
     description: 'La preparazione botanica segreta che accoglie i consultanti nella quiete di Via delle Fonti. A base di sommità fiorite di melissa, passiflora biologica, scorza d’arancio amaro essiccata al sole, fiori di tiglio montano e una nota di cannella regina.',
     ritualUse: 'Da sorseggiare 15 minuti prima di una lettura dei tarocchi o della meditazione serale per placare il lavorio mentale e sintonizzare il cuore.',
     features: [
