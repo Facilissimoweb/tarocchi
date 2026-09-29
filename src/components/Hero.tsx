@@ -58,15 +58,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute -inset-3 rounded-full bg-[#7A8B78]/20 blur-2xl opacity-70"></div>
 
               {/* Circular Logo Container */}
-              <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-[320px] md:h-[320px] lg:w-[360px] lg:h-[360px] rounded-full p-1 border border-[#C5BCB3] shadow-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.01]">
-                <div className="w-full h-full rounded-full bg-[#F9F8F6] p-1 overflow-hidden flex items-center justify-center border border-[#C5BCB3]/60">
-                  <img
-                    src={avatarImage}
-                    alt="Tarot Italia - Logo Ufficiale"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full rounded-full object-cover"
-                  />
-                </div>
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-[320px] md:h-[320px] lg:w-[360px] lg:h-[360px] rounded-full border border-[#C5BCB3] shadow-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.01] overflow-hidden bg-[#F9F8F6]">
+                <img
+                  src={avatarImage}
+                  alt="Tarot Italia - Logo Ufficiale"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full rounded-full object-cover scale-105"
+                />
               </div>
             </div>
           </div>

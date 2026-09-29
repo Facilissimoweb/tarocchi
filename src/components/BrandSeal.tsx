@@ -41,25 +41,23 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
       } ${className}`}
     >
       <div
-        className={`relative ${dimensions} rounded-full p-0.5 border border-[#C5BCB3] hover:border-[#2B2523] transition-all duration-300 flex-shrink-0 bg-[#F9F8F6] ${
+        className={`relative ${dimensions} rounded-full p-0 border border-[#C5BCB3] hover:border-[#2B2523] transition-all duration-300 flex-shrink-0 bg-[#F9F8F6] overflow-hidden ${
           glow ? 'shadow-md' : ''
         }`}
       >
-        <div className="w-full h-full rounded-full p-0.5 bg-[#F9F8F6] flex items-center justify-center overflow-hidden">
-          {!imgError ? (
-            <img
-              src={BRAND_LOGO_URL}
-              alt={alt}
-              referrerPolicy="no-referrer"
-              onError={() => setImgError(true)}
-              className="w-full h-full object-cover rounded-full"
-            />
-          ) : (
-            <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs sm:text-sm tracking-tighter">
-              TI
-            </div>
-          )}
-        </div>
+        {!imgError ? (
+          <img
+            src={BRAND_LOGO_URL}
+            alt={alt}
+            referrerPolicy="no-referrer"
+            onError={() => setImgError(true)}
+            className="w-full h-full object-cover rounded-full scale-105"
+          />
+        ) : (
+          <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs sm:text-sm tracking-tighter">
+            TI
+          </div>
+        )}
       </div>
 
       {showWordmark && (
@@ -90,22 +88,20 @@ export const BrandSectionDivider: React.FC<{
       <div className="flex items-center justify-center gap-4 w-full max-w-md mx-auto">
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#C5BCB3] to-[#8C808E]/50"></div>
         <div className="relative group cursor-default">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full p-0.5 border border-[#C5BCB3] shadow-sm flex items-center justify-center transition-transform duration-300 bg-[#F9F8F6] group-hover:border-[#2B2523]">
-            <div className="w-full h-full rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
-              {!imgError ? (
-                <img
-                  src={BRAND_LOGO_URL}
-                  alt="Logo Tarot Italia"
-                  referrerPolicy="no-referrer"
-                  onError={() => setImgError(true)}
-                  className="w-full h-full rounded-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs md:text-sm">
-                  TI
-                </div>
-              )}
-            </div>
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full p-0 border border-[#C5BCB3] shadow-sm flex items-center justify-center transition-transform duration-300 bg-[#F9F8F6] group-hover:border-[#2B2523] overflow-hidden">
+            {!imgError ? (
+              <img
+                src={BRAND_LOGO_URL}
+                alt="Logo Tarot Italia"
+                referrerPolicy="no-referrer"
+                onError={() => setImgError(true)}
+                className="w-full h-full rounded-full object-cover scale-105"
+              />
+            ) : (
+              <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs md:text-sm">
+                TI
+              </div>
+            )}
           </div>
         </div>
         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#C5BCB3] to-[#8C808E]/50"></div>
