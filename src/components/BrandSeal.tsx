@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Official Tarot Italia Seal / Logo
-export const BRAND_LOGO_URL = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVI-E6mN8LzTkqaK2AlHhHt6J_m2ejErCGubg7rHJrgDEmvJqKqO85sxaWmczjg7E3WgCpY6zNmQgnuHqamyxdHVSurJFn1BoLM_I8PbnCmhlfCOwFMDoXRq4yQ91nikMqRSKVi1G7Os3bG8313n7aJDSi26Fh7yIRmENKSGdbZdAlYeUEw9khRjyfug6EeoTgBf6n9fc1lhGg2XKrKrm9CfFr3CXslAiN-TC2OBWtRVpwfWvO4wLx';
+export const BRAND_LOGO_URL = '/assets/images/tarocchi-macerata.png';
 
 export interface BrandSealProps {
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
