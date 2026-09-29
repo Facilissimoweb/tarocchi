@@ -57,16 +57,16 @@ export const Header: React.FC<HeaderProps> = ({
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      {/* RIGA 1 SUPERIORE: LOGO + TITOLO + SOTTOTITOLO CENTRATI VERTICALMENTE COME IN FOTO */}
-      <div className="w-full bg-[#F9F8F6] pt-3 pb-2 px-4 border-b border-[#E5E0D8]/80">
+      {/* HEADER SUPERIORE: LOGO CENTRATO + TITOLO "TAROT ITALIA" + SOTTOTITOLO "STUDIO OLISTICO MACERATA" */}
+      <div className="w-full bg-[#F9F8F6] pt-3.5 pb-2 px-4 border-b border-[#E5E0D8]">
         <div className="max-w-[1240px] mx-auto flex flex-col items-center justify-center text-center">
           <button
             onClick={() => handleNavClick('home')}
             className="flex flex-col items-center group cursor-pointer focus:outline-none"
           >
-            {/* Logo Circolare con bordo e bagliore sobrio in tono neutro */}
+            {/* Logo in Alto */}
             <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[#C5BCB3] group-hover:border-[#7A8B78] transition-all duration-300 mb-1 shadow-sm">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3F1ED] p-0.5 overflow-hidden flex items-center justify-center">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#F3F1ED] p-0.5 overflow-hidden flex items-center justify-center">
                 <img
                   alt="Tarot Italia Logo"
                   referrerPolicy="no-referrer"
@@ -79,12 +79,12 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             </div>
 
-            {/* Titolo Principale TAROT ITALIA */}
-            <span className="font-serif text-[18px] sm:text-[22px] font-bold tracking-[0.18em] text-[#2B2523] uppercase leading-tight">
+            {/* Titolo "TAROT ITALIA" */}
+            <span className="font-serif text-[19px] sm:text-[23px] font-bold tracking-[0.18em] text-[#2B2523] uppercase leading-tight">
               TAROT ITALIA
             </span>
 
-            {/* Sottotitolo STUDIO OLISTICO MACERATA */}
+            {/* Sottotitolo "STUDIO OLISTICO MACERATA" */}
             <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.24em] text-[#6C645C] uppercase pt-0.5 font-semibold">
               STUDIO OLISTICO MACERATA
             </span>
@@ -92,10 +92,22 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* RIGA 2 INFERIORE: MENU DI NAVIGAZIONE AL CENTRO/SINISTRA & PULSANTE CTA A DESTRA */}
-      <div className="h-12 sm:h-14 max-w-[1240px] mx-auto px-4 lg:px-12 flex items-center justify-between gap-4">
-        {/* Desktop Navigation Menu (Centrato / Distribuito come in foto) */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-8 mx-auto lg:mx-0">
+      {/* BARRA NAVIGAZIONE: PULSANTE PRENOTA SULLA SINISTRA, MENU PERFETTAMENTE CENTRATO */}
+      <div className="h-12 sm:h-14 max-w-[1240px] mx-auto px-4 lg:px-8 flex items-center justify-between gap-4">
+        {/* Sinistra: Tasto di Prenotazione ("PRENOTA CONSULTA") */}
+        <div className="flex items-center">
+          <button
+            onClick={onOpenBooking}
+            className="inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-1.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] rounded-xl transition-all duration-300 cursor-pointer border border-[#687866] shadow-sm"
+          >
+            <span className="material-symbols-outlined text-sm sm:text-base leading-none text-[#F9F8F6]">calendar_month</span>
+            <span className="whitespace-nowrap sm:hidden">PRENOTA</span>
+            <span className="whitespace-nowrap hidden sm:inline">PRENOTA CONSULTA</span>
+          </button>
+        </div>
+
+        {/* Centro: Menu di Navigazione Perfettamente Centrato */}
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-6 justify-center flex-1">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -117,28 +129,12 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </nav>
 
-        {/* Mobile Menu Label when desktop nav is hidden */}
-        <div className="lg:hidden text-[10px] font-mono tracking-[0.18em] text-[#6C645C] uppercase font-semibold flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78]"></span>
-          <span>TAROT ITALIA</span>
-        </div>
-
-        {/* Right CTA Button (Verde Oliva Pastello) & Mobile Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
-          {/* Pastel Olive Green CTA Button */}
-          <button
-            onClick={onOpenBooking}
-            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] rounded-xl transition-all duration-300 cursor-pointer border border-[#687866] shadow-sm"
-          >
-            <span className="material-symbols-outlined text-sm sm:text-base leading-none text-[#F9F8F6]">calendar_month</span>
-            <span className="whitespace-nowrap sm:hidden">PRENOTA</span>
-            <span className="whitespace-nowrap hidden sm:inline">PRENOTA CONSULTA</span>
-          </button>
-
-          {/* Mobile Menu Button / Close Icon */}
+        {/* Destra: Spaziatore Bilanciato (Desktop) e Toggle Menu Mobile */}
+        <div className="flex items-center justify-end min-w-[140px] sm:min-w-[160px] lg:min-w-[180px]">
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-1 focus:outline-none cursor-pointer text-[#2B2523]"
+            className="lg:hidden p-1 focus:outline-none cursor-pointer text-[#2B2523] ml-auto"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (

@@ -223,12 +223,28 @@ export default function App() {
         >
         {/* CONDITIONAL VIEW: CHI SIAMO TERESA / ABOUT ME & COLLABORATORI */}
         {activeTab === 'chi-siamo' && (
-          <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
+          <div className="flex flex-col w-full animate-in fade-in duration-300">
+            {/* Hero Section per Chi Siamo */}
+            <Hero
+              heroImage={IMAGES.hero}
+              avatarImage={IMAGES.avatar}
+              onOpenBooking={openBookingFor}
+              badgeText="STUDIO OLISTICO & RICERCA SIMBOLICA"
+              title={
+                <>
+                  Chi Siamo: <span className="italic text-[#7A8B78] font-serif font-normal">Teresa</span> &amp; la Passione per gli <span className="underline decoration-[#7A8B78]/60 underline-offset-8">Archetipi</span>
+                </>
+              }
+              subtitle="Un cammino iniziato nel 2012 tra l'Accademia di Belle Arti e la decodifica dei simboli sacri. Scopri la filosofia dello studio olistico e la ritualistica di Maura."
+              showButtons={false}
+            />
+
+            <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12">
             {/* Top Navigation & Breadcrumb */}
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#C5BCB3]/30">
               <button
                 onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C5BCB3] hover:text-[#C5BCB3] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#6C645C] hover:text-[#2B2523] transition-colors cursor-pointer font-mono font-semibold"
               >
                 <span className="material-symbols-outlined text-sm">arrow_back</span>
                 Torna alla Home
@@ -617,22 +633,39 @@ export default function App() {
               </div>
             </div>
           </section>
+          </div>
         )}
 
         {/* CONDITIONAL VIEW: 22 ARCANI CYBER-MISTICI */}
         {activeTab === 'arcani' && (
-          <section className="max-w-[1280px] mx-auto px-4 lg:px-12 py-10 lg:py-14 animate-in fade-in duration-300">
+          <div className="flex flex-col w-full animate-in fade-in duration-300">
+            {/* Hero Section per 22 Arcani */}
+            <Hero
+              heroImage={IMAGES.hero}
+              avatarImage={IMAGES.avatar}
+              onOpenBooking={openBookingFor}
+              badgeText="DIZIONARIO ARCHETIPICO & COMPENDIO"
+              title={
+                <>
+                  I 22 Arcani Maggiori: <span className="italic text-[#7A8B78] font-serif font-normal">Mappa dell'Anima</span>
+                </>
+              }
+              subtitle="Esplora il significato di ogni lama, dall'intuito del Matto alla realizzazione del Mondo. Tocca una carta per girarla o estrai la tua lama guidata del giorno."
+              showButtons={false}
+            />
+
+            <section className="max-w-[1280px] mx-auto px-4 lg:px-12 py-10 lg:py-14">
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#C5BCB3]/30">
               <button
                 onClick={() => setActiveTab('home')}
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C5BCB3] hover:text-[#C5BCB3] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#6C645C] hover:text-[#2B2523] transition-colors cursor-pointer font-mono font-semibold"
               >
                 <span className="material-symbols-outlined text-sm">arrow_back</span>
                 Torna alla Home
               </button>
               <span className="text-xs uppercase tracking-widest text-[#5A524E] font-mono flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
-                Dizionario Archetipico • 22 Lame Cibernetiche
+                Dizionario Archetipico • 22 Lame
               </span>
             </div>
 
@@ -906,15 +939,34 @@ export default function App() {
               </div>
             </div>
           </section>
+          </div>
         )}
 
         {/* CONDITIONAL VIEW: BLOG SECTION */}
         {activeTab === 'blog' && (
-          <BlogSection
-            initialSelectedArticleId={blogArticleId}
-            onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            onOpenBooking={openBookingFor}
-          />
+          <div className="flex flex-col w-full animate-in fade-in duration-300">
+            {/* Hero Section per il Journal (se non è aperto un singolo articolo) */}
+            {!blogArticleId && (
+              <Hero
+                heroImage={IMAGES.hero}
+                avatarImage={IMAGES.avatar}
+                onOpenBooking={openBookingFor}
+                badgeText="TAROT ITALIA JOURNAL & CULTURA"
+                title={
+                  <>
+                    Voci, Simboli e <span className="italic text-[#7A8B78] font-serif font-normal">Riflessioni</span> per la Pratica
+                  </>
+                }
+                subtitle="Saggi e articoli dedicati alla tarologia introspettiva, alla semiotica dell'immagine e alla tradizione populare marchigiana a cura di Teresa e Maura."
+                showButtons={false}
+              />
+            )}
+            <BlogSection
+              initialSelectedArticleId={blogArticleId}
+              onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onOpenBooking={openBookingFor}
+            />
+          </div>
         )}
 
         {/* CONDITIONAL VIEW: PRIVACY POLICY PAGE */}
@@ -1059,12 +1111,28 @@ export default function App() {
 
         {/* CONDITIONAL VIEW: SHOP SECTION */}
         {activeTab === 'shop' && (
-          <ShopSection
-            onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            initialCategory={shopCategory}
-            onOpenPrivacy={() => changeTab('privacy-policy')}
-            onOpenCookie={() => setIsCookieCustomizerOpen(true)}
-          />
+          <div className="flex flex-col w-full animate-in fade-in duration-300">
+            {/* Hero Section per Bottega */}
+            <Hero
+              heroImage={IMAGES.hero}
+              avatarImage={IMAGES.avatar}
+              onOpenBooking={openBookingFor}
+              badgeText="BOTTEGA OLISTICA & ARTIGIANATO"
+              title={
+                <>
+                  Strumenti Consacrati &amp; <span className="italic text-[#7A8B78] font-serif font-normal">Erbe dei Sibillini</span>
+                </>
+              }
+              subtitle="Esplora la nostra bottega olistica con oggetti creati a mano, mazzi di tarocchi storici e kit per pratiche di purificazione ed armonia."
+              showButtons={false}
+            />
+            <ShopSection
+              onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              initialCategory={shopCategory}
+              onOpenPrivacy={() => changeTab('privacy-policy')}
+              onOpenCookie={() => setIsCookieCustomizerOpen(true)}
+            />
+          </div>
         )}
 
         {/* DEFAULT HOME VIEW (ALSO RENDERED WHEN SERVIZI IS SELECTED) */}

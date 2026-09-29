@@ -423,13 +423,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           <div className="bg-[#FFFFFF] border border-[#C5BCB3] rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-xl max-h-[90vh] overflow-y-auto text-[#2B2523]">
             {/* Logo circolare in primo piano */}
             <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-14 h-14 rounded-full bg-[#F9F8F6] p-1 border border-[#C5BCB3] flex items-center justify-center mb-2">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
-                  alt="Tarot Italia Logo"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              </div>
+              <BrandSeal size="sm" className="mb-2" />
               <span className="text-[11px] font-mono uppercase tracking-widest text-[#6C645C] font-semibold flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-sm text-[#2B2523]">storefront</span>
                 <span>BOTTEGA OLISTICA • {selectedProduct.category.toUpperCase()}</span>
@@ -549,13 +543,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           <div className="w-full max-w-md bg-[#FFFFFF] h-full border-l border-[#C5BCB3] shadow-2xl flex flex-col p-6 overflow-hidden relative text-[#2B2523]">
             {/* Logo circolare */}
             <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-14 h-14 rounded-full bg-[#F9F8F6] p-1 border border-[#C5BCB3] flex items-center justify-center mb-2">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
-                  alt="Tarot Italia Logo"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              </div>
+              <BrandSeal size="sm" className="mb-2" />
               <span className="text-[11px] font-mono uppercase tracking-widest text-[#6C645C] font-semibold flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-sm text-[#2B2523]">shopping_bag</span>
                 <span>CARRELLO BOTTEGA</span>
