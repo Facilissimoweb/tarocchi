@@ -21,8 +21,8 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'home', label: 'HOME' },
     { id: 'chi-siamo', label: 'CHI SIAMO' },
     { id: 'arcani', label: '22 ARCANI' },
-    { id: 'blog', label: 'BLOG' },
-    { id: 'servizi', label: 'SERVIZI & CONSULTI' },
+    { id: 'blog', label: 'JOURNAL' },
+    { id: 'servizi', label: 'SERVIZI' },
     { id: 'shop', label: 'BOTTEGA' },
   ];
 
@@ -32,16 +32,16 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 left-0 w-full z-50 bg-[#0C0714]/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
-      {/* Top Info Bar: Minimal thin strip with uppercase clean font (Hidden on mobile) */}
-      <div className="hidden md:block w-full bg-[#08040E]/90 py-1 px-4 lg:px-12 border-b border-white/5">
-        <div className="max-w-[1240px] mx-auto flex items-center justify-between text-[#A69BB5] text-[10px] font-mono tracking-[0.2em] uppercase">
+    <header className="sticky top-0 left-0 w-full z-50 bg-[#F9F8F6]/95 backdrop-blur-md border-b border-[#E5E0D8] transition-all duration-300">
+      {/* Top Info Bar: Clean editorial strip */}
+      <div className="hidden md:block w-full bg-[#F3F1ED] py-1.5 px-4 lg:px-12 border-b border-[#E5E0D8]">
+        <div className="max-w-[1240px] mx-auto flex items-center justify-between text-[#6C645C] text-[10px] font-mono tracking-[0.2em] uppercase">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00F0FF] animate-pulse shadow-[0_0_6px_#00F0FF]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8C808E]"></span>
             <span>STUDIO OLISTICO MACERATA • TAROLOGIA ARCHETIPICA DAL 2012</span>
           </div>
-          <div className="flex items-center gap-2 text-[#00F0FF]/90 font-semibold">
-            <span className="material-symbols-outlined text-xs text-[#FF007F]">auto_awesome</span>
+          <div className="flex items-center gap-2 text-[#2B2523] font-medium">
+            <span className="material-symbols-outlined text-xs text-[#8C808E]">auto_awesome</span>
             <span>SESSIONI IN STUDIO E ONLINE</span>
           </div>
         </div>
@@ -52,10 +52,10 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Brand Logo & Name */}
         <button
           onClick={() => handleNavClick('home')}
-          className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none min-w-0"
+          className="flex items-center gap-3.5 text-left group cursor-pointer focus:outline-none min-w-0"
         >
-          <div className="relative flex items-center justify-center p-0.5 rounded-full bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_15px_rgba(255,0,127,0.5)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
+          <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[#C5BCB3] group-hover:border-[#2B2523] transition-colors duration-300 flex-shrink-0">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
               <img
                 alt="Tarot Italia Logo"
                 referrerPolicy="no-referrer"
@@ -68,10 +68,10 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
           <div className="flex flex-col min-w-0">
-            <span className="font-serif text-[18px] sm:text-[22px] font-bold tracking-wider bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent uppercase leading-none drop-shadow-[0_0_10px_rgba(255,0,127,0.4)] truncate">
+            <span className="font-serif text-[18px] sm:text-[22px] font-semibold tracking-[0.12em] text-[#2B2523] uppercase leading-none truncate">
               TAROT ITALIA
             </span>
-            <span className="text-[9px] font-mono tracking-[0.22em] text-[#A69BB5] group-hover:text-[#00F0FF] transition-colors uppercase pt-1 truncate">
+            <span className="text-[9px] font-mono tracking-[0.22em] text-[#6C645C] group-hover:text-[#2B2523] transition-colors uppercase pt-1 truncate">
               STUDIO OLISTICO MACERATA
             </span>
           </div>
@@ -85,15 +85,15 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-2 text-[12px] font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer rounded-lg relative ${
+                className={`px-3.5 py-2 text-[12px] font-semibold tracking-[0.15em] uppercase transition-all duration-200 cursor-pointer rounded-lg relative ${
                   isActive
-                    ? 'text-[#00F0FF] font-bold'
-                    : 'text-[#A69BB5] hover:text-[#00F0FF] hover:bg-white/5'
+                    ? 'text-[#2B2523] font-bold'
+                    : 'text-[#6C645C] hover:text-[#2B2523] hover:bg-[#F3F1ED]'
                 }`}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-[#FF007F] to-[#00F0FF] shadow-[0_0_8px_#00F0FF] rounded-full" />
+                  <span className="absolute bottom-0 left-3.5 right-3.5 h-[1.5px] bg-[#2B2523] rounded-full" />
                 )}
               </button>
             );
@@ -102,12 +102,12 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right CTA Button & Mobile Toggle */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          {/* Single Primary Neon CTA Button */}
+          {/* Dusty Lavender Pastel CTA Button */}
           <button
             onClick={onOpenBooking}
-            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 bg-[#FF007F] hover:bg-[#FF1A8C] text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest rounded-xl shadow-[0_0_20px_rgba(255,0,127,0.6)] hover:shadow-[0_0_30px_rgba(255,0,127,0.9)] transition-all duration-300 cursor-pointer border border-[#FF007F]/50"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-[#D8CDE2] hover:bg-[#C9BBD7] text-[#2B2523] text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] rounded-xl transition-all duration-300 cursor-pointer border border-[#C5BCB3]/60 shadow-sm"
           >
-            <span className="material-symbols-outlined text-sm sm:text-base leading-none">calendar_month</span>
+            <span className="material-symbols-outlined text-sm sm:text-base leading-none text-[#2B2523]">calendar_month</span>
             <span className="whitespace-nowrap sm:hidden">PRENOTA</span>
             <span className="whitespace-nowrap hidden sm:inline">PRENOTA CONSULTA</span>
           </button>
@@ -115,15 +115,15 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Button / Close Icon */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-1 focus:outline-none cursor-pointer"
+            className="lg:hidden p-1 focus:outline-none cursor-pointer text-[#2B2523]"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FF007F]/20 border border-[#FF007F] text-[#FF007F] flex items-center justify-center shadow-[0_0_12px_rgba(255,0,127,0.4)]">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F3F1ED] border border-[#C5BCB3] text-[#2B2523] flex items-center justify-center">
                 <span className="material-symbols-outlined text-xl sm:text-2xl font-bold">close</span>
               </div>
             ) : (
-              <div className="p-2 text-[#A69BB5] hover:text-white rounded-lg">
+              <div className="p-2 text-[#2B2523] hover:text-[#8C808E] rounded-lg">
                 <span className="material-symbols-outlined text-2xl">menu</span>
               </div>
             )}
@@ -133,11 +133,11 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Glassmorphic Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0C0714]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-3 shadow-2xl animate-in fade-in duration-200">
+        <div className="lg:hidden bg-[#F9F8F6] border-b border-[#E5E0D8] px-6 py-6 flex flex-col gap-3 shadow-lg animate-in fade-in duration-200">
           {/* Centered Circular Logo at top of mobile menu */}
-          <div className="flex flex-col items-center justify-center pt-2 pb-4 border-b border-white/10 mb-2">
-            <div className="relative flex items-center justify-center p-0.5 rounded-full bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_18px_rgba(255,0,127,0.5)] mb-2">
-              <div className="w-16 h-16 rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center pt-2 pb-4 border-b border-[#E5E0D8] mb-2">
+            <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[#C5BCB3] mb-2">
+              <div className="w-16 h-16 rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
                 <img
                   alt="Tarot Italia Logo"
                   referrerPolicy="no-referrer"
@@ -149,15 +149,15 @@ export const Header: React.FC<HeaderProps> = ({
                 />
               </div>
             </div>
-            <span className="font-serif text-lg font-bold tracking-wider bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent uppercase">
+            <span className="font-serif text-lg font-bold tracking-[0.12em] text-[#2B2523] uppercase">
               TAROT ITALIA
             </span>
-            <span className="text-[10px] font-mono tracking-[0.2em] text-[#A69BB5] uppercase pt-0.5">
+            <span className="text-[10px] font-mono tracking-[0.2em] text-[#6C645C] uppercase pt-0.5">
               STUDIO OLISTICO MACERATA
             </span>
           </div>
 
-          {/* Navigation Links with clean typography, no borders */}
+          {/* Navigation Links */}
           <div className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -165,10 +165,10 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`text-center py-3 text-sm font-bold tracking-widest uppercase transition-colors cursor-pointer ${
+                  className={`text-center py-3 text-sm font-semibold tracking-[0.18em] uppercase transition-colors cursor-pointer ${
                     isActive
-                      ? 'text-[#00F0FF]'
-                      : 'text-[#A69BB5] hover:text-white'
+                      ? 'text-[#2B2523] font-bold bg-[#F3F1ED] rounded-lg'
+                      : 'text-[#6C645C] hover:text-[#2B2523]'
                   }`}
                 >
                   {item.label}
