@@ -152,16 +152,8 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
       <section className="max-w-[1280px] mx-auto px-4 lg:px-12 relative z-10 animate-in fade-in duration-500">
         {/* Top Header */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#E5E0D8] bg-[#FFFFFF] p-4 rounded-2xl border shadow-sm">
-          <button
-            onClick={onBackToHome}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#2B2523] hover:text-[#6C645C] transition-colors cursor-pointer font-mono font-semibold"
-          >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
-            Torna alla Home
-          </button>
-
-          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#6C645C]">
-            <span className="material-symbols-outlined text-sm">auto_awesome</span>
+          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#6C645C]">
+            <span className="material-symbols-outlined text-sm text-[#7A8B78]">auto_awesome</span>
             <span>Atelier Olistico &amp; Consacrazioni Macerata</span>
           </div>
 

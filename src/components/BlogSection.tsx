@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { BLOG_ARTICLES, BlogArticle } from '../data/blogData';
 import { BrandSeal, BrandSectionDivider } from './BrandSeal';
+import { Hero } from './Hero';
 
 interface BlogSectionProps {
   onBackToHome: () => void;
   onOpenBooking: (serviceName: string) => void;
   initialSelectedArticleId?: string | null;
+  heroImage?: string;
+  avatarImage?: string;
 }
 
-export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBooking, initialSelectedArticleId }) => {
+export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBooking, initialSelectedArticleId, heroImage, avatarImage }) => {
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(initialSelectedArticleId || null);
 
   React.useEffect(() => {
@@ -37,19 +40,22 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
   if (selectedArticle) {
     return (
       <section className="max-w-[1000px] mx-auto px-4 lg:px-8 py-8 lg:py-12 animate-in fade-in duration-300 text-[#2B2523]">
-        {/* Navigation Breadcrumb */}
+      {/* Navigation Breadcrumb - Exclusively visible on single article view */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#E5E0D8]">
           <button
+          onClick={onBackToHome}
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#2B2523] hover:text-[#7A8B78] transition-colors cursor-pointer font-mono font-semibold"
+        >
+          <span className="material-symbols-outlined text-sm text-[#7A8B78]">arrow_back</span>
+          Torna alla Home
+        </button>
+        <button
             onClick={() => { setSelectedArticleId(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#2B2523] hover:text-[#6C645C] transition-colors cursor-pointer font-mono font-semibold"
+          className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#6C645C] hover:text-[#2B2523] transition-colors cursor-pointer font-mono font-medium"
           >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
-            Torna agli Articoli del Journal
+          <span>Tutti gli Articoli</span>
+          <span className="material-symbols-outlined text-sm">menu_book</span>
           </button>
-          <span className="text-xs uppercase tracking-widest text-[#6C645C] flex items-center gap-1.5 font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8C808E]"></span>
-            {selectedArticle.category}
-          </span>
         </div>
 
         <BrandSectionDivider title="Tarot Italia • Journal & Articoli" className="mb-8" />
@@ -248,16 +254,27 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
 
   // Articles Grid List
   return (
-    <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-10 lg:py-14 animate-in fade-in duration-300 text-[#2B2523]">
+    <div className="flex flex-col w-full animate-in fade-in duration-300">
+      {/* Hero Section displayed ONLY on the main Journal overview, NOT on single article view */}
+      {heroImage && avatarImage && (
+        <Hero
+          heroImage={heroImage}
+          avatarImage={avatarImage}
+          onOpenBooking={onOpenBooking}
+          badgeText="TAROT ITALIA JOURNAL & CULTURA"
+          title={
+            <>
+              Voci, Simboli e <span className="italic text-[#7A8B78] font-serif font-normal">Riflessioni</span> per la Pratica
+            </>
+          }
+          subtitle="Saggi e articoli dedicati alla tarologia introspettiva, alla semiotica dell'immagine e alla tradizione populare marchigiana a cura di Teresa e Maura."
+          showButtons={false}
+        />
+      )}
+
+      <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-10 lg:py-14 text-[#2B2523] w-full">
       {/* Top Header */}
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#E5E0D8]">
-        <button
-          onClick={onBackToHome}
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#2B2523] hover:text-[#6C645C] transition-colors cursor-pointer font-mono font-semibold"
-        >
-          <span className="material-symbols-outlined text-sm">arrow_back</span>
-          Torna alla Home
-        </button>
         <span className="text-xs uppercase tracking-widest text-[#6C645C] font-mono">
           Tarot Italia Journal • {filteredArticles.length} Articoli
         </span>
@@ -345,5 +362,6 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onBackToHome, onOpenBo
         ))}
       </div>
     </section>
+    </div>
   );
 };

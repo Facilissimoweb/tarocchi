@@ -251,20 +251,6 @@ export default function App() {
             />
 
             <section className="max-w-[1240px] mx-auto px-4 lg:px-12 py-12">
-            {/* Top Navigation & Breadcrumb */}
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#C5BCB3]/30">
-              <button
-                onClick={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#6C645C] hover:text-[#2B2523] transition-colors cursor-pointer font-mono font-semibold"
-              >
-                <span className="material-symbols-outlined text-sm">arrow_back</span>
-                Torna alla Home
-              </button>
-              <span className="text-xs uppercase tracking-widest text-[#5A524E] flex items-center gap-1.5 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
-                Studio Olistico Macerata • Attivo dal 2012
-              </span>
-            </div>
 
             {/* SECTION 1: TERESA / ABOUT ME */}
             <BrandSectionDivider title="Tarot Italia • Chi Siamo & Studio Olistico" className="mb-8" />
@@ -666,19 +652,6 @@ export default function App() {
             />
 
             <section className="max-w-[1280px] mx-auto px-4 lg:px-12 py-10 lg:py-14">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#C5BCB3]/30">
-              <button
-                onClick={() => setActiveTab('home')}
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#6C645C] hover:text-[#2B2523] transition-colors cursor-pointer font-mono font-semibold"
-              >
-                <span className="material-symbols-outlined text-sm">arrow_back</span>
-                Torna alla Home
-              </button>
-              <span className="text-xs uppercase tracking-widest text-[#5A524E] font-mono flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
-                Dizionario Archetipico • 22 Lame
-              </span>
-            </div>
 
             <BrandSectionDivider title="Tarot Italia • Compendio dei 22 Arcani" className="mb-8" />
 
@@ -955,47 +928,22 @@ export default function App() {
 
         {/* CONDITIONAL VIEW: BLOG SECTION */}
         {activeTab === 'blog' && (
-          <div className="flex flex-col w-full animate-in fade-in duration-300">
-            {/* Hero Section per il Journal (se non è aperto un singolo articolo) */}
-            {!blogArticleId && (
-              <Hero
-                heroImage={IMAGES.hero}
-                avatarImage={IMAGES.avatar}
-                onOpenBooking={openBookingFor}
-                badgeText="TAROT ITALIA JOURNAL & CULTURA"
-                title={
-                  <>
-                    Voci, Simboli e <span className="italic text-[#7A8B78] font-serif font-normal">Riflessioni</span> per la Pratica
-                  </>
-                }
-                subtitle="Saggi e articoli dedicati alla tarologia introspettiva, alla semiotica dell'immagine e alla tradizione populare marchigiana a cura di Teresa e Maura."
-                showButtons={false}
-              />
-            )}
-            <BlogSection
-              initialSelectedArticleId={blogArticleId}
-              onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              onOpenBooking={openBookingFor}
-            />
-          </div>
+          <BlogSection
+            initialSelectedArticleId={blogArticleId}
+            onBackToHome={() => {
+              setBlogArticleId(null);
+              setActiveTab('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenBooking={openBookingFor}
+            heroImage={IMAGES.hero}
+            avatarImage={IMAGES.avatar}
+          />
         )}
 
         {/* CONDITIONAL VIEW: PRIVACY POLICY PAGE */}
         {activeTab === 'privacy-policy' && (
           <section className="max-w-[1000px] mx-auto px-4 lg:px-12 py-12 animate-in fade-in duration-300">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#C5BCB3]/30">
-              <button
-                onClick={() => { changeTab('home'); }}
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C5BCB3] hover:text-[#C5BCB3] transition-colors cursor-pointer font-mono"
-              >
-                <span className="material-symbols-outlined text-sm">arrow_back</span>
-                Torna alla Home
-              </button>
-              <span className="text-xs uppercase tracking-widest text-[#5A524E] flex items-center gap-1.5 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78]"></span>
-                www.tarotitalia.com • Privacy Policy
-              </span>
-            </div>
 
             <BrandSectionDivider title="Tarot Italia • Informativa sulla Privacy" className="mb-8" />
 
