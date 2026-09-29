@@ -35,7 +35,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readTime: '6 min',
     category: 'Tarologia & Archetipi',
     tags: ['IlBagatto', 'ArcaniMaggiori', 'CartomanziaEvolutiva', 'RitualiDiEnergia', 'Manifestazione', 'SbloccoEnergetico', 'SimbolismoTarocchi'],
-    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAoknsKwjQ5gMWL8eK1ObY_9BQ6Jk8KDgcWG1yZ87X3TLEMJfQjLDTzppcdq--GQPBLXre1C4PRFdqJ4MieRdx62up4qDZ07nPM5JI1Cyv1dSYzNqelbWZH01kAfItV_gDzSDbc8zjhdLU2ORvdUwFUimclSNQ6Ji0R7DRoQKIW2hanc9UUlFTeoatyi4ioQlXZjei6RL3trMkqD0EsLcaA-ztGTynT18R_-xNqJwTwstfvDx4rLbDU',
+    coverImage: '/assets/images/tarocchi-macerata.png',
     excerpt: 'Ti è mai capitato di avere in testa un’idea meravigliosa eppure sentirti bloccato al punto di partenza? Scopri come l’energia dell’Arcano I, il Bagatto, trasforma l’ispirazione pura in azione concreta.',
     content: {
       intro: 'Ti è mai capitato di avere in testa un’idea meravigliosa, un progetto che potrebbe cambiarti la vita o una nuova direzione personale, eppure sentirti bloccato al punto di partenza? La sensazione è sempre quella: «Vorrei farlo, ma non so se ho quello che serve, non so da dove iniziare, non è il momento giusto». Nella cartomanzia e nella simbologia degli Arcani Maggiori, questa paralisi non è una colpa, ma un’interruzione nel flusso di una specifica forza: l’energia del Bagatto (chiamato anche Il Mago). Il Bagatto è la carta del numero I. Rappresenta la scintilla iniziale, la trasmutazione del pensiero creativo in azione concreta, il momento esatto in cui l’Ispirazione scende sulla Terra per diventare Realtà.',
@@ -86,7 +86,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readTime: '6 min',
     category: 'Tarologia & Archetipi',
     tags: ['Tarocchi', 'Introspezione', 'Psicologia Archetipica', 'Rider Waite Smith', 'Simbolismo'],
-    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAoknsKwjQ5gMWL8eK1ObY_9BQ6Jk8KDgcWG1yZ87X3TLEMJfQjLDTzppcdq--GQPBLXre1C4PRFdqJ4MieRdx62up4qDZ07nPM5JI1Cyv1dSYzNqelbWZH01kAfItV_gDzSDbc8zjhdLU2ORvdUwFUimclSNQ6Ji0R7DRoQKIW2hanc9UUlFTeoatyi4ioQlXZjei6RL3trMkqD0EsLcaA-ztGTynT18R_-xNqJwTwstfvDx4rLbDU',
+    coverImage: '/assets/images/tarocchi-macerata.png',
     excerpt: 'I Tarocchi non sono una sentenza inappellabile né una prigione per il futuro. Quando approcciati con rigore semiotico ed empatico, si rivelano uno specchio dell’anima capace di svelare gli schemi ricorrenti e risvegliare il discernimento autentico.',
     content: {
       intro: 'Nel sentire comune, la parola "tarocchi" viene spesso associata a una divinazione teatrale, dove un presunto destino già scritto cala dall’alto senza lasciare scampo alla volontà individuale. Dal 2012, all’interno dello studio di Tarot Italia a Macerata e nelle sessioni online, portiamo avanti una visione diametralmente opposta: i Tarocchi sono una grammatica visiva e un sistema di orientamento interiore.',
@@ -133,7 +133,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readTime: '7 min',
     category: 'Radiestesia & Geometria Sacra',
     tags: ['Pendolo PTAH', 'Piramidologia', 'Radiestesia', 'Purificazione Spazi', 'Energie Sottili'],
-    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVI-E6mN8LzTkqaK2AlHhHt6J_m2ejErCGubg7rHJrgDEmvJqKqO85sxaWmczjg7E3WgCpY6zNmQgnuHqamyxdHVSurJFn1BoLM_I8PbnCmhlfCOwFMDoXRq4yQ91nikMqRSKVi1G7Os3bG8313n7aJDSi26Fh7yIRmENKSGdbZdAlYeUEw9khRjyfug6EeoTgBf6n9fc1lhGg2XKrKrm9CfFr3CXslAiN-TC2OBWtRVpwfWvO4wLx',
+    coverImage: '/assets/images/tarocchi-macerata.png',
     excerpt: 'La radiestesia applicata con il Pendolo PTAH e la piramidologia permette di rilevare e drenare congestioni energetiche accumulate in ambienti domestici, luoghi di lavoro o oggetti antichi, ripristinando il flusso vitale originario.',
     content: {
       intro: 'Quante volte vi è capitato di entrare in una stanza, in una vecchia casa o di indossare un gioiello ereditato e percepire un’inspiegabile sensazione di pesantezza, spossatezza o irrequietezza? Gli spazi fisici e la materia conservano memorie emotive e vibrazionali. Nel mio percorso di approfondimento con l’operatore olistico Emiliano Amici, ho appreso l’uso del Pendolo PTAH e le proprietà risonanti della piramidologia per intervenire su queste dinamiche sottili.',
@@ -180,7 +180,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readTime: '8 min',
     category: 'Folklore & Tradizione Popolare',
     tags: ['Folklore Marchigiano', 'Ritualistica d’Amore', 'Erboristeria Sacra', 'Riconciliazione', 'Etica'],
-    coverImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQLOvwNy2W1qr7QRcKwUiWmnyVUFEoxNlt7DLfpGOCLYir-kvrtFwJNOgbzipwez5LeGNDF4wvoGX4oi0egnh8X2WaYOumhq_ODEQ1MYeJZUStryhrvnhHoLMfPRQnqXdN4jJjx8nuM1AyGl64qU-D6TyW8NEI6-8W7c3mCEl_vdfGf9L2RpMQIkc_ZUDnxv29z29bAKEWfGQFsvkKiNh9yKhSAQVy1bhBjrAFO-WfPKlDD_OiRS7N',
+    coverImage: '/assets/images/tarocchi-macerata.png',
     excerpt: 'Nelle vallate e nei borghi marchigiani, la ritualistica di coppia è sempre stata un ponte d’ascolto tra cielo e terra. Scopriamo perché la vera magia d’amore non forza mai la volontà, ma risveglia la verità sopita e la devozione autentica.',
     content: {
       intro: 'Nelle Marche, terra di monti azzurri, boschi di querce e silenzi carichi di mistero, l’antico sapere rituale non è mai scomparso. Si è tramandato a mezza voce, tra nonne e nipoti, nei cascinali dell’entroterra maceratese e fermano. Come collaboratrice esterna di Tarot Italia e operatrice rituale, sento il dovere di fare chiarezza su cosa sia realmente la ritualistica d’amore nel folklore nostrano.',
