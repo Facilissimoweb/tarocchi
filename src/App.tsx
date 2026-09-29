@@ -2263,9 +2263,9 @@ export default function App() {
                 {selectedPillarModal === 3 && 'PILASTRO 03 • VALORE FONDANTE'}
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2B2523] mt-1">
-                {selectedPillarModal === 1 && 'Introspezione non Dogmatica'}
-                {selectedPillarModal === 2 && 'Spazio d\'Ascolto Protetto'}
-                {selectedPillarModal === 3 && 'Doppia Modalità Fluida'}
+                {selectedPillarModal === 1 && 'Il futuro sotto la luce giusta: risposte chiare, scelte tue.'}
+                {selectedPillarModal === 2 && 'Un\'ora di ascolto focalizzato e senza filtri.'}
+                {selectedPillarModal === 3 && 'Zero barriere logistiche, stessa precisione.'}
               </h3>
             </div>
 
@@ -2275,19 +2275,19 @@ export default function App() {
                 {selectedPillarModal === 1 && (
                   <>
                     <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
-                    I tarocchi non predicono un futuro immobile, ma tracciano le coordinate del presente. Attraverso il simbolo e l'archetipo, la lettura diventa uno specchio limpido per disinnescare i blocchi mentali, stimolare il pensiero critico e riappropriarsi del proprio potere decisionale con consapevolezza emotiva.
+                    Certo che si guarda al futuro: è la prima domanda di chi chiama. I tarocchi offrono una visione nitida e risposte concrete su ciò che sta arrivando, senza fatalismi ma con estrema precisione. Il punto non è ignorare il domani, ma capire come affrontarlo e orientarlo, mantenendo sempre la piena libertà di decidere la tua strada.
                   </>
                 )}
                 {selectedPillarModal === 2 && (
                   <>
                     <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
-                    Un'ora integrale (60 min) totalmente dedicata a te, senza fretta né giudizio. Un rifugio sicuro dove accogliere desideri nascosti, nodi emotivi e passaggi di vita complessi, garantendo un'atmosfera di assoluta riservatezza, rispetto e accoglienza empatica.
+                    Un'ora integrale (60 min) strutturata per darti risposte trasparenti e soluzioni tangibili. Lavoriamo sui tuoi nodi emotivi e passaggi di vita con un metodo che unisce rigore analitico e totale riservatezza. Nessun giudizio, solo uno spazio sicuro orientato alla pragmatica della tua evoluzione.
                   </>
                 )}
                 {selectedPillarModal === 3 && (
                   <>
                     <strong className="font-serif italic text-[#7A8B78] block mb-2 text-base">Approfondimento:</strong>
-                    La consulenza si adatta ai tuoi ritmi e alle tue esigenze logistiche. Puoi scegliere di vivere l'esperienza dal vivo nella quiete dello storico studio di Macerata, oppure optare per la sessione online via WhatsApp o videochiamata, mantenendo intatta la stessa intensità e profondità ovunque tu sia nel mondo.
+                    Che tu scelga il nostro studio storico a Macerata o la comodità della sessione online via WhatsApp/videochiamata, la qualità del servizio non cambia. Riceverai risposte cristalline, dirette e focalizzate sui tuoi obiettivi, ovunque tu ti trovi nel mondo, con la massima flessibilità di prenotazione.
                   </>
                 )}
               </p>
