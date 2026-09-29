@@ -24,6 +24,8 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
   tagline = 'Studio Olistico Macerata',
   horizontal = false
 }) => {
+  const [imgError, setImgError] = React.useState(false);
+
   const dimensions = {
     sm: 'w-10 h-10 sm:w-12 sm:h-12',
     md: 'w-20 h-20 md:w-24 md:h-24',
@@ -44,12 +46,19 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
         }`}
       >
         <div className="w-full h-full rounded-full p-0.5 bg-[#F9F8F6] flex items-center justify-center overflow-hidden">
-          <img
-            src={BRAND_LOGO_URL}
-            alt={alt}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover rounded-full"
-          />
+          {!imgError ? (
+            <img
+              src={BRAND_LOGO_URL}
+              alt={alt}
+              referrerPolicy="no-referrer"
+              onError={() => setImgError(true)}
+              className="w-full h-full object-cover rounded-full"
+            />
+          ) : (
+            <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs sm:text-sm tracking-tighter">
+              TI
+            </div>
+          )}
         </div>
       </div>
 
@@ -74,6 +83,8 @@ export const BrandSectionDivider: React.FC<{
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }> = ({ title = 'Tarot Italia • Metodo Introspettivo', className = '' }) => {
+  const [imgError, setImgError] = React.useState(false);
+
   return (
     <div className={`flex flex-col items-center justify-center text-center ${className}`}>
       <div className="flex items-center justify-center gap-4 w-full max-w-md mx-auto">
@@ -81,12 +92,19 @@ export const BrandSectionDivider: React.FC<{
         <div className="relative group cursor-default">
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full p-0.5 border border-[#C5BCB3] shadow-sm flex items-center justify-center transition-transform duration-300 bg-[#F9F8F6] group-hover:border-[#2B2523]">
             <div className="w-full h-full rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
-              <img
-                src={BRAND_LOGO_URL}
-                alt="Logo Tarot Italia"
-                referrerPolicy="no-referrer"
-                className="w-full h-full rounded-full object-cover"
-              />
+              {!imgError ? (
+                <img
+                  src={BRAND_LOGO_URL}
+                  alt="Logo Tarot Italia"
+                  referrerPolicy="no-referrer"
+                  onError={() => setImgError(true)}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full rounded-full bg-[#1C1817] text-[#F9F8F6] flex items-center justify-center font-serif font-bold text-xs md:text-sm">
+                  TI
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -57,22 +57,16 @@ export const Header: React.FC<HeaderProps> = ({
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      {/* RIGA 1 SUPERIORE: LOGO + TITOLO BRAND CENTRATI */}
-      <div className="w-full bg-[#F3F1ED]/80 py-2 px-4 lg:px-12 border-b border-[#E5E0D8]/60">
-        <div className="max-w-[1240px] mx-auto flex items-center justify-between">
-          {/* Sotto-testata Info (sinistra) */}
-          <div className="hidden md:flex items-center gap-2 text-[#6C645C] text-[10px] font-mono tracking-[0.2em] uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78]"></span>
-            <span>TAROLOGIA ARCHETIPICA DAL 2012</span>
-          </div>
-
-          {/* Logo e Titolo Centrale */}
+      {/* RIGA 1 SUPERIORE: LOGO + TITOLO + SOTTOTITOLO CENTRATI VERTICALMENTE COME IN FOTO */}
+      <div className="w-full bg-[#F9F8F6] pt-3 pb-2 px-4 border-b border-[#E5E0D8]/80">
+        <div className="max-w-[1240px] mx-auto flex flex-col items-center justify-center text-center">
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 text-center mx-auto md:mx-0 group cursor-pointer focus:outline-none"
+            className="flex flex-col items-center group cursor-pointer focus:outline-none"
           >
-            <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[#C5BCB3] group-hover:border-[#7A8B78] transition-colors duration-300 flex-shrink-0">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
+            {/* Logo Circolare con bordo e bagliore sobrio in tono neutro */}
+            <div className="relative flex items-center justify-center p-0.5 rounded-full border border-[#C5BCB3] group-hover:border-[#7A8B78] transition-all duration-300 mb-1 shadow-sm">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3F1ED] p-0.5 overflow-hidden flex items-center justify-center">
                 <img
                   alt="Tarot Italia Logo"
                   referrerPolicy="no-referrer"
@@ -84,28 +78,24 @@ export const Header: React.FC<HeaderProps> = ({
                 />
               </div>
             </div>
-            <div className="flex flex-col text-left">
-              <span className="font-serif text-[16px] sm:text-[20px] font-semibold tracking-[0.14em] text-[#2B2523] uppercase leading-none truncate">
-                TAROT ITALIA
-              </span>
-              <span className="text-[8px] sm:text-[9px] font-mono tracking-[0.22em] text-[#6C645C] uppercase pt-0.5 truncate">
-                STUDIO OLISTICO MACERATA
-              </span>
-            </div>
-          </button>
 
-          {/* Sotto-testata Info (destra) */}
-          <div className="hidden md:flex items-center gap-1.5 text-[#2B2523] text-[10px] font-mono tracking-[0.18em] uppercase font-medium">
-            <span className="material-symbols-outlined text-xs text-[#7A8B78]">auto_awesome</span>
-            <span>SESSIONI IN STUDIO E ONLINE</span>
-          </div>
+            {/* Titolo Principale TAROT ITALIA */}
+            <span className="font-serif text-[18px] sm:text-[22px] font-bold tracking-[0.18em] text-[#2B2523] uppercase leading-tight">
+              TAROT ITALIA
+            </span>
+
+            {/* Sottotitolo STUDIO OLISTICO MACERATA */}
+            <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.24em] text-[#6C645C] uppercase pt-0.5 font-semibold">
+              STUDIO OLISTICO MACERATA
+            </span>
+          </button>
         </div>
       </div>
 
-      {/* RIGA 2 INFERIORE: MENU DI NAVIGAZIONE & PULSANTE CTA */}
+      {/* RIGA 2 INFERIORE: MENU DI NAVIGAZIONE AL CENTRO/SINISTRA & PULSANTE CTA A DESTRA */}
       <div className="h-12 sm:h-14 max-w-[1240px] mx-auto px-4 lg:px-12 flex items-center justify-between gap-4">
-        {/* Desktop Navigation Menu */}
-        <nav className="hidden lg:flex items-center gap-2 xl:gap-4">
+        {/* Desktop Navigation Menu (Centrato / Distribuito come in foto) */}
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-8 mx-auto lg:mx-0">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -120,20 +110,21 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#7A8B78] rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#7A8B78] rounded-full" />
                 )}
               </button>
             );
           })}
         </nav>
 
-        {/* Mobile menu title label when desktop nav is hidden */}
-        <div className="lg:hidden text-[10px] font-mono tracking-[0.18em] text-[#6C645C] uppercase font-medium">
-          MENU
+        {/* Mobile Menu Label when desktop nav is hidden */}
+        <div className="lg:hidden text-[10px] font-mono tracking-[0.18em] text-[#6C645C] uppercase font-semibold flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78]"></span>
+          <span>TAROT ITALIA</span>
         </div>
 
         {/* Right CTA Button (Verde Oliva Pastello) & Mobile Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
           {/* Pastel Olive Green CTA Button */}
           <button
             onClick={onOpenBooking}
@@ -151,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <div className="w-8 h-8 rounded-full bg-[#F3F1ED] border border-[#C5BCB3] text-[#2B2523] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-[#F3F1ED] border border-[#C5BCB3] text-[#2B2523] flex items-center justify-center shadow-sm">
                 <span className="material-symbols-outlined text-lg font-bold">close</span>
               </div>
             ) : (
@@ -163,19 +154,38 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown with Centered Logo Header */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#F9F8F6] border-b border-[#E5E0D8] px-6 py-6 flex flex-col gap-3 shadow-xl animate-in fade-in duration-200">
-          <div className="flex flex-col gap-1">
+        <div className="lg:hidden bg-[#F9F8F6] border-b border-[#E5E0D8] px-6 py-6 flex flex-col items-center text-center gap-4 shadow-xl animate-in fade-in duration-200">
+          {/* Centered Logo, Title and Subtitle at top of mobile menu */}
+          <div className="flex flex-col items-center justify-center pb-4 border-b border-[#E5E0D8] w-full">
+            <div className="w-14 h-14 rounded-full bg-[#F3F1ED] p-0.5 border border-[#C5BCB3] shadow-md flex items-center justify-center mb-2">
+              <img
+                src={logoUrl}
+                alt="Tarot Italia Logo"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <span className="font-serif text-lg font-bold tracking-[0.18em] text-[#2B2523] uppercase">
+              TAROT ITALIA
+            </span>
+            <span className="text-[9px] font-mono tracking-[0.22em] text-[#6C645C] uppercase font-semibold">
+              STUDIO OLISTICO MACERATA
+            </span>
+          </div>
+
+          {/* Nav Items List */}
+          <div className="flex flex-col gap-1 w-full">
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`text-center py-2.5 text-xs font-semibold tracking-[0.18em] uppercase transition-colors cursor-pointer ${
+                  className={`text-center py-2.5 text-xs font-semibold tracking-[0.18em] uppercase transition-colors cursor-pointer w-full ${
                     isActive
-                      ? 'text-[#2B2523] font-bold bg-[#F3F1ED] rounded-lg'
+                      ? 'text-[#2B2523] font-bold bg-[#F3F1ED] rounded-lg border border-[#C5BCB3]/40'
                       : 'text-[#6C645C] hover:text-[#2B2523]'
                   }`}
                 >
