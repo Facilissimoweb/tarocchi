@@ -59,12 +59,12 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Circular Logo Container */}
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-[320px] md:h-[320px] lg:w-[360px] lg:h-[360px] rounded-full p-1 border border-[#C5BCB3] shadow-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.01]">
-                <div className="w-full h-full rounded-full bg-[#1C1817] p-1 overflow-hidden flex items-center justify-center border border-[#3D3532]">
+                <div className="w-full h-full rounded-full bg-[#F9F8F6] p-1 overflow-hidden flex items-center justify-center border border-[#C5BCB3]/60">
                   <img
                     src={avatarImage}
                     alt="Tarot Italia - Logo Ufficiale"
                     referrerPolicy="no-referrer"
-                    className="w-full h-full rounded-full object-cover filter contrast-105"
+                    className="w-full h-full rounded-full object-cover"
                   />
                 </div>
               </div>

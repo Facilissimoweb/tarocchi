@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Official Tarot Italia Seal / Logo
-export const BRAND_LOGO_URL = '/assets/images/tarocchi-macerata.png';
+export const BRAND_LOGO_URL = '/assets/images/logo-tarot-italia.jpg';
 
 export interface BrandSealProps {
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
