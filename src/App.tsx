@@ -4,6 +4,7 @@ import { ShopSection } from './components/ShopSection';
 import { BrandSeal, BrandSectionDivider, BRAND_LOGO_URL } from './components/BrandSeal';
 import { Hero } from './components/Hero';
 import { Header, NavTab } from './components/Header';
+import { BottomBar } from './components/BottomBar';
 import { ArcaniCard } from './components/ArcaniCard';
 import { ARCANI_22, ArcanoInfo } from './data/arcaniData';
 import { BLOG_ARTICLES } from './data/blogData';
@@ -1768,7 +1769,7 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className="w-full bg-[#F9F8F6] border-t border-[#C5BCB3]/30 pt-16 pb-12 text-[#5A524E]">
+      <footer className="w-full bg-[#F9F8F6] border-t border-[#C5BCB3]/30 pt-16 pb-20 text-[#5A524E]">
         <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Col 1 */}
@@ -2616,11 +2617,11 @@ export default function App() {
         </div>
       )}
 
-      {/* FLOATING BADGE TO RE-OPEN COOKIE SETTINGS (Discreet at bottom right) */}
+      {/* FLOATING BADGE TO RE-OPEN COOKIE SETTINGS (Discreet at bottom right above bottom bar) */}
       {cookieConsent && (
         <button
           onClick={() => setIsCookieCustomizerOpen(true)}
-          className="fixed bottom-4 right-4 z-40 bg-[#F9F8F6]/90 hover:bg-[#F3F1ED] text-[#C5BCB3] hover:text-[#C5BCB3] p-2.5 rounded-full border border-[#C5BCB3]/40 hover:border-[#C5BCB3] shadow-[0_0_15px_rgba(0,240,255,0.3)] backdrop-blur-md transition-all duration-300 group flex items-center gap-2 cursor-pointer"
+          className="fixed bottom-18 right-4 z-40 bg-[#F9F8F6]/90 hover:bg-[#F3F1ED] text-[#C5BCB3] hover:text-[#C5BCB3] p-2.5 rounded-full border border-[#C5BCB3]/40 hover:border-[#C5BCB3] shadow-[0_0_15px_rgba(0,240,255,0.3)] backdrop-blur-md transition-all duration-300 group flex items-center gap-2 cursor-pointer"
           title="Gestisci preferenze cookie"
           aria-label="Gestisci preferenze cookie"
         >
@@ -2630,6 +2631,13 @@ export default function App() {
           </span>
         </button>
       )}
+
+      {/* FIXED BOTTOM NAVIGATION BAR */}
+      <BottomBar
+        onOpenBooking={() => openBookingFor('Lettura On Line 1h')}
+        onOpenShop={() => openShopWithCategory('Tutti')}
+        cartCount={1}
+      />
     </div>
   );
 }
