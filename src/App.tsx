@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BlogSection } from './components/BlogSection';
 import { ShopSection } from './components/ShopSection';
+import { ReviewsSection } from './components/ReviewsSection';
 import { BrandSeal, BrandSectionDivider, BRAND_LOGO_URL } from './components/BrandSeal';
 import { Hero } from './components/Hero';
 import { Header, NavTab } from './components/Header';
@@ -1442,115 +1443,8 @@ export default function App() {
               </div>
             </section>
 
-            {/* TESTIMONIANZE E GOOGLE REVIEWS SECTION */}
-            <section className="w-full bg-[#0C0714] py-20 border-t border-[#8A2BE2]/20">
-              <div className="max-w-[1240px] mx-auto px-4 lg:px-12 flex flex-col gap-12">
-                <BrandSectionDivider title="Tarot Italia • Esperienze & Recensioni" />
-                {/* Top Title and Google Rating Header */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                  <div className="flex flex-col gap-1 text-center md:text-left">
-                    <div className="inline-flex items-center gap-2 text-[#00F0FF] font-mono text-[11px] font-semibold uppercase tracking-widest justify-center md:justify-start">
-                      <span className="material-symbols-outlined text-base">verified</span>
-                      <span>Esperienze Autentiche</span>
-                    </div>
-                    <h2 className="font-serif text-2xl lg:text-3xl text-white font-bold">
-                      La Voce di Chi Ha Camminato con Noi
-                    </h2>
-                  </div>
-                  <a
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#130924] hover:bg-[#1C0F33] rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.2)] text-[#00F0FF] hover:text-white text-[12px] font-semibold uppercase tracking-wider transition-all border border-[#00F0FF]/40 hover:border-[#00F0FF]"
-                    href="https://share.google/EkCkev741rafYgxQl"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span className="material-symbols-outlined text-[#00F0FF] text-base">rate_review</span>
-                    <span>Vedi Profilo Google Recensioni</span>
-                    <span className="material-symbols-outlined text-xs">open_in_new</span>
-                  </a>
-                </div>
-
-                {/* Testimonial Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Review 1 */}
-                  <div className="bg-[#130924]/90 backdrop-blur-xl p-7 rounded-2xl shadow-xl flex flex-col gap-4 border border-[#8A2BE2]/40 hover:border-[#FF007F]/50 transition-all">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-[#FF007F]">
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                      </div>
-                      <span className="text-[11px] text-[#00F0FF] font-mono font-medium">Verificata Google</span>
-                    </div>
-                    <p className="text-[15px] text-[#F5F0EB] italic leading-relaxed">
-                      “Una sensibilità fuori dal comune. Non le solite predizioni vuote, ma una disamina psicologica ed emotiva che mi ha aiutata a prendere una decisione complessa sul lavoro dopo mesi di stallo.”
-                    </p>
-                    <div className="mt-auto flex items-center gap-3 pt-2">
-                      <div className="w-10 h-10 rounded-full bg-[#1C0F33] flex items-center justify-center font-serif text-[#00F0FF] font-bold border border-[#00F0FF]/30">
-                        E
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-serif text-[17px] text-white font-semibold">Elena R.</span>
-                        <span className="text-[13px] text-[#A69BB5]">Consulto Online (Milano)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Review 2 */}
-                  <div className="bg-[#130924]/90 backdrop-blur-xl p-7 rounded-2xl shadow-xl flex flex-col gap-4 border border-[#8A2BE2]/40 hover:border-[#FF007F]/50 transition-all">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-[#FF007F]">
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                      </div>
-                      <span className="text-[11px] text-[#00F0FF] font-mono font-medium">Verificata Google</span>
-                    </div>
-                    <p className="text-[15px] text-[#F5F0EB] italic leading-relaxed">
-                      “Lo studio di Macerata è un'oasi di pace. Un'ora volata via tra simboli, profumi e una precisione disarmante nell'inquadrare il mio stato interiore. Tornerò sicuramente.”
-                    </p>
-                    <div className="mt-auto flex items-center gap-3 pt-2">
-                      <div className="w-10 h-10 rounded-full bg-[#1C0F33] flex items-center justify-center font-serif text-[#00F0FF] font-bold border border-[#00F0FF]/30">
-                        M
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-serif text-[17px] text-white font-semibold">Marco T.</span>
-                        <span className="text-[13px] text-[#A69BB5]">In Studio a Macerata</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Review 3 */}
-                  <div className="bg-[#130924]/90 backdrop-blur-xl p-7 rounded-2xl shadow-xl flex flex-col gap-4 border border-[#8A2BE2]/40 hover:border-[#FF007F]/50 transition-all">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-[#FF007F]">
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                        <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                      </div>
-                      <span className="text-[11px] text-[#00F0FF] font-mono font-medium">Verificata Google</span>
-                    </div>
-                    <p className="text-[15px] text-[#F5F0EB] italic leading-relaxed">
-                      “La disponibilità su WhatsApp e la cura con cui ti segue prima e dopo il consulto è impagabile. Tarot Italia è sinonimo di serietà ed etica impeccabile.”
-                    </p>
-                    <div className="mt-auto flex items-center gap-3 pt-2">
-                      <div className="w-10 h-10 rounded-full bg-[#1C0F33] flex items-center justify-center font-serif text-[#00F0FF] font-bold border border-[#00F0FF]/30">
-                        S
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-serif text-[17px] text-white font-semibold">Sofia V.</span>
-                        <span className="text-[13px] text-[#A69BB5]">Consulto WhatsApp Video</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            {/* GOOGLE REVIEWS SECTION COMPONENT */}
+            <ReviewsSection />
 
 
             {/* SEZIONE ANTEPRIMA SHOP / BOTTEGA OLISTICA */}
