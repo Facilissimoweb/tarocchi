@@ -36,15 +36,23 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section className="relative w-full overflow-hidden bg-[#F9F8F6] text-[#2B2523] min-h-[90vh] sm:min-h-[95vh] lg:min-h-[100vh] flex items-center pt-36 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 lg:pb-36 border-b border-[#E5E0D8]">
-      {/* Background Cover Image with Parallax - NO GRADIENTS / NO OVERLAYS / PULITA E NITIDA */}
+      {/* Background Cover Video with Parallax - VIDEO MP4 INTEGRATO */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Tarot Italia - Foto Copertina"
-          referrerPolicy="no-referrer"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           style={{ transform: `translate3d(0, ${parallaxOffset}px, 0)` }}
           className="w-full h-[125%] object-cover object-center transition-transform duration-75 ease-out -mt-12"
-        />
+        >
+          <source src="/assets/videos/video 1 tarot italia.mp4" type="video/mp4" />
+          <img
+            src={heroImage}
+            alt="Tarot Italia - Foto Copertina Fallback"
+            className="w-full h-full object-cover"
+          />
+        </video>
       </div>
 
       {/* Main Hero Container */}
