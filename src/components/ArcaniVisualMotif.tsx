@@ -9,7 +9,7 @@ interface ArcaniVisualMotifProps {
 
 export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
   motif,
-  primaryColor = '#FF007F',
+  primaryColor = '#D8CDE2',
   accentColor = '#00F0FF',
   className = 'w-full h-full'
 }) => {
