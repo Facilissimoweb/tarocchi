@@ -1,0 +1,62 @@
+[
+  {
+    "id": "rev-1",
+    "author": "Elena R.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "1 mese fa",
+    "text": "Una sensibilità fuori dal comune. Non le solite predizioni vuote, ma una disamina psicologica ed emotiva che mi ha aiutata a prendere una decisione complessa sul lavoro dopo mesi di stallo.",
+    "serviceType": "Consulto Online (Milano)",
+    "isGoogleVerified": true
+  },
+  {
+    "id": "rev-2",
+    "author": "Marco T.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "2 mesi fa",
+    "text": "Lo studio di Macerata è un'oasi di pace. Un'ora volata via tra simboli, profumi e una precisione disarmante nell'inquadrare il mio stato interiore. Tornerò sicuramente.",
+    "serviceType": "In Studio a Macerata",
+    "isGoogleVerified": true
+  },
+  {
+    "id": "rev-3",
+    "author": "Sofia V.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "3 mesi fa",
+    "text": "La disponibilità su WhatsApp e la cura con cui ti segue prima e dopo il consulto è impagabile. Tarot Italia è sinonimo di serietà ed etica impeccabile.",
+    "serviceType": "Consulto WhatsApp Video",
+    "isGoogleVerified": true
+  },
+  {
+    "id": "rev-4",
+    "author": "Chiara M.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "L'analisi degli Arcani con Teresa è un viaggio trasformativo. Riesce a leggere tra le righe dell'anima infondendo una serenità e una lucidità pazzesche.",
+    "serviceType": "Lettura Introspezione 1h",
+    "isGoogleVerified": true
+  },
+  {
+    "id": "rev-5",
+    "author": "Alessandro B.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "5 mesi fa",
+    "text": "Teresa è estremamente professionale, empatica e profonda. Nessuna vana promessa, ma un'analisi reale e simbolica che mi ha permesso di sbloccare una situazione di coppia dura da mesi.",
+    "serviceType": "In Studio a Macerata",
+    "isGoogleVerified": true
+  },
+  {
+    "id": "rev-6",
+    "author": "Giulia P.",
+    "avatarUrl": "",
+    "rating": 5,
+    "date": "6 mesi fa",
+    "text": "Consigliatissima per chi cerca chiarezza e serietà. L'esperienza online è stata fluida, calda e ricca di spunti preziosi.",
+    "serviceType": "Consulto Online",
+    "isGoogleVerified": true
+  }
+]
