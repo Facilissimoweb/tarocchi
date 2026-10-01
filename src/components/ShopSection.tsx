@@ -148,67 +148,48 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
   };
 
   return (
-    <div className="relative w-full bg-[#08030F] text-[#2B2523] py-8 lg:py-14 overflow-hidden border-t-2 border-[#A89B8C]/40 shadow-[inset_0_0_80px_rgba(168,155,140,0.15)]">
-      {/* Sfondo Esoterico Dinamico: Nebulosa Alchemica, Aureola Dorata e Sigillo Cosmico */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-[#A89B8C]/15 via-[#7A8B78]/10 to-transparent rounded-full blur-[150px] pointer-events-none animate-pulse"></div>
-      <div className="absolute -top-40 -left-20 w-[450px] h-[450px] bg-[#C5BCB3]/20 rounded-full blur-[130px] pointer-events-none"></div>
-      <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-[#A89B8C]/10 rounded-full blur-[140px] pointer-events-none"></div>
-
+    <div className="relative w-full bg-[#F9F8F6] text-[#2B2523] py-8 lg:py-14 overflow-hidden border-t border-[#E5E0D8]">
       <section className="max-w-[1280px] mx-auto px-4 lg:px-12 relative z-10 animate-in fade-in duration-500">
-        {/* Top Header con accenti alchemici dorati */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#A89B8C]/30 bg-[#120724]/60 backdrop-blur-md p-4 rounded-2xl border">
-          <button
-            onClick={onBackToHome}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#A89B8C] hover:text-[#7A8B78] transition-colors cursor-pointer font-mono font-semibold"
-          >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
-            Torna alla Home
-          </button>
-
-          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#A89B8C]">
-            <span className="material-symbols-outlined text-sm animate-spin" style={{ animationDuration: '12s' }}>auto_awesome</span>
+        {/* Top Header */}
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#E5E0D8] bg-[#FFFFFF] p-4 rounded-2xl border shadow-sm">
+          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#6C645C]">
+            <span className="material-symbols-outlined text-sm text-[#7A8B78]">auto_awesome</span>
             <span>Atelier Olistico &amp; Consacrazioni Macerata</span>
           </div>
 
-          {/* Cart Trigger Badge Esoterico */}
+          {/* Cart Trigger Badge */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#F4F2EE] border-2 border-[#A89B8C] hover:border-[#7A8B78] text-[#A89B8C] hover:text-[#2B2523] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(168,155,140,0.35)] hover:shadow-[0_0_25px_rgba(122,139,120,0.5)] cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#7A8B78] hover:bg-[#687866] border border-[#C5BCB3] text-[#2B2523] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
           >
-            <span className="material-symbols-outlined text-base text-[#A89B8C]">shopping_bag</span>
+            <span className="material-symbols-outlined text-base text-[#2B2523]">shopping_bag</span>
             <span>Carrello Bottega ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})</span>
           </button>
         </div>
 
-        <BrandSectionDivider title="Tarot Italia • Bottega Olistica Esoterica" className="mb-8" />
+        <BrandSectionDivider title="Tarot Italia • Bottega Olistica" className="mb-8" />
 
-        {/* Hero Narrative della Bottega con Stile Alchemico Visivamente Unico */}
-        <div className="relative bg-gradient-to-r from-[#170B2E]/90 via-[#220B3B]/90 to-[#170B2E]/90 border-2 border-[#A89B8C]/50 rounded-3xl p-8 sm:p-12 mb-12 text-center shadow-[0_0_50px_rgba(168,155,140,0.2)] overflow-hidden">
-          <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full bg-[#F4F2EE] border-2 border-[#A89B8C] flex items-center justify-center text-[#A89B8C] shadow-[0_0_20px_rgba(168,155,140,0.5)]">
-            <span className="material-symbols-outlined text-4xl">vpn_key</span>
-          </div>
-
-          <div className="pt-4 max-w-3xl mx-auto">
-            <span className="text-[12px] font-mono font-bold text-[#A89B8C] uppercase tracking-[0.25em] flex items-center justify-center gap-2 mb-2">
-              <span className="material-symbols-outlined text-sm text-[#7A8B78]">flare</span>
+        {/* Hero Narrative della Bottega */}
+        <div className="relative bg-[#FFFFFF] border border-[#E5E0D8] rounded-3xl p-8 sm:p-12 mb-12 text-center shadow-sm overflow-hidden">
+          <div className="max-w-3xl mx-auto">
+            <span className="text-[12px] font-mono font-bold text-[#8C808E] uppercase tracking-[0.2em] flex items-center justify-center gap-2 mb-2">
               <span>Compendio di Strumenti Consacrati &amp; Artigianato Sacro</span>
-              <span className="material-symbols-outlined text-sm text-[#7A8B78]">flare</span>
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-[#2B2523] mt-2 mb-4 font-bold leading-tight drop-shadow-[0_0_15px_rgba(168,155,140,0.4)]">
-              La Bottega Alchemica <span className="italic text-[#A89B8C]">&amp;</span> Sacra
+            <h1 className="font-serif text-3xl sm:text-5xl text-[#2B2523] mt-2 mb-4 font-bold leading-tight">
+              La Bottega Olistica <span className="italic font-normal text-[#8C808E]">&amp;</span> Artigianale
             </h1>
-            <p className="text-sm sm:text-base text-[#C7B8DA] leading-relaxed max-w-2xl mx-auto font-sans">
+            <p className="text-sm sm:text-base text-[#6C645C] leading-relaxed max-w-2xl mx-auto font-sans">
               Strumenti di radiestesia ed alchimia individuale calibrati ad uno ad uno, erbe della tradizione marchigiana raccolte sui Sibillini, cere naturali vergini per riti di protezione ed antichi mazzi d'arte.
             </p>
           </div>
         </div>
 
       {/* CATEGORY FILTER SECTION */}
-      <div className="bg-[#FFFFFF]/90 backdrop-blur-xl border border-[#C5BCB3]/40 rounded-2xl p-4 sm:p-6 mb-10 shadow-2xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#C5BCB3]/30">
+      <div className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl p-4 sm:p-6 mb-10 shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#E5E0D8]">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[#7A8B78] text-lg">tune</span>
-            <span className="text-xs uppercase tracking-widest text-[#7A8B78] font-semibold">
+            <span className="material-symbols-outlined text-[#2B2523] text-lg">tune</span>
+            <span className="text-xs uppercase tracking-widest text-[#2B2523] font-semibold font-mono">
               Filtra la Bottega per Categoria:
             </span>
           </div>
@@ -223,7 +204,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cerca pendoli, erbe, candele, tarocchi..."
-              className="w-full bg-[#F9F8F6] text-xs text-[#2B2523] pl-9 pr-8 py-2 rounded-xl border border-[#C5BCB3]/50 focus:border-[#7A8B78] focus:ring-1 focus:ring-[#7A8B78]/50 focus:outline-none placeholder:text-[#6C645C]/50 transition-all"
+              className="w-full bg-[#F9F8F6] text-xs text-[#2B2523] pl-9 pr-8 py-2 rounded-xl border border-[#E5E0D8] focus:border-[#C5BCB3] focus:outline-none placeholder:text-[#6C645C]/60 transition-all font-sans"
             />
             {searchQuery && (
               <button
@@ -250,13 +231,13 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 title={cat.description}
                 className={`group relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#7A8B78] text-[#F9F8F6] shadow-[0_0_20px_rgba(122,139,120,0.5)] border border-[#7A8B78] scale-[1.02]'
-                    : 'bg-[#F4F2EE] text-[#6C645C] border border-[#C5BCB3]/40 hover:border-[#7A8B78] hover:text-[#2B2523] hover:bg-[#FFFFFF]'
+                    ? 'bg-[#2B2523] text-[#F9F8F6] border border-[#2B2523]'
+                    : 'bg-[#F9F8F6] text-[#6C645C] border border-[#E5E0D8] hover:border-[#C5BCB3] hover:text-[#2B2523]'
                 }`}
               >
                 <span
                   className={`material-symbols-outlined text-base transition-transform duration-200 ${
-                    isActive ? 'text-[#2B2523]' : 'text-[#7A8B78] group-hover:scale-110'
+                    isActive ? 'text-[#F9F8F6]' : 'text-[#8C808E]'
                   }`}
                 >
                   {cat.icon}
@@ -265,8 +246,8 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 <span
                   className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold transition-colors ${
                     isActive
-                      ? 'bg-black/30 text-[#2B2523]'
-                      : 'bg-[#FFFFFF] text-[#7A8B78] border border-[#7A8B78]/30 group-hover:bg-[#F4F2EE]'
+                      ? 'bg-white/20 text-[#F9F8F6]'
+                      : 'bg-[#F3F1ED] text-[#2B2523] border border-[#E5E0D8]'
                   }`}
                 >
                   {count}
@@ -278,9 +259,9 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
         {/* Active Filter Summary / Clear Button */}
         {(activeCategory !== 'Tutti' || searchQuery.trim() !== '') && (
-          <div className="mt-4 pt-3 border-t border-[#C5BCB3]/20 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="mt-4 pt-3 border-t border-[#E5E0D8] flex flex-wrap items-center justify-between gap-2 text-xs">
             <div className="flex items-center gap-2 text-[#6C645C]">
-              <span className="material-symbols-outlined text-xs text-[#7A8B78]">filter_alt</span>
+              <span className="material-symbols-outlined text-xs text-[#2B2523]">filter_alt</span>
               <span>
                 Filtro attivo: <strong>{activeCategory}</strong>
                 {searchQuery && ` + Ricerca: "${searchQuery}"`} ({filteredProducts.length} risultati)
@@ -291,7 +272,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 setActiveCategory('Tutti');
                 setSearchQuery('');
               }}
-              className="text-[#7A8B78] hover:underline font-semibold text-[11px] uppercase tracking-wider flex items-center gap-1 cursor-pointer"
+              className="text-[#2B2523] hover:underline font-semibold text-[11px] uppercase tracking-wider flex items-center gap-1 cursor-pointer"
             >
               <span className="material-symbols-outlined text-xs">close</span>
               Azzera filtri
@@ -306,42 +287,36 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="group bg-[#FFFFFF]/80 backdrop-blur-md rounded-2xl overflow-hidden border border-[#C5BCB3]/40 hover:border-[#7A8B78] shadow-xl hover:shadow-[0_0_25px_rgba(122,139,120,0.25)] transition-all duration-300 flex flex-col justify-between"
+              className="group bg-[#FFFFFF] rounded-2xl overflow-hidden border border-[#E5E0D8] hover:border-[#C5BCB3] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               {/* Product Visual Container */}
               <div
                 onClick={() => setSelectedProduct(product)}
-                className="relative w-full aspect-[4/3] overflow-hidden bg-[#F4F2EE] cursor-pointer"
+                className="relative w-full aspect-[4/3] overflow-hidden bg-[#F3F1ED] cursor-pointer"
               >
                 <img
                   src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF] via-transparent to-transparent"></div>
 
                 {product.badge && (
-                  <div className="absolute top-3 left-3 bg-[#F9F8F6]/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[#7A8B78] text-[10px] font-bold uppercase tracking-widest border border-[#7A8B78]/40 shadow-[0_0_10px_rgba(122,139,120,0.3)]">
+                  <div className="absolute top-3 left-3 bg-[#F9F8F6]/95 backdrop-blur-md px-2.5 py-1 rounded-full text-[#2B2523] text-[10px] font-bold uppercase tracking-widest border border-[#E5E0D8]">
                     {product.badge}
                   </div>
                 )}
-
-                <div className="absolute top-3 right-3 bg-[#F4F2EE]/90 text-[#2B2523] px-2.5 py-1 rounded-full text-[10px] font-medium flex items-center gap-1 border border-[#7A8B78]/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7A8B78] animate-pulse"></span>
-                  Disponibile
-                </div>
               </div>
 
               {/* Product Body */}
               <div className="p-6 flex flex-col flex-1">
-                {/* Category & Clickable Filter Tags */}
+                {/* Category */}
                 <div className="flex flex-wrap items-center gap-1.5 mb-2">
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-[#7A8B78]">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6C645C] font-mono">
                     {product.category}
                   </span>
                 </div>
 
-                {/* Filter tags buttons for immediate discovery */}
+                {/* Filter tags buttons */}
                 {product.filterTags && product.filterTags.length > 0 && (
                   <div className="flex flex-wrap items-center gap-1 mb-2.5">
                     {product.filterTags.map((tag) => (
@@ -353,8 +328,8 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                         }}
                         className={`text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full transition-all cursor-pointer ${
                           activeCategory === tag
-                            ? 'bg-[#7A8B78] text-[#F9F8F6]'
-                            : 'bg-[#F4F2EE] text-[#6C645C] border border-[#C5BCB3]/40 hover:border-[#7A8B78] hover:text-[#7A8B78]'
+                            ? 'bg-[#2B2523] text-[#F9F8F6]'
+                            : 'bg-[#F3F1ED] text-[#6C645C] border border-[#E5E0D8] hover:border-[#C5BCB3] hover:text-[#2B2523]'
                         }`}
                         title={`Filtra per ${tag}`}
                       >
@@ -364,7 +339,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                   </div>
                 )}
 
-                <h2 className="font-serif text-lg text-[#2B2523] group-hover:text-[#7A8B78] transition-colors mb-2 line-clamp-2">
+                <h2 className="font-serif text-lg text-[#2B2523] font-bold group-hover:text-[#8C808E] transition-colors mb-2 line-clamp-2">
                   {product.title}
                 </h2>
 
@@ -373,15 +348,15 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 </p>
 
                 {/* Price & Cart Actions */}
-                <div className="mt-auto pt-4 border-t border-[#C5BCB3]/30 flex items-center justify-between gap-2">
+                <div className="mt-auto pt-4 border-t border-[#E5E0D8] flex items-center justify-between gap-2">
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-[#6C645C] uppercase">Prezzo</span>
+                    <span className="text-[10px] text-[#6C645C] uppercase font-mono">Prezzo</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-serif text-xl font-bold text-[#7A8B78]">
+                      <span className="font-serif text-xl font-bold text-[#2B2523]">
                         € {product.price.toFixed(2)}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-xs text-[#6C645C]/50 line-through">
+                        <span className="text-xs text-[#6C645C]/60 line-through font-mono">
                           € {product.originalPrice.toFixed(2)}
                         </span>
                       )}
@@ -391,7 +366,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setSelectedProduct(product)}
-                      className="p-2 bg-[#F4F2EE] text-[#6C645C] hover:text-[#7A8B78] rounded-lg border border-[#C5BCB3]/40 hover:border-[#7A8B78] transition-colors cursor-pointer"
+                      className="p-2 bg-[#F3F1ED] text-[#6C645C] hover:text-[#2B2523] rounded-lg border border-[#E5E0D8] hover:border-[#C5BCB3] transition-colors cursor-pointer"
                       title="Visualizza dettagli e uso rituale"
                     >
                       <span className="material-symbols-outlined text-base">visibility</span>
@@ -399,7 +374,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
                     <button
                       onClick={() => addToCart(product)}
-                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-[0_0_15px_rgba(122,139,120,0.4)] cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-sm">add_shopping_cart</span>
                       <span>Aggiungi</span>
@@ -412,11 +387,11 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
         </div>
       ) : (
         /* Empty State */
-        <div className="text-center py-16 px-4 bg-[#FFFFFF] rounded-2xl border border-[#C5BCB3]/40 max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-full bg-[#F4F2EE] border border-[#C5BCB3]/40 flex items-center justify-center mx-auto mb-4 text-[#7A8B78]">
+        <div className="text-center py-16 px-4 bg-[#FFFFFF] rounded-2xl border border-[#E5E0D8] max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-full bg-[#F3F1ED] border border-[#E5E0D8] flex items-center justify-center mx-auto mb-4 text-[#2B2523]">
             <span className="material-symbols-outlined text-3xl">search_off</span>
           </div>
-          <h3 className="font-serif text-xl text-[#2B2523] mb-2">Nessun articolo trovato</h3>
+          <h3 className="font-serif text-xl text-[#2B2523] mb-2 font-bold">Nessun articolo trovato</h3>
           <p className="text-xs text-[#6C645C] leading-relaxed mb-6">
             Nessun oggetto sacro o preparato corrisponde alla categoria <strong>"{activeCategory}"</strong>
             {searchQuery ? ` o alla ricerca "${searchQuery}"` : ''}.
@@ -426,7 +401,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
               setActiveCategory('Tutti');
               setSearchQuery('');
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7A8B78] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#687866] transition-colors shadow-[0_0_15px_rgba(122,139,120,0.5)] cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7A8B78] text-[#F9F8F6] text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-[#687866] transition-colors border border-[#C5BCB3] cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm">restart_alt</span>
             <span>Reimposta Tutti i Filtri</span>
@@ -436,41 +411,35 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
       {/* PRODUCT DETAIL MODAL */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#FFFFFF] border border-[#7A8B78]/40 rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-[0_0_40px_rgba(122,139,120,0.25)] max-h-[90vh] overflow-y-auto">
-            {/* Logo circolare in primo piano in alto al centro */}
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-[#FFFFFF] border border-[#C5BCB3] rounded-2xl max-w-2xl w-full p-6 lg:p-8 relative shadow-xl max-h-[90vh] overflow-y-auto text-[#2B2523]">
+            {/* Logo circolare in primo piano */}
             <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-16 h-16 rounded-full bg-[#F4F2EE] p-1.5 border-2 border-[#7A8B78] shadow-[0_0_20px_rgba(122,139,120,0.4)] flex items-center justify-center mb-2">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
-                  alt="Tarot Italia Logo"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              </div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#7A8B78] font-semibold flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm text-[#7A8B78]">storefront</span>
+              <BrandSeal size="sm" className="mb-2" />
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#6C645C] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#2B2523]">storefront</span>
                 <span>BOTTEGA OLISTICA • {selectedProduct.category.toUpperCase()}</span>
               </span>
             </div>
 
-            {/* Tasto di chiusura (X) circolare in alto a destra */}
+            {/* Tasto di chiusura (X) */}
             <button
               type="button"
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F4F2EE] border-2 border-[#7A8B78] text-[#7A8B78] hover:bg-[#7A8B78] hover:text-[#F9F8F6] shadow-[0_0_12px_rgba(122,139,120,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border border-[#C5BCB3] text-[#2B2523] hover:bg-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi dettagli prodotto"
             >
               <span className="material-symbols-outlined text-lg">close</span>
             </button>
 
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#2B2523] mb-2 text-center">
+            <h3 className="font-serif text-2xl sm:text-3xl text-[#2B2523] mb-2 text-center font-bold">
               {selectedProduct.title}
             </h3>
 
             {/* Clickable tags in modal */}
             {selectedProduct.filterTags && selectedProduct.filterTags.length > 0 && (
-              <div className="flex flex-wrap items-center gap-1.5 mb-4">
-                <span className="text-[10px] uppercase tracking-wider text-[#6C645C] mr-1">Categorie:</span>
+              <div className="flex flex-wrap items-center justify-center gap-1.5 mb-4">
+                <span className="text-[10px] uppercase tracking-wider text-[#6C645C] font-mono">Categorie:</span>
                 {selectedProduct.filterTags.map((tag) => (
                   <button
                     key={tag}
@@ -478,7 +447,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                       setActiveCategory(tag);
                       setSelectedProduct(null);
                     }}
-                    className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F4F2EE] text-[#7A8B78] border border-[#7A8B78]/30 hover:border-[#7A8B78] transition-colors cursor-pointer"
+                    className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F3F1ED] text-[#2B2523] border border-[#E5E0D8] hover:border-[#C5BCB3] transition-colors cursor-pointer"
                     title={`Filtra bottega per ${tag}`}
                   >
                     #{tag}
@@ -487,12 +456,12 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
               </div>
             )}
 
-            <div className="flex items-baseline gap-2 mb-4">
-              <span className="font-serif text-2xl font-bold text-[#7A8B78]">
+            <div className="flex items-baseline justify-center gap-2 mb-4">
+              <span className="font-serif text-2xl font-bold text-[#2B2523]">
                 € {selectedProduct.price.toFixed(2)}
               </span>
               {selectedProduct.originalPrice && (
-                <span className="text-sm text-[#6C645C]/50 line-through">
+                <span className="text-sm text-[#6C645C]/60 line-through font-mono">
                   € {selectedProduct.originalPrice.toFixed(2)}
                 </span>
               )}
@@ -504,9 +473,9 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
             </p>
 
             {/* Ritual Use Box */}
-            <div className="p-4 bg-[#F4F2EE] rounded-xl border-l-4 border-[#7A8B78] mb-6">
-              <h4 className="text-xs uppercase tracking-wider text-[#7A8B78] font-semibold mb-1 flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm">auto_fix_high</span>
+            <div className="p-4 bg-[#F9F8F6] rounded-xl border-l-4 border-[#8C808E] border-y border-r border-[#E5E0D8] mb-6">
+              <h4 className="text-xs uppercase tracking-wider text-[#2B2523] font-bold mb-1 flex items-center gap-1.5 font-mono">
+                <span className="material-symbols-outlined text-sm text-[#8C808E]">auto_fix_high</span>
                 <span>Uso Rituale &amp; Olistico</span>
               </h4>
               <p className="text-xs text-[#2B2523] leading-relaxed">
@@ -516,58 +485,40 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
             {/* Features list */}
             <div className="space-y-2 mb-6">
-              <h4 className="text-xs uppercase tracking-wider text-[#7A8B78] font-semibold">
+              <h4 className="text-xs uppercase tracking-wider text-[#2B2523] font-bold font-mono">
                 Caratteristiche &amp; Materiali:
               </h4>
               <ul className="text-xs text-[#6C645C] space-y-1.5">
                 {selectedProduct.features.map((feat, fIdx) => (
                   <li key={fIdx} className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-xs text-[#7A8B78]">check_circle</span>
+                    <span className="material-symbols-outlined text-xs text-[#8C808E]">check_circle</span>
                     <span>{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-3 bg-[#F4F2EE] rounded-xl text-[11px] text-[#6C645C] mb-6 flex items-center gap-2 border border-[#C5BCB3]/40">
-              <span className="material-symbols-outlined text-sm text-[#7A8B78]">local_shipping</span>
+            <div className="p-3 bg-[#F3F1ED] rounded-xl text-[11px] text-[#6C645C] mb-6 flex items-center gap-2 border border-[#E5E0D8]">
+              <span className="material-symbols-outlined text-sm text-[#2B2523]">local_shipping</span>
               <span>{selectedProduct.shippingInfo}</span>
             </div>
 
             {/* Modal Actions */}
-            <div className="pt-4 border-t border-[#C5BCB3]/30 space-y-3">
-              <p className="text-[10px] text-[#6C645C] leading-relaxed">
-                Inviando la richiesta d'ordine acconsenti al trattamento dei dati personali in conformità alla{' '}
-                <button
-                  type="button"
-                  onClick={onOpenPrivacy}
-                  className="text-[#7A8B78] underline hover:text-[#2B2523] cursor-pointer"
-                >
-                  Privacy Policy
-                </button>{' '}
-                e all'informativa sui{' '}
-                <button
-                  type="button"
-                  onClick={onOpenCookie}
-                  className="text-[#7A8B78] underline hover:text-[#2B2523] cursor-pointer"
-                >
-                  Cookie
-                </button>.
-              </p>
+            <div className="pt-4 border-t border-[#E5E0D8] space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <button
                   onClick={() => {
                     addToCart(selectedProduct);
                     setSelectedProduct(null);
                   }}
-                  className="px-4 py-2 bg-[#F4F2EE] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-lg border border-[#C5BCB3]/40 hover:bg-[#FFFFFF] transition-colors cursor-pointer"
+                  className="px-4 py-2.5 bg-[#F3F1ED] text-[#2B2523] text-xs font-semibold uppercase tracking-wider rounded-lg border border-[#E5E0D8] hover:bg-[#E5E0D8] transition-colors cursor-pointer"
                 >
                   Aggiungi al Carrello
                 </button>
 
                 <button
                   onClick={() => handleDirectOrderWhatsapp(selectedProduct)}
-                  className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-[0_0_20px_rgba(122,139,120,0.5)] flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-lg transition-all border border-[#C5BCB3] flex items-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span className="material-symbols-outlined text-sm">chat</span>
                   <span>Ordina Subito su WhatsApp</span>
@@ -580,28 +531,22 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
       {/* SLIDE-OVER / CART DRAWER */}
       {isCartOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="w-full max-w-md bg-[#FFFFFF] h-full shadow-[0_0_40px_rgba(122,139,120,0.25)] border-l border-[#7A8B78]/40 flex flex-col p-6 overflow-hidden relative">
-            {/* Logo circolare in primo piano in alto al centro */}
+        <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-md bg-[#FFFFFF] h-full border-l border-[#C5BCB3] shadow-2xl flex flex-col p-6 overflow-hidden relative text-[#2B2523]">
+            {/* Logo circolare */}
             <div className="flex flex-col items-center justify-center mb-4 pt-1">
-              <div className="w-16 h-16 rounded-full bg-[#F4F2EE] p-1.5 border-2 border-[#7A8B78] shadow-[0_0_20px_rgba(122,139,120,0.4)] flex items-center justify-center mb-2">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1UJLHzf7EsxDSdjN0Cx4QHtbImuNA7R7ImYCHjKwPKB9a_d4oSwXKcaT3gJvWyoFnlRCeMgkeJWw2ZF7Jb5_n2tYmcoXVLG1cKel_gWs60iy1frH26ok8fMvsD407eaG7PAC5wpwgjskU2yF9IJ5KPNbuRH_kAa3KZb45q8cYzGe_PJVF9wlFaFWeFwkquMhGOXOFTTp3wIcOIViuBxb8GhzK-OMN55GnXkpxROA2kHzOOaqG_WglsMPQ"
-                  alt="Tarot Italia Logo"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              </div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#7A8B78] font-semibold flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm text-[#7A8B78]">shopping_bag</span>
+              <BrandSeal size="sm" className="mb-2" />
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#6C645C] font-semibold flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm text-[#2B2523]">shopping_bag</span>
                 <span>CARRELLO BOTTEGA</span>
               </span>
             </div>
 
-            {/* Tasto di chiusura (X) circolare in alto a destra */}
+            {/* Tasto di chiusura (X) */}
             <button
               type="button"
               onClick={() => setIsCartOpen(false)}
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F4F2EE] border-2 border-[#7A8B78] text-[#7A8B78] hover:bg-[#7A8B78] hover:text-[#F9F8F6] shadow-[0_0_12px_rgba(122,139,120,0.4)] flex items-center justify-center transition-all cursor-pointer z-20"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F3F1ED] border border-[#C5BCB3] text-[#2B2523] hover:bg-[#E5E0D8] flex items-center justify-center transition-all cursor-pointer z-20"
               aria-label="Chiudi carrello"
             >
               <span className="material-symbols-outlined text-lg">close</span>
@@ -611,11 +556,11 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
             <div className="flex-1 overflow-y-auto py-4 space-y-4">
               {cartItems.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-xs text-[#6C645C] p-6">
-                  <span className="material-symbols-outlined text-4xl text-[#C5BCB3]/40 mb-2">
+                  <span className="material-symbols-outlined text-4xl text-[#8C808E] mb-2">
                     remove_shopping_cart
                   </span>
-                  <p>Il carrello della Bottega è vuoto.</p>
-                  <p className="text-[11px] text-[#6C645C]/70 mt-1">
+                  <p className="font-semibold text-[#2B2523] text-sm">Il carrello della Bottega è vuoto.</p>
+                  <p className="text-[11px] text-[#6C645C] mt-1">
                     Seleziona uno strumento rituale o un preparato d'erbe per aggiungerlo.
                   </p>
                 </div>
@@ -623,10 +568,10 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                 cartItems.map(({ product, quantity }) => (
                   <div
                     key={product.id}
-                    className="p-3 bg-[#F4F2EE] rounded-xl border border-[#C5BCB3]/40 flex items-center justify-between gap-3"
+                    className="p-3 bg-[#F9F8F6] rounded-xl border border-[#E5E0D8] flex items-center justify-between gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-black/50 flex-shrink-0">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-white flex-shrink-0 border border-[#E5E0D8]">
                         <img
                           src={product.image}
                           alt={product.title}
@@ -634,10 +579,10 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                         />
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-serif text-sm text-[#2B2523] truncate max-w-[140px]">
+                        <span className="font-serif text-sm text-[#2B2523] font-bold truncate max-w-[140px]">
                           {product.title}
                         </span>
-                        <span className="text-xs text-[#7A8B78]">
+                        <span className="text-xs text-[#8C808E] font-mono font-semibold">
                           € {(product.price * quantity).toFixed(2)}
                         </span>
                       </div>
@@ -646,14 +591,14 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => updateCartQuantity(product.id, -1)}
-                        className="w-7 h-7 rounded-lg bg-[#FFFFFF] border border-[#C5BCB3]/40 flex items-center justify-center text-[#2B2523] hover:text-[#7A8B78] text-xs cursor-pointer"
+                        className="w-7 h-7 rounded-lg bg-[#FFFFFF] border border-[#E5E0D8] flex items-center justify-center text-[#2B2523] hover:bg-[#F3F1ED] text-xs cursor-pointer font-bold"
                       >
                         -
                       </button>
-                      <span className="font-mono text-xs text-[#2B2523] px-1">{quantity}</span>
+                      <span className="font-mono text-xs text-[#2B2523] px-1 font-bold">{quantity}</span>
                       <button
                         onClick={() => updateCartQuantity(product.id, 1)}
-                        className="w-7 h-7 rounded-lg bg-[#FFFFFF] border border-[#C5BCB3]/40 flex items-center justify-center text-[#2B2523] hover:text-[#7A8B78] text-xs cursor-pointer"
+                        className="w-7 h-7 rounded-lg bg-[#FFFFFF] border border-[#E5E0D8] flex items-center justify-center text-[#2B2523] hover:bg-[#F3F1ED] text-xs cursor-pointer font-bold"
                       >
                         +
                       </button>
@@ -665,34 +610,16 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
             {/* Drawer Footer */}
             {cartItems.length > 0 && (
-              <div className="pt-4 border-t border-[#C5BCB3]/30 space-y-3">
+              <div className="pt-4 border-t border-[#E5E0D8] space-y-3">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-[#6C645C]">Totale Provvisorio:</span>
-                  <span className="font-serif text-xl font-bold text-[#7A8B78]">
+                  <span className="font-serif text-xl font-bold text-[#2B2523]">
                     € {totalCartPrice.toFixed(2)}
                   </span>
                 </div>
-                <p className="text-[10px] text-[#6C645C] leading-relaxed">
-                  Inviando l'ordine accetti il trattamento dei dati personali secondo la nostra{' '}
-                  <button
-                    type="button"
-                    onClick={onOpenPrivacy}
-                    className="text-[#7A8B78] underline hover:text-[#2B2523] cursor-pointer"
-                  >
-                    Privacy Policy
-                  </button>{' '}
-                  e la politica dei{' '}
-                  <button
-                    type="button"
-                    onClick={onOpenCookie}
-                    className="text-[#7A8B78] underline hover:text-[#2B2523] cursor-pointer"
-                  >
-                    Cookie
-                  </button>.
-                </p>
                 <button
                   onClick={handleCheckoutWhatsapp}
-                  className="w-full py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(122,139,120,0.5)] flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 bg-[#7A8B78] hover:bg-[#687866] text-[#F9F8F6] text-xs font-bold uppercase tracking-wider rounded-xl transition-all border border-[#C5BCB3] flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span className="material-symbols-outlined text-base">chat</span>
                   <span>Completa Ordine via WhatsApp</span>
@@ -705,7 +632,7 @@ export const ShopSection: React.FC<ShopSectionProps> = ({ onBackToHome, initialC
 
       {/* Floating Notification Toast */}
       {notification && (
-        <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 bg-[#FFFFFF] text-[#A89B8C] text-xs font-mono rounded-xl border-2 border-[#A89B8C] shadow-[0_0_20px_rgba(168,155,140,0.4)] animate-in slide-in-from-bottom duration-200">
+        <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 bg-[#2B2523] text-[#F9F8F6] text-xs font-mono rounded-xl border border-[#C5BCB3] shadow-lg animate-in slide-in-from-bottom duration-200">
           {notification}
         </div>
       )}

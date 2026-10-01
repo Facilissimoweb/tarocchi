@@ -9,8 +9,8 @@ interface ArcaniVisualMotifProps {
 
 export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
   motif,
-  primaryColor = '#7A8B78',
-  accentColor = '#7A8B78',
+  primaryColor = '#D8CDE2',
+  accentColor = '#00F0FF',
   className = 'w-full h-full'
 }) => {
   switch (motif) {
@@ -42,7 +42,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <line x1="100" y1="75" x2="100" y2="135" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
           <circle cx="100" cy="75" r="5" fill={primaryColor} />
           {/* Alchemical Table with 4 elemental sacred tools */}
-          <rect x="40" y="145" width="120" height="45" rx="6" stroke={primaryColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <rect x="40" y="145" width="120" height="45" rx="6" stroke={primaryColor} strokeWidth="1.5" fill="#130924" />
           {/* Cup */}
           <path d="M60 155 Q67 172 74 155 Z M67 172 L67 178 M62 178 L72 178" stroke={accentColor} strokeWidth="1.5" />
           {/* Sword */}
@@ -60,12 +60,12 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
       return (
         <svg viewBox="0 0 200 240" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Dual Cyber Pillars B & J */}
-          <rect x="30" y="40" width="22" height="150" rx="3" stroke={primaryColor} strokeWidth="2" fill="#FFFFFF" />
+          <rect x="30" y="40" width="22" height="150" rx="3" stroke={primaryColor} strokeWidth="2" fill="#130924" />
           <text x="41" y="120" fill={primaryColor} fontSize="14" fontWeight="bold" textAnchor="middle">B</text>
-          <rect x="148" y="40" width="22" height="150" rx="3" stroke={accentColor} strokeWidth="2" fill="#FFFFFF" />
+          <rect x="148" y="40" width="22" height="150" rx="3" stroke={accentColor} strokeWidth="2" fill="#130924" />
           <text x="159" y="120" fill={accentColor} fontSize="14" fontWeight="bold" textAnchor="middle">J</text>
           {/* Pomegranate veil pattern */}
-          <circle cx="100" cy="110" r="42" stroke="#C5BCB3" strokeWidth="1" strokeDasharray="3 3" />
+          <circle cx="100" cy="110" r="42" stroke="#8A2BE2" strokeWidth="1" strokeDasharray="3 3" />
           {/* Horned Lunar Crown & Sphere */}
           <path d="M80 60 Q100 80 120 60 Q110 50 100 52 Q90 50 80 60 Z" fill={accentColor} />
           <circle cx="100" cy="55" r="9" fill="#FFFFFF" />
@@ -129,7 +129,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <circle cx="70" cy="170" r="6" stroke={primaryColor} strokeWidth="2" />
           <circle cx="130" cy="170" r="6" stroke={primaryColor} strokeWidth="2" />
           {/* Mystic Portal Arch */}
-          <path d="M40 220 L40 90 Q100 30 160 90 L160 220" stroke="#C5BCB3" strokeWidth="1.5" strokeDasharray="4 4" />
+          <path d="M40 220 L40 90 Q100 30 160 90 L160 220" stroke="#8A2BE2" strokeWidth="1.5" strokeDasharray="4 4" />
         </svg>
       );
 
@@ -140,9 +140,9 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <circle cx="100" cy="50" r="24" fill={accentColor} opacity="0.3" />
           <circle cx="100" cy="50" r="14" fill={primaryColor} />
           {/* Dual intertwined human silhouettes of light */}
-          <path d="M65 140 C65 110 85 110 85 140 L85 200 L65 200 Z" fill="#C5BCB3" opacity="0.6" />
+          <path d="M65 140 C65 110 85 110 85 140 L85 200 L65 200 Z" fill="#8A2BE2" opacity="0.6" />
           <circle cx="75" cy="100" r="10" fill={primaryColor} />
-          <path d="M115 140 C115 110 135 110 135 140 L135 200 L115 200 Z" fill="#7A8B78" opacity="0.6" />
+          <path d="M115 140 C115 110 135 110 135 140 L135 200 L115 200 Z" fill="#00F0FF" opacity="0.6" />
           <circle cx="125" cy="100" r="10" fill={accentColor} />
           {/* Laser Heart convergence */}
           <path d="M100 135 L100 165 M90 145 Q100 130 110 145 L100 160 Z" fill={primaryColor} />
@@ -155,7 +155,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
       return (
         <svg viewBox="0 0 200 240" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Celestial Canopy */}
-          <path d="M50 50 L150 50 L140 85 L60 85 Z" stroke={accentColor} strokeWidth="2" fill="#FFFFFF" />
+          <path d="M50 50 L150 50 L140 85 L60 85 Z" stroke={accentColor} strokeWidth="2" fill="#130924" />
           <circle cx="85" cy="65" r="3" fill="#FFFFFF" />
           <circle cx="100" cy="65" r="3" fill={primaryColor} />
           <circle cx="115" cy="65" r="3" fill="#FFFFFF" />
@@ -164,9 +164,9 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <ellipse cx="100" cy="125" rx="12" ry="7" fill={accentColor} />
           <path d="M85 125 Q70 120 65 125 M115 125 Q130 120 135 125" stroke="#FFFFFF" strokeWidth="2" />
           {/* Dual Cyber Sphinxes */}
-          <rect x="45" y="170" width="45" height="35" rx="4" stroke={primaryColor} strokeWidth="2" fill="#F9F8F6" />
+          <rect x="45" y="170" width="45" height="35" rx="4" stroke={primaryColor} strokeWidth="2" fill="#0C0714" />
           <text x="67" y="193" fill={primaryColor} fontSize="11" fontWeight="bold" textAnchor="middle">DARK</text>
-          <rect x="110" y="170" width="45" height="35" rx="4" stroke={accentColor} strokeWidth="2" fill="#F9F8F6" />
+          <rect x="110" y="170" width="45" height="35" rx="4" stroke={accentColor} strokeWidth="2" fill="#0C0714" />
           <text x="132" y="193" fill={accentColor} fontSize="11" fontWeight="bold" textAnchor="middle">LIGHT</text>
         </svg>
       );
@@ -189,7 +189,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <line x1="140" y1="105" x2="150" y2="140" stroke={accentColor} strokeWidth="1.5" />
           <path d="M125 140 Q140 155 155 140 Z" fill={accentColor} opacity="0.6" stroke={accentColor} strokeWidth="1.5" />
           {/* Geometric aura */}
-          <circle cx="100" cy="110" r="65" stroke="#C5BCB3" strokeWidth="1" strokeDasharray="4 4" />
+          <circle cx="100" cy="110" r="65" stroke="#8A2BE2" strokeWidth="1" strokeDasharray="4 4" />
         </svg>
       );
 
@@ -197,14 +197,14 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
       return (
         <svg viewBox="0 0 200 240" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Hexagram Lantern with glowing beam */}
-          <rect x="110" y="70" width="30" height="40" rx="4" stroke={accentColor} strokeWidth="2" fill="#FFFFFF" />
+          <rect x="110" y="70" width="30" height="40" rx="4" stroke={accentColor} strokeWidth="2" fill="#130924" />
           <polygon points="125,78 128,88 136,88 130,93 132,101 125,96 118,101 120,93 114,88 122,88" fill={primaryColor} />
           {/* Rays of lantern light cutting through void */}
           <path d="M140 90 L195 60 M140 90 L200 90 M140 90 L195 120" stroke={accentColor} strokeWidth="1.5" strokeDasharray="3 3" />
           {/* The Staff of Will */}
           <line x1="65" y1="50" x2="65" y2="200" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" />
           {/* Hooded Sage Silhouette */}
-          <path d="M85 80 Q105 70 115 90 Q120 130 90 190 L75 190 Z" fill="#C5BCB3" opacity="0.6" />
+          <path d="M85 80 Q105 70 115 90 Q120 130 90 190 L75 190 Z" fill="#8A2BE2" opacity="0.6" />
           {/* Mountain Ridge at Night */}
           <path d="M20 220 L75 185 L130 210 L180 180" stroke={primaryColor} strokeWidth="2" />
         </svg>
@@ -278,7 +278,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           {/* Quantum Laser Scythe */}
           <path d="M50 190 L140 60 Q170 50 175 75 Q150 95 130 90" stroke={primaryColor} strokeWidth="3" strokeLinecap="round" fill="none" />
           {/* Mystic White Cyber Rose Banner */}
-          <circle cx="85" cy="100" r="22" stroke={accentColor} strokeWidth="1.5" strokeDasharray="3 3" fill="#FFFFFF" />
+          <circle cx="85" cy="100" r="22" stroke={accentColor} strokeWidth="1.5" strokeDasharray="3 3" fill="#130924" />
           <path d="M85 85 L90 95 L100 95 L92 101 L95 111 L85 105 L75 111 L78 101 L70 95 L80 95 Z" fill="#FFFFFF" />
           {/* Dawn Sun between Two Towers in the distance */}
           <rect x="50" y="170" width="16" height="40" fill="#1B0A2E" stroke={accentColor} strokeWidth="1" />
@@ -349,7 +349,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <path d="M75 145 Q65 130 55 145 L60 170" stroke={accentColor} strokeWidth="2" />
           <path d="M125 145 Q135 130 145 145 L140 170" stroke={primaryColor} strokeWidth="2" />
           {/* Living Water Stream */}
-          <path d="M55 170 Q75 190 100 185 Q130 180 150 210" stroke="#7A8B78" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          <path d="M55 170 Q75 190 100 185 Q130 180 150 210" stroke="#00F0FF" strokeWidth="2.5" strokeLinecap="round" fill="none" />
         </svg>
       );
 
@@ -357,7 +357,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
       return (
         <svg viewBox="0 0 200 240" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Cyber Crescent Moon with Sleeping Face Profile */}
-          <circle cx="100" cy="70" r="32" stroke={accentColor} strokeWidth="2" fill="#FFFFFF" />
+          <circle cx="100" cy="70" r="32" stroke={accentColor} strokeWidth="2" fill="#130924" />
           <path d="M100 38 Q125 70 100 102 Q85 70 100 38 Z" fill={primaryColor} />
           {/* Falling drops of soma / yods */}
           {[75, 90, 110, 125].map((x, i) => (
@@ -401,7 +401,7 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <circle cx="115" cy="165" r="8" fill="#FFFFFF" />
           <line x1="93" y1="172" x2="107" y2="172" stroke={accentColor} strokeWidth="3" strokeLinecap="round" />
           {/* Stone Wall of Solar Truth */}
-          <rect x="40" y="195" width="120" height="20" rx="3" stroke={primaryColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <rect x="40" y="195" width="120" height="20" rx="3" stroke={primaryColor} strokeWidth="1.5" fill="#130924" />
         </svg>
       );
 
@@ -438,13 +438,13 @@ export const ArcaniVisualMotif: React.FC<ArcaniVisualMotifProps> = ({
           <line x1="80" y1="95" x2="80" y2="140" stroke={accentColor} strokeWidth="2" strokeLinecap="round" />
           <line x1="120" y1="95" x2="120" y2="140" stroke={accentColor} strokeWidth="2" strokeLinecap="round" />
           {/* 4 Tetramorph Corner Creatures (Angel, Eagle, Lion, Bull) */}
-          <circle cx="35" cy="35" r="12" stroke={primaryColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <circle cx="35" cy="35" r="12" stroke={primaryColor} strokeWidth="1.5" fill="#130924" />
           <text x="35" y="39" fill={primaryColor} fontSize="10" fontWeight="bold" textAnchor="middle">A</text>
-          <circle cx="165" cy="35" r="12" stroke={accentColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <circle cx="165" cy="35" r="12" stroke={accentColor} strokeWidth="1.5" fill="#130924" />
           <text x="165" y="39" fill={accentColor} fontSize="10" fontWeight="bold" textAnchor="middle">E</text>
-          <circle cx="35" cy="205" r="12" stroke={accentColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <circle cx="35" cy="205" r="12" stroke={accentColor} strokeWidth="1.5" fill="#130924" />
           <text x="35" y="209" fill={accentColor} fontSize="10" fontWeight="bold" textAnchor="middle">B</text>
-          <circle cx="165" cy="205" r="12" stroke={primaryColor} strokeWidth="1.5" fill="#FFFFFF" />
+          <circle cx="165" cy="205" r="12" stroke={primaryColor} strokeWidth="1.5" fill="#130924" />
           <text x="165" y="209" fill={primaryColor} fontSize="10" fontWeight="bold" textAnchor="middle">L</text>
         </svg>
       );

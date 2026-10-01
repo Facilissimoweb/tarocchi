@@ -8,11 +8,42 @@
   --color-editorial-text-muted: #6C645C;
   --color-editorial-border: #E5E0D8;
   --color-editorial-border-dark: #C5BCB3;
+
   --color-pastel-lavender: #D8CDE2;
-  --color-accent-olive: #7A8B78;
-  --color-accent-olive-hover: #687866;
+  --color-pastel-lavender-hover: #C9BBD7;
+  --color-pastel-tortora: #E5DFD9;
+  --color-pastel-tortora-hover: #D8D0C7;
+
   --color-accent-dusty: #8C808E;
   --color-accent-bronze: #A89B8C;
+
+  --color-hero-bg: #1C1817;
+  --color-hero-surface: #26211F;
+  --color-hero-text: #F9F8F6;
+  --color-hero-text-muted: #C5BCB3;
+
+  /* Legacy mappings redefined for smooth transition */
+  --color-cyber-bg: #F9F8F6;
+  --color-cyber-surface: #FFFFFF;
+  --color-cyber-surface-elevated: #F4F2EE;
+  --color-neon-magenta: #8C808E;
+  --color-neon-magenta-hover: #7A6F7C;
+  --color-neon-cyan: #A89B8C;
+  --color-neon-cyan-hover: #96897A;
+  --color-electric-violet: #8C808E;
+  --color-cyber-purple: #D8CDE2;
+  --color-on-cyber: #2B2523;
+  --color-on-cyber-muted: #6C645C;
+  --color-cyber-border: #E5E0D8;
+  --color-cyber-border-active: #C5BCB3;
+  --color-cyber-border-cyan: #D8CDE2;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.75rem;
+  --spacing-space-xl: 3rem;
+  --spacing-space-2xl: 5rem;
 }
 
 @layer base {
@@ -21,7 +52,7 @@
     padding: 0;
     background-color: #F9F8F6;
     color: #2B2523;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', 'Cormorant Garamond', 'Cinzel', serif, system-ui, sans-serif;
   }
   body {
     overscroll-behavior: none;
@@ -29,6 +60,7 @@
   }
 }
 
+/* Material symbols utility styling */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -44,6 +76,37 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Editorial Soft Shadows & Subtle Borders */
+.editorial-card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(43, 37, 35, 0.05), 0 2px 6px -2px rgba(43, 37, 35, 0.03);
+}
+
+.editorial-card-shadow-hover {
+  box-shadow: 0 20px 40px -12px rgba(43, 37, 35, 0.08), 0 4px 12px -3px rgba(43, 37, 35, 0.04);
+}
+
+.editorial-border {
+  border: 1px solid #E5E0D8;
+}
+
+.editorial-border-dark {
+  border: 1px solid #C5BCB3;
+}
+
+/* 3D Perspective Flip Support */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

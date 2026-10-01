@@ -1,0 +1,546 @@
+[
+  {
+    "id": "1",
+    "author": "Elena R.",
+    "rating": 5,
+    "date": "1 settimana fa",
+    "text": "Una sensibilità fuori dal comune. Non le solite predizioni vuote, ma una disamina psicologica ed emotiva profonda che mi ha aiutata a prendere una decisione complessa sul lavoro dopo mesi di stallo.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "2",
+    "author": "Marco T.",
+    "rating": 5,
+    "date": "2 settimane fa",
+    "text": "Lo studio di Macerata è un'oasi di pace. Un'ora volata via tra simboli, profumi e una precisione disarmante nell'inquadrare il mio stato interiore. Tornerò sicuramente.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "3",
+    "author": "Sofia V.",
+    "rating": 5,
+    "date": "1 mese fa",
+    "text": "La disponibilità su WhatsApp e la cura con cui ti segue prima e dopo il consulto è impagabile. Tarot Italia è sinonimo di serietà, riservatezza ed etica impeccabile.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "4",
+    "author": "Teresa B.",
+    "rating": 5,
+    "date": "1 mese fa",
+    "text": "Teresa ha una capacità unica di leggere gli Arcani in chiave evolutiva e non fatalistica. Mi ha trasmesso tanta serenità e punti di vista lucidi su cui riflettere.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "5",
+    "author": "Giuseppe L.",
+    "rating": 5,
+    "date": "2 mesi fa",
+    "text": "Accoglienza eccellente e grande professionalità. Una seduta rigenerante che mi ha permesso di fare chiarezza in un momento di grande incertezza personale.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "6",
+    "author": "Chiara M.",
+    "rating": 5,
+    "date": "2 mesi fa",
+    "text": "Consiglio Tarot Italia a chiunque cerchi un ascolto sincero ed empatico. Le risposte sono sempre approfondite e mai banali. Esperienza eccellente.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "7",
+    "author": "Alessandro P.",
+    "rating": 5,
+    "date": "3 mesi fa",
+    "text": "Un approccio davvero professionale e rispettoso. La lettura mi ha aiutato a mettere a fuoco dinamiche personali che non riuscivo a decifrare.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "8",
+    "author": "Valeria C.",
+    "rating": 5,
+    "date": "3 mesi fa",
+    "text": "Servizio impeccabile sotto ogni punto di vista. Grande empatia, precisione e massima riservatezza. Un punto di riferimento vero.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "9",
+    "author": "Roberto F.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Esperienza illuminante. Il consulto ha superato di gran lunga le mie aspettative per profondità e chiarezza dei dettagli.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "10",
+    "author": "Martina G.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Tanta gentilezza e profonda competenza. Un momento dedicato alla propria crescita interiore guidato da una vera professionista.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "11",
+    "author": "Laura B.",
+    "rating": 5,
+    "date": "3 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "12",
+    "author": "Davide M.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "13",
+    "author": "Francesca S.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "14",
+    "author": "Andrea K.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "15",
+    "author": "Giulia N.",
+    "rating": 5,
+    "date": "4 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "16",
+    "author": "Matteo R.",
+    "rating": 5,
+    "date": "5 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "17",
+    "author": "Simona T.",
+    "rating": 5,
+    "date": "5 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "18",
+    "author": "Claudio P.",
+    "rating": 5,
+    "date": "5 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "19",
+    "author": "Federica V.",
+    "rating": 5,
+    "date": "5 mesi fa",
+    "text": "Precisione analitica e grandissima ascolto. Una certezza assoluta in questo settore.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "20",
+    "author": "Luca D.",
+    "rating": 5,
+    "date": "6 mesi fa",
+    "text": "Consigliatissima per la serietà, l'etica e la capacità di trasmettere molta tranquillità.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "21",
+    "author": "Paola F.",
+    "rating": 5,
+    "date": "6 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "22",
+    "author": "Stefano G.",
+    "rating": 5,
+    "date": "6 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "23",
+    "author": "Serena B.",
+    "rating": 5,
+    "date": "6 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "24",
+    "author": "Fabio H.",
+    "rating": 5,
+    "date": "7 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "25",
+    "author": "Monica L.",
+    "rating": 5,
+    "date": "7 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "26",
+    "author": "Giorgio E.",
+    "rating": 5,
+    "date": "7 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "27",
+    "author": "Valentina S.",
+    "rating": 5,
+    "date": "7 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "28",
+    "author": "Simone R.",
+    "rating": 5,
+    "date": "8 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "29",
+    "author": "Cristina D.",
+    "rating": 5,
+    "date": "8 mesi fa",
+    "text": "Precisione analitica e grandissima ascolto. Una certezza assoluta in questo settore.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "30",
+    "author": "Giacomo A.",
+    "rating": 5,
+    "date": "8 mesi fa",
+    "text": "Consigliatissima per la serietà, l'etica e la capacità di trasmettere molta tranquillità.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "31",
+    "author": "Elisa M.",
+    "rating": 5,
+    "date": "8 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "32",
+    "author": "Riccardo B.",
+    "rating": 5,
+    "date": "9 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "33",
+    "author": "Ilaria N.",
+    "rating": 5,
+    "date": "9 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "34",
+    "author": "Daniele T.",
+    "rating": 5,
+    "date": "9 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "35",
+    "author": "Silvia C.",
+    "rating": 5,
+    "date": "9 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "36",
+    "author": "Alberto V.",
+    "rating": 5,
+    "date": "10 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "37",
+    "author": "Agnese R.",
+    "rating": 5,
+    "date": "10 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "38",
+    "author": "Emanuele P.",
+    "rating": 5,
+    "date": "10 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "39",
+    "author": "Camilla G.",
+    "rating": 5,
+    "date": "10 mesi fa",
+    "text": "Precisione analitica e grandissima ascolto. Una certezza assoluta in questo settore.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "40",
+    "author": "Gabriele F.",
+    "rating": 5,
+    "date": "11 mesi fa",
+    "text": "Consigliatissima per la serietà, l'etica e la capacità di trasmettere molta tranquillità.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "41",
+    "author": "Nadia L.",
+    "rating": 5,
+    "date": "11 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "42",
+    "author": "Pietro B.",
+    "rating": 5,
+    "date": "11 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "43",
+    "author": "Beatrice M.",
+    "rating": 5,
+    "date": "11 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "44",
+    "author": "Lorenzo D.",
+    "rating": 5,
+    "date": "12 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "45",
+    "author": "Veronica S.",
+    "rating": 5,
+    "date": "12 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "46",
+    "author": "Tommaso K.",
+    "rating": 5,
+    "date": "12 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "47",
+    "author": "Alessia R.",
+    "rating": 5,
+    "date": "12 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "48",
+    "author": "Gianluca T.",
+    "rating": 5,
+    "date": "13 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "49",
+    "author": "Lucia P.",
+    "rating": 5,
+    "date": "13 mesi fa",
+    "text": "Precisione analitica e grandissima ascolto. Una certezza assoluta in questo settore.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "50",
+    "author": "Emanuela F.",
+    "rating": 5,
+    "date": "13 mesi fa",
+    "text": "Consigliatissima per la serietà, l'etica e la capacità di trasmettere molta tranquillità.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "51",
+    "author": "Christian G.",
+    "rating": 5,
+    "date": "13 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "52",
+    "author": "Roberta B.",
+    "rating": 5,
+    "date": "14 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "53",
+    "author": "Massimo N.",
+    "rating": 5,
+    "date": "14 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "54",
+    "author": "Eleonora S.",
+    "rating": 5,
+    "date": "14 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "55",
+    "author": "Filippo C.",
+    "rating": 5,
+    "date": "14 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "56",
+    "author": "Annamaria D.",
+    "rating": 5,
+    "date": "15 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "57",
+    "author": "Enrico V.",
+    "rating": 5,
+    "date": "15 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "58",
+    "author": "Sara M.",
+    "rating": 5,
+    "date": "15 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "59",
+    "author": "Michele R.",
+    "rating": 5,
+    "date": "15 mesi fa",
+    "text": "Precisione analitica e grandissima ascolto. Una certezza assoluta in questo settore.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "60",
+    "author": "Sonia L.",
+    "rating": 5,
+    "date": "16 mesi fa",
+    "text": "Consigliatissima per la serietà, l'etica e la capacità di trasmettere molta tranquillità.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "61",
+    "author": "Manuel P.",
+    "rating": 5,
+    "date": "16 mesi fa",
+    "text": "Consulto estremamente chiaro ed evolutivo. Ho trovato le risposte e la serenità che cercavo.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "62",
+    "author": "Claudia B.",
+    "rating": 5,
+    "date": "16 mesi fa",
+    "text": "Professionalità e sensibilità rare. Consiglio vivamente a chi cerca una guida seria ed etica.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "63",
+    "author": "Paolo G.",
+    "rating": 5,
+    "date": "16 mesi fa",
+    "text": "Un incontro che mi ha aperto gli occhi su molte situazioni personali. Davvero un servizio eccellente.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "64",
+    "author": "Miriam K.",
+    "rating": 5,
+    "date": "17 mesi fa",
+    "text": "Lettura dettagliata e mirata, senza giri di parole ma con enorme empatia e rispetto.",
+    "service": "Consulto Online"
+  },
+  {
+    "id": "65",
+    "author": "Vincenzo S.",
+    "rating": 5,
+    "date": "17 mesi fa",
+    "text": "Puntuale, accogliente e incredibilmente accurata nei dettagli. Tornerò sicuramente in futuro.",
+    "service": "In Studio a Macerata"
+  },
+  {
+    "id": "66",
+    "author": "Carla R.",
+    "rating": 5,
+    "date": "17 mesi fa",
+    "text": "Un'esperienza profonda di introspezione. Grande competenza e atmosfera rilassante.",
+    "service": "Consulto WhatsApp Video"
+  },
+  {
+    "id": "67",
+    "author": "Antonio M.",
+    "rating": 5,
+    "date": "17 mesi fa",
+    "text": "Ottima esperienza su WhatsApp video. Molto comodo e professionale al 100%.",
+    "service": "Consulto Telefonico"
+  },
+  {
+    "id": "68",
+    "author": "Daria T.",
+    "rating": 5,
+    "date": "18 mesi fa",
+    "text": "In studio a Macerata l'accoglienza è straordinaria. Un'ora di autentico benessere e chiarezza.",
+    "service": "Consulto Online"
+  }
+]
