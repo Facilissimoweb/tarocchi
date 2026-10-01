@@ -40,12 +40,12 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
       } ${className}`}
     >
       <div
-        className={`relative ${dimensions} rounded-full p-1 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] transition-all duration-300 hover:scale-105 flex-shrink-0 ${
-          glow ? 'shadow-[0_0_20px_rgba(255,0,127,0.6),_0_0_35px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(255,0,127,0.8),_0_0_45px_rgba(0,240,255,0.6)]' : ''
+        className={`relative ${dimensions} rounded-full p-1 bg-gradient-to-tr from-[#7A8B78] via-[#C5BCB3] to-[#7A8B78] transition-all duration-300 hover:scale-105 flex-shrink-0 ${
+          glow ? 'shadow-[0_0_20px_rgba(122,139,120,0.6),_0_0_35px_rgba(122,139,120,0.4)] hover:shadow-[0_0_30px_rgba(122,139,120,0.8),_0_0_45px_rgba(122,139,120,0.6)]' : ''
         }`}
       >
         {/* Outer filigree border */}
-        <div className="w-full h-full rounded-full p-0.5 bg-[#0C0714] border border-[#00F0FF]/60 flex items-center justify-center overflow-hidden">
+        <div className="w-full h-full rounded-full p-0.5 bg-[#F9F8F6] border border-[#7A8B78]/60 flex items-center justify-center overflow-hidden">
           <img
             src={BRAND_LOGO_URL}
             alt={alt}
@@ -57,11 +57,11 @@ export const BrandSeal: React.FC<BrandSealProps> = ({
 
       {showWordmark && (
         <div className={`flex flex-col ${horizontal ? 'text-left' : 'items-center text-center mt-2.5'}`}>
-          <span className="font-serif font-bold text-base sm:text-lg tracking-[0.15em] uppercase leading-none bg-gradient-to-r from-[#FF007F] via-[#C77DFF] to-[#00F0FF] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,0,127,0.5)]">
+          <span className="font-serif font-bold text-base sm:text-lg tracking-[0.15em] uppercase leading-none bg-gradient-to-r from-[#7A8B78] via-[#8C808E] to-[#7A8B78] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(122,139,120,0.5)]">
             TAROT ITALIA
           </span>
           {showSubtitle && (
-            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] text-[#A69BB5] uppercase pt-1">
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] text-[#6C645C] uppercase pt-1">
               {tagline}
             </span>
           )}
@@ -79,11 +79,11 @@ export const BrandSectionDivider: React.FC<{
   return (
     <div className={`flex flex-col items-center justify-center text-center ${className}`}>
       <div className="flex items-center justify-center gap-4 w-full max-w-md mx-auto">
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#8A2BE2]/60 to-[#FF007F]/60"></div>
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#C5BCB3]/60 to-[#7A8B78]/60"></div>
         <div className="relative group cursor-default">
           {/* Neon glow ring */}
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 bg-gradient-to-tr from-[#FF007F] via-[#8A2BE2] to-[#00F0FF] shadow-[0_0_25px_rgba(255,0,127,0.65),_0_0_35px_rgba(0,240,255,0.35)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-            <div className="w-full h-full rounded-full bg-[#0C0714] p-0.5 overflow-hidden flex items-center justify-center">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 bg-gradient-to-tr from-[#7A8B78] via-[#C5BCB3] to-[#7A8B78] shadow-[0_0_25px_rgba(122,139,120,0.65),_0_0_35px_rgba(122,139,120,0.35)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="w-full h-full rounded-full bg-[#F9F8F6] p-0.5 overflow-hidden flex items-center justify-center">
               <img
                 src={BRAND_LOGO_URL}
                 alt="Logo Tarot Italia"
@@ -93,10 +93,10 @@ export const BrandSectionDivider: React.FC<{
             </div>
           </div>
         </div>
-        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#8A2BE2]/60 to-[#00F0FF]/60"></div>
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#C5BCB3]/60 to-[#7A8B78]/60"></div>
       </div>
       {title && (
-        <span className="text-[10px] font-mono tracking-[0.25em] text-[#00F0FF] uppercase mt-2.5 font-semibold">
+        <span className="text-[10px] font-mono tracking-[0.25em] text-[#7A8B78] uppercase mt-2.5 font-semibold">
           {title}
         </span>
       )}
